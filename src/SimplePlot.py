@@ -14,14 +14,14 @@ from analysis.plotting import lines, KDE, envelopes
 ema_logging.log_to_stderr(level=ema_logging.DEFAULT_LEVEL)
 
 #load the data
-experiments, outcomes = load_results(r'../Data/5 runs.bz2')
+experiments, outcomes = load_results(r'./Data/10 runs.bz2')
 
 results = (experiments, outcomes)
 
 '''==============================================================================
  print out the lines, envelope and KDE
 =============================================================================='''
-desired__nr_lines = 5
+desired__nr_lines = 10
 nr_cases = experiments.shape[0]
 indices = np.arange(0, nr_cases, nr_cases/desired__nr_lines)
 

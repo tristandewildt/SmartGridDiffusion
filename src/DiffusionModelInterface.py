@@ -17,9 +17,11 @@ from connectors.netlogo import NetLogoModelStructureInterface
 from expWorkbench.model_ensemble import ModelEnsemble
 
 
+
 class DiffusionModelInterface(NetLogoModelStructureInterface):
     model_file = r'/Model_adoption_of_ISG_appliances_-_5.4.9_for_EMA_test.nlogo'
-    run_length = 500
+    #model_file = r'C:/Users/Tristan/Documents/GitHub/SmartGridDiffusion/src/netlogo_models/Model_adoption_of_ISG_appliances_-_5.4.9_for_EMA_test.nlogo'
+    run_length = 200
       
     uncertainties = [ParameterUncertainty((0.25, 0.4), "electricity_price_day"),
                      ParameterUncertainty((0.1, 0.25), "electricity_price_night"),
@@ -149,14 +151,14 @@ if __name__ == '__main__':
     
     ensemble = ModelEnsemble()
     
-    wd = r'C:/Users/Titan946/Documents/GitHub/SmartGridDiffusion/src/netlogo_models'
+    wd = r'C:/Users/Tristan/Documents/GitHub/SmartGridDiffusion/src/netlogo_models'
     msi = DiffusionModelInterface(wd, 'dmodel')
     ensemble.add_model_structure(msi)
     ensemble.parallel = True
     
-    n = 100
+    n = 10
     results = ensemble.perform_experiments(n)
     fn = r'./data/{} runs.bz2'.format(n)
     save_results(results, fn)
 
-    print "blaat"
+    print "finish"
