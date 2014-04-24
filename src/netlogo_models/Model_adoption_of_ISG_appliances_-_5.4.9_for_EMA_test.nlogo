@@ -1126,7 +1126,7 @@ to setup_ISG_appliance
   set Complexity_of_purchase_list_1 3
   set Complexity_of_purchase_list_2 2
   set Complexity_of_purchase_list_3 1
-  set Complexity_of_purchase_list_4 2
+  set Complexity_of_purchase_list_4 3
   set temp_for_creation_scenario_properties (word "Complexity_of_purchase_list")
   structure_creation_list_scenarios
   
@@ -1134,7 +1134,7 @@ to setup_ISG_appliance
   set Complexity_of_installation_list_1 3
   set Complexity_of_installation_list_2 2
   set Complexity_of_installation_list_3 1
-  set Complexity_of_installation_list_4 2
+  set Complexity_of_installation_list_4 3
   set temp_for_creation_scenario_properties (word "Complexity_of_installation_list")
   structure_creation_list_scenarios
   
@@ -1142,7 +1142,7 @@ to setup_ISG_appliance
   set Complexity_of_behavior_change_list_1 3
   set Complexity_of_behavior_change_list_2 2
   set Complexity_of_behavior_change_list_3 1
-  set Complexity_of_behavior_change_list_4 1
+  set Complexity_of_behavior_change_list_4 3
   set temp_for_creation_scenario_properties (word "Complexity_of_behavior_change_list")
   structure_creation_list_scenarios
   
@@ -1186,7 +1186,7 @@ to setup_for_ema
   set electricity_price_night_fix 0.155
   set introduction_phase 30
   set growth_phase 30
-  set maturity_phase 300
+  set maturity_phase 150
   set memory 2
   set Moment_of_data_leak_event 78
   set Duration_information_complexity_validity 48
@@ -4528,7 +4528,7 @@ Polygon -7500403 true true 270 75 225 30 30 225 75 270
 Polygon -7500403 true true 30 75 75 30 270 225 225 270
 
 @#$#@#$#@
-NetLogo 5.0.3
+NetLogo 5.0.5
 @#$#@#$#@
 @#$#@#$#@
 @#$#@#$#@

@@ -21,7 +21,7 @@ from expWorkbench.model_ensemble import ModelEnsemble
 class DiffusionModelInterface(NetLogoModelStructureInterface):
     model_file = r'/Model_adoption_of_ISG_appliances_-_5.4.9_for_EMA_test.nlogo'
     #model_file = r'C:/Users/Tristan/Documents/GitHub/SmartGridDiffusion/src/netlogo_models/Model_adoption_of_ISG_appliances_-_5.4.9_for_EMA_test.nlogo'
-    run_length = 200
+    run_length = 500
       
     uncertainties = [ParameterUncertainty((0.25, 0.4), "electricity_price_day"),
                      ParameterUncertainty((0.1, 0.25), "electricity_price_night"),
@@ -124,16 +124,16 @@ class DiffusionModelInterface(NetLogoModelStructureInterface):
                      ParameterUncertainty((0,0.015),"Probability_of_failure_list_2"),
                      ParameterUncertainty((0,0.01),"Probability_of_failure_list_3"),
                      ParameterUncertainty((0,0.01),"Probability_of_failure_list_4"),
-                     ParameterUncertainty((20,80),"introduction_phase",integer=True),
-                     ParameterUncertainty((20,80),"growth_phase",integer=True),
-                     ParameterUncertainty((200,1000),"maturity_phase",integer=True),
+                     ParameterUncertainty((12,60),"introduction_phase",integer=True),
+                     ParameterUncertainty((12,60),"growth_phase",integer=True),
+                     ParameterUncertainty((100,400),"maturity_phase",integer=True),
                      ParameterUncertainty((1,4),"memory",integer=True),
                      ParameterUncertainty((2,4),"Diffusion_information_number_links",integer=True),
-                     ParameterUncertainty((0.3,0.7),"Degree_of_correlation_with_previous_data"),
-                     ParameterUncertainty((2,6),"Minimum_savings_for_majority_of_population"),
+                     ParameterUncertainty((0.2,0.8),"Degree_of_correlation_with_previous_data"),
+                     ParameterUncertainty((1,10),"Minimum_savings_for_majority_of_population"),
                      ParameterUncertainty((2,10),"Amount_of_month_before_purchase_enthousiasm_stops",integer=True),
-                     ParameterUncertainty((0.7,1.3),"variation_of_SD_normal_distribution_properties_of_households"),
-                     ParameterUncertainty((0.7,1.3),"variation_of_SD_normal_distribution_properties_of_adopters"),
+                     ParameterUncertainty((0.5,1.5),"variation_of_SD_normal_distribution_properties_of_households"),
+                     ParameterUncertainty((0.5,1.5),"variation_of_SD_normal_distribution_properties_of_adopters"),
                      
                      
                       ]
@@ -143,8 +143,10 @@ class DiffusionModelInterface(NetLogoModelStructureInterface):
                 Outcome("percentage_of_early_majority_with_ISG_appliances", time=True),
                 Outcome("percentage_of_late_majority_with_ISG_appliances", time=True),
                 Outcome("percentage_of_laggards_with_ISG_appliances", time=True),
+                 Outcome("new_households_with_ISG_appliance_stat", time=True),
                  Outcome("average_total_savings", time=True)]
          
+        
             
 if __name__ == '__main__':
     ema_logging.log_to_stderr(ema_logging.INFO)
@@ -156,7 +158,7 @@ if __name__ == '__main__':
     ensemble.add_model_structure(msi)
     ensemble.parallel = True
     
-    n = 10
+    n = 500
     results = ensemble.perform_experiments(n)
     fn = r'./data/{} runs.bz2'.format(n)
     save_results(results, fn)
