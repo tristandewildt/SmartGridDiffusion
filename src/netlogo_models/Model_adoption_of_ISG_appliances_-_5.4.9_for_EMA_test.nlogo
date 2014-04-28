@@ -3077,7 +3077,7 @@ CHOOSER
 Rationality
 Rationality
 "full_rationality" "bounded_rationality"
-1
+0
 
 SWITCH
 1167

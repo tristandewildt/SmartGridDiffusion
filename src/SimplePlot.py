@@ -21,7 +21,7 @@ results = (experiments, outcomes)
 '''==============================================================================
  print out the lines, envelope and KDE
 =============================================================================='''
-desired__nr_lines = 10
+desired__nr_lines = 40
 nr_cases = experiments.shape[0]
 indices = np.arange(0, nr_cases, nr_cases/desired__nr_lines)
 
