@@ -3,11 +3,7 @@ Created on 15 avr. 2014
 
 @author: Titan946
 '''
-import os
-
-import numpy as np
-
-import jpype
+import time
 
 from expWorkbench import ema_logging, debug, info, warning,\
                          ParameterUncertainty, Outcome,save_results 
@@ -19,7 +15,7 @@ from expWorkbench.model_ensemble import ModelEnsemble
 
 class DiffusionModelInterface(NetLogoModelStructureInterface):
     model_file = r'/Model_adoption_of_ISG_appliances_-_5.4.9_for_EMA_test.nlogo'
-    run_length = 500
+    run_length = 200
       
     uncertainties = [ParameterUncertainty((0.25, 0.4), "electricity_price_day"),
                      ParameterUncertainty((0.1, 0.25), "electricity_price_night"),
@@ -154,9 +150,13 @@ if __name__ == '__main__':
     ensemble.add_model_structure(msi)
     ensemble.parallel = True
     
-    n = 100
-    results = ensemble.perform_experiments(n)
+    n = 5
+    starttime = time.time()
+    results = ensemble.perform_experiments(n, reporting_interval=1)
+    
+    print time.time()-starttime
+    
     fn = r'./data/{} runs.bz2'.format(n)
     save_results(results, fn)
 
-    print "blaat"
+    print "finish"

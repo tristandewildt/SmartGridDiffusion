@@ -3588,7 +3588,7 @@ SWITCH
 812
 Normality_of_household_properties
 Normality_of_household_properties
-0
+1
 1
 -1000
 
@@ -3599,7 +3599,7 @@ SWITCH
 868
 Normality_of_adopter_properties
 Normality_of_adopter_properties
-0
+1
 1
 -1000
 
@@ -3656,7 +3656,7 @@ SWITCH
 1097
 Switch_uniformity_interactions
 Switch_uniformity_interactions
-0
+1
 1
 -1000
 
@@ -3697,7 +3697,7 @@ SWITCH
 1137
 Switch_uniformity_awareness
 Switch_uniformity_awareness
-0
+1
 1
 -1000
 
@@ -3708,7 +3708,7 @@ SWITCH
 1180
 Switch_uniformity_Information_search
 Switch_uniformity_Information_search
-0
+1
 1
 -1000
 
@@ -3719,7 +3719,7 @@ SWITCH
 1057
 Switch_uniformity_preferred_information_source
 Switch_uniformity_preferred_information_source
-0
+1
 1
 -1000
 
@@ -3730,7 +3730,7 @@ SWITCH
 1097
 Switch_uniformity_percentage_information_needed
 Switch_uniformity_percentage_information_needed
-0
+1
 1
 -1000
 
@@ -3741,7 +3741,7 @@ SWITCH
 1139
 Switch_uniformity_valuation_of_savings
 Switch_uniformity_valuation_of_savings
-0
+1
 1
 -1000
 
@@ -3774,7 +3774,7 @@ SWITCH
 1057
 Switch_uniformity_household_properties
 Switch_uniformity_household_properties
-0
+1
 1
 -1000
 
@@ -3785,7 +3785,7 @@ SWITCH
 1181
 Switch_uniformity_social_influence
 Switch_uniformity_social_influence
-0
+1
 1
 -1000
 
