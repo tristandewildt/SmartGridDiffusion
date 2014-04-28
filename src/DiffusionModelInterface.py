@@ -158,7 +158,7 @@ if __name__ == '__main__':
     ensemble.add_model_structure(msi)
     ensemble.parallel = True
     
-    n = 500
+    n = 1000
     results = ensemble.perform_experiments(n)
     fn = r'./data/{} runs.bz2'.format(n)
     save_results(results, fn)

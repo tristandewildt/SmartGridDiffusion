@@ -3077,7 +3077,7 @@ CHOOSER
 Rationality
 Rationality
 "full_rationality" "bounded_rationality"
-0
+1
 
 SWITCH
 1167
@@ -3622,7 +3622,7 @@ CHOOSER
 Calculation_new_normality_properties_households
 Calculation_new_normality_properties_households
 "each run" "each step"
-0
+1
 
 CHOOSER
 1403
