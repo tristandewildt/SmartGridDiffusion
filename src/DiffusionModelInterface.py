@@ -134,6 +134,15 @@ class DiffusionModelInterface(NetLogoModelStructureInterface):
                      ParameterUncertainty((2,10),"Amount_of_month_before_purchase_enthousiasm_stops",integer=True),
                      ParameterUncertainty((0.5,1.5),"variation_of_SD_normal_distribution_properties_of_households"),
                      ParameterUncertainty((0.5,1.5),"variation_of_SD_normal_distribution_properties_of_adopters"),
+                     ParameterUncertainty((0.9,1),"Learning_rate_appliances_1"),
+                     ParameterUncertainty((0.9,1),"Learning_rate_appliances_2"),
+                     ParameterUncertainty((0.9,1),"Learning_rate_appliances_3"),
+                     ParameterUncertainty((0.9,1),"Learning_rate_appliances_4"),
+                     ParameterUncertainty((0.9,1),"Learning_rate_appliances_5"),
+                     ParameterUncertainty((0.9,1),"Learning_rate_appliances_6"),
+                     ParameterUncertainty((0.9,1),"Learning_rate_appliances_7"),
+                     ParameterUncertainty((0.9,1),"Learning_rate_appliances_8"),
+                     
                      
                      
                       ]
