@@ -15,10 +15,7 @@ from expWorkbench.model_ensemble import ModelEnsemble
 
 
 class DiffusionModelInterface(NetLogoModelStructureInterface):
-    model_file = r'/Model_adoption_of_ISG_appliances_-_5.4.9_for_EMA_test.nlogo'
-
-    run_length = 200
-
+    model_file = r'/Model_adoption_of_ISG_appliances_-_5.5.3_for_EMA_test.nlogo'
     #model_file = r'C:/Users/Tristan/Documents/GitHub/SmartGridDiffusion/src/netlogo_models/Model_adoption_of_ISG_appliances_-_5.4.9_for_EMA_test.nlogo'
     run_length = 500
 
@@ -26,40 +23,41 @@ class DiffusionModelInterface(NetLogoModelStructureInterface):
     uncertainties = [ParameterUncertainty((0.25, 0.4), "electricity_price_day"),
                      ParameterUncertainty((0.1, 0.25), "electricity_price_night"),
                      ParameterUncertainty((6, 14), "division_effect_media"),
-                     ParameterUncertainty((10,16),"A_S_L_Unique_interaction_1",integer=True),
-                     ParameterUncertainty((7,13),"A_S_L_Unique_interaction_2",integer=True),
-                     ParameterUncertainty((5,10),"A_S_L_Unique_interaction_3",integer=True),
-                     ParameterUncertainty((3,8),"A_S_L_Unique_interaction_4",integer=True),
-                     ParameterUncertainty((1,5),"A_S_L_Unique_interaction_5",integer=True),
-                     ParameterUncertainty((2,6),"A_S_L_Combined_interaction_short_1",integer=True),
-                     ParameterUncertainty((1,5),"A_S_L_Combined_interaction_short_2",integer=True),
-                     ParameterUncertainty((1,3),"A_S_L_Combined_interaction_short_3",integer=True),
-                     ParameterUncertainty((1,3),"A_S_L_Combined_interaction_short_4",integer=True),
-                     ParameterUncertainty((0,2),"A_S_L_Combined_interaction_short_5",integer=True),
-                     ParameterUncertainty((7,13),"A_S_L_Combined_interaction_long_1",integer=True),
-                     ParameterUncertainty((5,11),"A_S_L_Combined_interaction_long_2",integer=True),
-                     ParameterUncertainty((3,9),"A_S_L_Combined_interaction_long_3",integer=True),
-                     ParameterUncertainty((2,6),"A_S_L_Combined_interaction_long_4",integer=True),
-                     ParameterUncertainty((1,4),"A_S_L_Combined_interaction_long_5",integer=True),
+#                      ParameterUncertainty((10,16),"A_S_L_Unique_interaction_1",integer=True),
+#                      ParameterUncertainty((7,13),"A_S_L_Unique_interaction_2",integer=True),
+#                      ParameterUncertainty((5,10),"A_S_L_Unique_interaction_3",integer=True),
+#                      ParameterUncertainty((3,8),"A_S_L_Unique_interaction_4",integer=True),
+#                      ParameterUncertainty((1,5),"A_S_L_Unique_interaction_5",integer=True),
+#                      ParameterUncertainty((2,6),"A_S_L_Combined_interaction_short_1",integer=True),
+#                      ParameterUncertainty((1,5),"A_S_L_Combined_interaction_short_2",integer=True),
+#                      ParameterUncertainty((1,3),"A_S_L_Combined_interaction_short_3",integer=True),
+#                      ParameterUncertainty((1,3),"A_S_L_Combined_interaction_short_4",integer=True),
+#                      ParameterUncertainty((0,2),"A_S_L_Combined_interaction_short_5",integer=True),
+#                      ParameterUncertainty((7,13),"A_S_L_Combined_interaction_long_1",integer=True),
+#                      ParameterUncertainty((5,11),"A_S_L_Combined_interaction_long_2",integer=True),
+#                      ParameterUncertainty((3,9),"A_S_L_Combined_interaction_long_3",integer=True),
+#                      ParameterUncertainty((2,6),"A_S_L_Combined_interaction_long_4",integer=True),
+#                      ParameterUncertainty((1,4),"A_S_L_Combined_interaction_long_5",integer=True),
                      ParameterUncertainty((2,5),"A_S_L_awareness_threshold_1",integer=True),
                      ParameterUncertainty((3,7),"A_S_L_awareness_threshold_2",integer=True),
                      ParameterUncertainty((4,8),"A_S_L_awareness_threshold_3",integer=True),
                      ParameterUncertainty((5,9),"A_S_L_awareness_threshold_4",integer=True),
-                     ParameterUncertainty((0.95,1),"A_S_L_percentage_chance_information_search_purchase_complexity_1_1"),
-                     ParameterUncertainty((0.95,1),"A_S_L_percentage_chance_information_search_purchase_complexity_1_2"),
-                     ParameterUncertainty((0.7,0.85),"A_S_L_percentage_chance_information_search_purchase_complexity_1_3"),
-                     ParameterUncertainty((0.6,0.8),"A_S_L_percentage_chance_information_search_purchase_complexity_1_4"),
-                     ParameterUncertainty((0.5,0.7),"A_S_L_percentage_chance_information_search_purchase_complexity_1_5"),
-                     ParameterUncertainty((0.95,1),"A_S_L_percentage_chance_information_search_purchase_complexity_2_1"),
-                     ParameterUncertainty((0.7,0.85),"A_S_L_percentage_chance_information_search_purchase_complexity_2_2"),
-                     ParameterUncertainty((0.6,0.8),"A_S_L_percentage_chance_information_search_purchase_complexity_2_3"),
-                     ParameterUncertainty((0.45,0.55),"A_S_L_percentage_chance_information_search_purchase_complexity_2_4"),
-                     ParameterUncertainty((0.25,0.45),"A_S_L_percentage_chance_information_search_purchase_complexity_2_5"),
-                     ParameterUncertainty((0.7,0.9),"A_S_L_percentage_chance_information_search_purchase_complexity_3_1"),
-                     ParameterUncertainty((0.5,0.7),"A_S_L_percentage_chance_information_search_purchase_complexity_3_2"),
-                     ParameterUncertainty((0.3,0.5),"A_S_L_percentage_chance_information_search_purchase_complexity_3_3"),
-                     ParameterUncertainty((0.2,0.4),"A_S_L_percentage_chance_information_search_purchase_complexity_3_4"),
-                     ParameterUncertainty((0.05,0.25),"A_S_L_percentage_chance_information_search_purchase_complexity_3_5"),
+                     ParameterUncertainty((6,10),"A_S_L_awareness_threshold_5",integer=True),
+#                      ParameterUncertainty((0.95,1),"A_S_L_percentage_chance_information_search_purchase_complexity_1_1"),
+#                      ParameterUncertainty((0.95,1),"A_S_L_percentage_chance_information_search_purchase_complexity_1_2"),
+#                      ParameterUncertainty((0.7,0.85),"A_S_L_percentage_chance_information_search_purchase_complexity_1_3"),
+#                      ParameterUncertainty((0.6,0.8),"A_S_L_percentage_chance_information_search_purchase_complexity_1_4"),
+#                      ParameterUncertainty((0.5,0.7),"A_S_L_percentage_chance_information_search_purchase_complexity_1_5"),
+#                      ParameterUncertainty((0.95,1),"A_S_L_percentage_chance_information_search_purchase_complexity_2_1"),
+#                      ParameterUncertainty((0.7,0.85),"A_S_L_percentage_chance_information_search_purchase_complexity_2_2"),
+#                      ParameterUncertainty((0.6,0.8),"A_S_L_percentage_chance_information_search_purchase_complexity_2_3"),
+#                      ParameterUncertainty((0.45,0.55),"A_S_L_percentage_chance_information_search_purchase_complexity_2_4"),
+#                      ParameterUncertainty((0.25,0.45),"A_S_L_percentage_chance_information_search_purchase_complexity_2_5"),
+#                      ParameterUncertainty((0.7,0.9),"A_S_L_percentage_chance_information_search_purchase_complexity_3_1"),
+#                      ParameterUncertainty((0.5,0.7),"A_S_L_percentage_chance_information_search_purchase_complexity_3_2"),
+#                      ParameterUncertainty((0.3,0.5),"A_S_L_percentage_chance_information_search_purchase_complexity_3_3"),
+#                      ParameterUncertainty((0.2,0.4),"A_S_L_percentage_chance_information_search_purchase_complexity_3_4"),
+#                      ParameterUncertainty((0.05,0.25),"A_S_L_percentage_chance_information_search_purchase_complexity_3_5"),
                      ParameterUncertainty((0.25,0.55),"A_S_L_preferred_information_source_innovator_1"),
 #                     ParameterUncertainty((0,0),"A_S_L_preferred_information_source_innovator_2"),
 #                     ParameterUncertainty((0,0),"A_S_L_preferred_information_source_innovator_3"),
@@ -96,30 +94,36 @@ class DiffusionModelInterface(NetLogoModelStructureInterface):
 #                     ParameterUncertainty((0,0),"A_S_L_valuation_of_savings_full_rational_4",integer=True),
 #                     ParameterUncertainty((0,0),"A_S_L_valuation_of_savings_full_rational_5",integer=True),
 #                     ParameterUncertainty((0,0),"A_S_L_valuation_of_savings_bounded_rational_1",integer=True),
-                     ParameterUncertainty((0.15,0.35),"A_S_L_valuation_of_savings_bounded_rational_2"),
-                     ParameterUncertainty((0.35,0.65),"A_S_L_valuation_of_savings_bounded_rational_3"),
-                     ParameterUncertainty((0.35,0.65),"A_S_L_valuation_of_savings_bounded_rational_4"),
-                     ParameterUncertainty((0.35,0.65),"A_S_L_valuation_of_savings_bounded_rational_5"),
-                     ParameterUncertainty((1,5),"A_S_L_Month_needed_recover_trust_cat_1_1",integer=True),
-                     ParameterUncertainty((4,8),"A_S_L_Month_needed_recover_trust_cat_1_2",integer=True),
-                     ParameterUncertainty((4,8),"A_S_L_Month_needed_recover_trust_cat_1_3",integer=True),
-                     ParameterUncertainty((4,8),"A_S_L_Month_needed_recover_trust_cat_1_4",integer=True),
-                     ParameterUncertainty((4,8),"A_S_L_Month_needed_recover_trust_cat_1_5",integer=True),
-                     ParameterUncertainty((3,11),"A_S_L_Month_needed_recover_trust_cat_2_1",integer=True),
-                     ParameterUncertainty((6,18),"A_S_L_Month_needed_recover_trust_cat_2_2",integer=True),
-                     ParameterUncertainty((6,18),"A_S_L_Month_needed_recover_trust_cat_2_3",integer=True),
-                     ParameterUncertainty((6,18),"A_S_L_Month_needed_recover_trust_cat_2_4",integer=True),
-                     ParameterUncertainty((6,18),"A_S_L_Month_needed_recover_trust_cat_2_5",integer=True),
-                     ParameterUncertainty((6,18),"A_S_L_Month_needed_recover_trust_cat_3_1",integer=True),
-                     ParameterUncertainty((16,30),"A_S_L_Month_needed_recover_trust_cat_3_2",integer=True),
-                     ParameterUncertainty((16,30),"A_S_L_Month_needed_recover_trust_cat_3_3",integer=True),
-                     ParameterUncertainty((16,30),"A_S_L_Month_needed_recover_trust_cat_3_4",integer=True),
-                     ParameterUncertainty((16,30),"A_S_L_Month_needed_recover_trust_cat_3_5",integer=True),
-                     ParameterUncertainty((1,2),"A_S_L_Min_duration_proof_no_failure_1",integer=True),
-                     ParameterUncertainty((2,6),"A_S_L_Min_duration_proof_no_failure_2",integer=True),
-                     ParameterUncertainty((6,12),"A_S_L_Min_duration_proof_no_failure_3",integer=True),
-                     ParameterUncertainty((6,12),"A_S_L_Min_duration_proof_no_failure_4",integer=True),
-                     ParameterUncertainty((6,12),"A_S_L_Min_duration_proof_no_failure_5",integer=True),
+                     ParameterUncertainty((0.25,0.45),"A_S_L_valuation_of_savings_bounded_rational_2"),
+                     ParameterUncertainty((0.55,0.85),"A_S_L_valuation_of_savings_bounded_rational_3"),
+                     ParameterUncertainty((0.65,0.95),"A_S_L_valuation_of_savings_bounded_rational_4"),
+                     ParameterUncertainty((0.75,1),"A_S_L_valuation_of_savings_bounded_rational_5"),
+#                      ParameterUncertainty((1,5),"A_S_L_Month_needed_recover_trust_cat_1_1",integer=True),
+#                      ParameterUncertainty((4,8),"A_S_L_Month_needed_recover_trust_cat_1_2",integer=True),
+#                      ParameterUncertainty((4,8),"A_S_L_Month_needed_recover_trust_cat_1_3",integer=True),
+#                      ParameterUncertainty((4,8),"A_S_L_Month_needed_recover_trust_cat_1_4",integer=True),
+#                      ParameterUncertainty((4,8),"A_S_L_Month_needed_recover_trust_cat_1_5",integer=True),
+#                      ParameterUncertainty((3,11),"A_S_L_Month_needed_recover_trust_cat_2_1",integer=True),
+#                      ParameterUncertainty((6,18),"A_S_L_Month_needed_recover_trust_cat_2_2",integer=True),
+#                      ParameterUncertainty((6,18),"A_S_L_Month_needed_recover_trust_cat_2_3",integer=True),
+#                      ParameterUncertainty((6,18),"A_S_L_Month_needed_recover_trust_cat_2_4",integer=True),
+#                      ParameterUncertainty((6,18),"A_S_L_Month_needed_recover_trust_cat_2_5",integer=True),
+#                      ParameterUncertainty((6,18),"A_S_L_Month_needed_recover_trust_cat_3_1",integer=True),
+#                      ParameterUncertainty((16,30),"A_S_L_Month_needed_recover_trust_cat_3_2",integer=True),
+#                      ParameterUncertainty((16,30),"A_S_L_Month_needed_recover_trust_cat_3_3",integer=True),
+#                      ParameterUncertainty((16,30),"A_S_L_Month_needed_recover_trust_cat_3_4",integer=True),
+#                      ParameterUncertainty((16,30),"A_S_L_Month_needed_recover_trust_cat_3_5",integer=True),
+#                      ParameterUncertainty((1,2),"A_S_L_Min_duration_proof_no_failure_1",integer=True),
+#                      ParameterUncertainty((2,6),"A_S_L_Min_duration_proof_no_failure_2",integer=True),
+#                      ParameterUncertainty((6,12),"A_S_L_Min_duration_proof_no_failure_3",integer=True),
+#                      ParameterUncertainty((6,12),"A_S_L_Min_duration_proof_no_failure_4",integer=True),
+#                      ParameterUncertainty((6,12),"A_S_L_Min_duration_proof_no_failure_5",integer=True),
+                     ParameterUncertainty((0.3,0.6),"A_S_L_Max_difference_in_price_tolerated_1"),
+                     ParameterUncertainty((0.15,25),"A_S_L_Max_difference_in_price_tolerated_2"),
+                     ParameterUncertainty((0.05,0.25),"A_S_L_Max_difference_in_price_tolerated_3"),
+                     ParameterUncertainty((0,0.20),"A_S_L_Max_difference_in_price_tolerated_4"),
+                     ParameterUncertainty((0,0.10),"A_S_L_Max_difference_in_price_tolerated_5"),
+    
                      ParameterUncertainty((0.01,0.10),"Probability_of_failure_list_1"),
                      ParameterUncertainty((0,0.015),"Probability_of_failure_list_2"),
                      ParameterUncertainty((0,0.01),"Probability_of_failure_list_3"),
@@ -131,7 +135,7 @@ class DiffusionModelInterface(NetLogoModelStructureInterface):
                      ParameterUncertainty((2,4),"Diffusion_information_number_links",integer=True),
                      ParameterUncertainty((0.2,0.8),"Degree_of_correlation_with_previous_data"),
                      ParameterUncertainty((1,10),"Minimum_savings_for_majority_of_population"),
-                     ParameterUncertainty((2,10),"Amount_of_month_before_purchase_enthousiasm_stops",integer=True),
+                     ParameterUncertainty((1,6),"Amount_of_month_before_purchase_enthousiasm_stops",integer=True),
                      ParameterUncertainty((0.5,1.5),"variation_of_SD_normal_distribution_properties_of_households"),
                      ParameterUncertainty((0.5,1.5),"variation_of_SD_normal_distribution_properties_of_adopters"),
                      ParameterUncertainty((0.95,1),"Learning_rate_appliances_1"),
@@ -146,12 +150,12 @@ class DiffusionModelInterface(NetLogoModelStructureInterface):
                      ParameterUncertainty((2,6),"max_memory_electricity_bill_bounded_rationality",integer=True),
                      ParameterUncertainty((0.05,0.3),"Beta_prospect_theory"),
                      ParameterUncertainty((1,5),"Gamma_prospect_theory"),
-                     
-                     
-                                          
+                     ParameterUncertainty((0.60,0.90),"correlation_electricity_price"),
+                     ParameterUncertainty((0.5,0.7),"Night_percentage_of_day_price"),
+                     ParameterUncertainty((8,16),"Lifetime_ISG_appliance",integer=True),
 
                       ]
-    outcomes = [Outcome("number_of_households_owning_ISG_app", time=True),
+    outcomes = [Outcome("percentage_of_households_owning_ISG_app", time=True),
                 Outcome("percentage_of_innovators_with_ISG_appliances", time=True),
                 Outcome("percentage_of_early_adopters_with_ISG_appliances", time=True),
                 Outcome("percentage_of_early_majority_with_ISG_appliances", time=True),
@@ -165,20 +169,24 @@ class DiffusionModelInterface(NetLogoModelStructureInterface):
 if __name__ == '__main__':
     ema_logging.log_to_stderr(ema_logging.INFO)
     
-    ensemble = ModelEnsemble()
+    
     
     wd = r'C:/Users/Tristan/Documents/GitHub/SmartGridDiffusion/src/netlogo_models'
 #     wd = r'C:/Users/Titan946/Documents/GitHub/SmartGridDiffusion/src/netlogo_models'
+    ensemble = ModelEnsemble()
+    
     msi = DiffusionModelInterface(wd, 'dmodel')
+    
     ensemble.add_model_structure(msi)
+    
     ensemble.parallel = True
     
 
-    n = 5
-    starttime = time.time()
-    results = ensemble.perform_experiments(n, reporting_interval=1)
-    
-    print time.time()-starttime
+#     n = 5
+#     starttime = time.time()
+#     results = ensemble.perform_experiments(n, reporting_interval=1)
+#     
+#     print time.time()-starttime
     
 
     n = 1000
