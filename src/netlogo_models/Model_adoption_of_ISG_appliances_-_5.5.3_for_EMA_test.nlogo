@@ -619,7 +619,7 @@ to setup_adopter_properties
   set A_S_L_awareness_threshold_2 5; 7 
   set A_S_L_awareness_threshold_3 6 ;9 
   set A_S_L_awareness_threshold_4 7; 11 
-  set A_S_L_awareness_threshold_5 8 ;13
+  set A_S_L_awareness_threshold_5 7 ;13
   set temp_for_creation_adopter_properties (word "A_S_L_awareness_threshold")
   structure_creation_list_adopters
   
@@ -1224,8 +1224,8 @@ to setup_ISG_appliance
   set Delay_purchase_ISG_appliance 4
   
   
-  set Learning_rate_appliances_1 0.97
-  set Learning_rate_appliances_2 0.97
+  set Learning_rate_appliances_1 0.95
+  set Learning_rate_appliances_2 0.95
   set Learning_rate_appliances_3 0.97
   set Learning_rate_appliances_4 0.97
   set Learning_rate_appliances_5 0.97
@@ -3302,7 +3302,7 @@ Rationality
 SWITCH
 1167
 1229
-1338
+1430
 1262
 Prospect_theory
 Prospect_theory
@@ -4359,10 +4359,10 @@ Switch_uniformity_threshold_investment_risk
 -1000
 
 SWITCH
-1169
-1309
-1432
-1342
+1167
+1272
+1430
+1305
 Replacement_ISG_appliance_possible
 Replacement_ISG_appliance_possible
 0
@@ -4381,10 +4381,10 @@ Switch_uniformity_lifetime_of_ISG_appliance_purchased
 -1000
 
 SWITCH
-1178
-1381
-1434
-1414
+1167
+1316
+1430
+1349
 Choose_either_smart_or_not_smart
 Choose_either_smart_or_not_smart
 1
