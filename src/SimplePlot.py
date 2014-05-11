@@ -14,7 +14,7 @@ from analysis.plotting import lines, KDE, envelopes
 ema_logging.log_to_stderr(level=ema_logging.DEFAULT_LEVEL)
 
 #load the data
-experiments, outcomes = load_results(r'Data/2000 runs.bz2')
+experiments, outcomes = load_results(r'Data/1000_runs_neoclassical_rational.bz2')
 
 results = (experiments, outcomes)
 
@@ -33,7 +33,7 @@ for key, value in outcomes.items():
 
 
 '''==============================================================================
-to print for only selected outomes and group by model:
+to print for only selected outcomes and group by model:
 =============================================================================='''
 #for key in ['total revenue Yearly']:
 #    fig, axes = envelopes(results, outcomes_to_show=key, density=KDE,
