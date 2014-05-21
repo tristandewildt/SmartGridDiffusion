@@ -1,8 +1,4 @@
-'''
-Created on 6 mrt. 2013
 
-@author: Andris
-'''
 '''===========================Plotting lines, KDE, envelopes===================================='''
 #from analysis import graphs
 
@@ -26,10 +22,10 @@ nr_cases = experiments.shape[0]
 indices = np.arange(0, nr_cases, nr_cases/desired__nr_lines)
 
 
-# for key, value in outcomes.items():
-#     fig, axes = lines(results, outcomes_to_show=key, density=KDE,
-#               show_envelope=True, experiments_to_show=indices, 
-#               titles="")
+#for key, value in outcomes.items():
+#         fig, axes = lines(results, outcomes_to_show=key, density=KDE,
+#                   show_envelope=True, experiments_to_show=indices, 
+#                   titles="")
 
 for key, value in outcomes.items():
 #     if key == 'percentage_of_households_owning_ISG_app':
@@ -54,18 +50,17 @@ to print for only selected outcomes and group by model:
 plt.show()
 
 
+<<<<<<< HEAD
 # n = key
 # plt.savefig("./pictures/KDE {}.png".format(n), dpi=75)
 # n = key
 # plt.savefig("./pictures/KDE {}.png".format(n), dpi=75)
+=======
+#n = key
+#plt.savefig("./pictures/KDE {}.png".format(n), dpi=75)
+#n = key
+#plt.savefig("./pictures/KDE {}.png".format(n), dpi=75)
+>>>>>>> 3a2f1bc4ddb8206650dec6f42e00761aece79f89
 # plt.close(fig)    
 
 
-'''initial code by Jan was:'''
-#experiments,outcomes = results
-#for key, value in outcomes.items():
-#    outcomes[key] = np.asarray(value)
-#    plt.title(key)
-#    for i in range(499):
-#        plt.plot(np.asarray(value)[i,:].T)
-#    plt.show()
