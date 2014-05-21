@@ -33,7 +33,7 @@ indices = np.arange(0, nr_cases, nr_cases/desired__nr_lines)
 
 for key, value in outcomes.items():
 #     if key == 'percentage_of_households_owning_ISG_app':
-        fig, axes = lines(results, outcomes_to_show='percentage_of_households_owning_ISG_app', density=KDE,
+        fig, axes = lines(results, outcomes_to_show=key, density=KDE,
                   show_envelope=True, experiments_to_show=indices, 
                   titles="")
 
@@ -51,11 +51,11 @@ to print for only selected outcomes and group by model:
 #               titles="")
 
 
-# plt.show()
+plt.show()
 
 
-n = key
-plt.savefig("./pictures/KDE {}.png".format(n), dpi=75)
+# n = key
+# plt.savefig("./pictures/KDE {}.png".format(n), dpi=75)
 # n = key
 # plt.savefig("./pictures/KDE {}.png".format(n), dpi=75)
 # plt.close(fig)    
