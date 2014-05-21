@@ -4,6 +4,7 @@ Created on 15 avr. 2014
 @author: Titan946
 '''
 import time
+import numpy as np
 
 from expWorkbench import ema_logging, debug, info, warning,\
                          ParameterUncertainty, Outcome,save_results 
@@ -17,7 +18,8 @@ from expWorkbench.model_ensemble import ModelEnsemble
 class DiffusionModelInterface(NetLogoModelStructureInterface):
     model_file = r'/Model_adoption_of_ISG_appliances_-_5.6_for_EMA_test.nlogo'
     #model_file = r'C:/Users/Tristan/Documents/GitHub/SmartGridDiffusion/src/netlogo_models/Model_adoption_of_ISG_appliances_-_5.4.9_for_EMA_test.nlogo'
-    run_length = 150
+    run_length = 10
+    replications = 2
 
       
     uncertainties = [ParameterUncertainty((0.25, 0.4), "electricity_price_day"),
@@ -168,14 +170,38 @@ class DiffusionModelInterface(NetLogoModelStructureInterface):
                 Outcome("average_total_savings", time=True),
                 Outcome("savings_made_by_last_adopters", time=True)]
          
+
+#    def model_init(self, policy, kwargs):
+#        self.policy = policy
+#        NetLogoModelStructureInterface.model_init(self, policy, kwargs)
         
+    def run_model(self, case):
+        
+        
+        temp_output = {}
+        for rep in range(self.replications):
+            NetLogoModelStructureInterface.run_model(self, case)
+            output = self.retrieve_output()
+            
+            for key, value in output.iteritems():
+                try:
+                    temp_output[key].append(value)
+                except KeyError:
+                    temp_output[key] = [value]
+        
+        self.output = {}
+        for key, value in temp_output.iteritems():
+            value = np.asarray(value)
+            self.output[key] = value
+            self.output["mean_{}".format(key)] = np.mean(value, axis=0)
+            self.output["std_{}".format(key)] = np.std(value, axis=0)
             
 if __name__ == '__main__':
     ema_logging.log_to_stderr(ema_logging.INFO)
     
     
     
-    wd = r'C:/Users/Tristan/Documents/GitHub/SmartGridDiffusion/src/netlogo_models'
+    wd = r'./netlogo_models'
 #     wd = r'C:/Users/Titan946/Documents/GitHub/SmartGridDiffusion/src/netlogo_models'
     ensemble = ModelEnsemble()
     
@@ -183,7 +209,7 @@ if __name__ == '__main__':
     
     ensemble.add_model_structure(msi)
     
-    ensemble.parallel = True
+#    ensemble.parallel = True
     
 
 #     n = 5
