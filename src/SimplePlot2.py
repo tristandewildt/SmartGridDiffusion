@@ -31,7 +31,8 @@ for key, value in outcomes.items():
               show_envelope=True, experiments_to_show=indices, 
               titles="")
 
-
+    n = key
+    plt.savefig("./pictures/KDE {}.png".format(n), dpi=75)
 '''==============================================================================
 to print for only selected outomes and group by model:
 =============================================================================='''
@@ -39,7 +40,9 @@ to print for only selected outomes and group by model:
 #    fig, axes = envelopes(results, outcomes_to_show=key, density=KDE,
 #            group_by='model', titles="",fill=True)
 
-plt.show()
+# plt.show()
+
+
 
 '''initial code by Jan was:'''
 #experiments,outcomes = results

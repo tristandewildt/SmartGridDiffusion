@@ -29,9 +29,9 @@ if __name__ =='__main__':
     ooi = "percentage_of_households_owning_ISG_app"
     def classify(data):
         data = data[ooi]
-        data = data[:,50]
+        data = data[:,-1]
         classes = np.zeros(data.shape)
-        classes[data<10] = 1
+        classes[data<40] = 1
         return classes
 #    
 #    def restrict_to_after_2010(results):
@@ -74,7 +74,7 @@ if __name__ =='__main__':
     #retrieve results
   
    
-    results = load_results(r'../Data/1000_runs_neoclassical_rational.bz2')
+    results = load_results(r'../Data/250_runs_neoclassical_with_replication.bz2')
 
     prim_obj = prim.Prim(results, classify, threshold=0.8)
     prim_obj.perform_pca(subsets)
