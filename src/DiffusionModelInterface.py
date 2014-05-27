@@ -24,8 +24,10 @@ class DiffusionModelInterface(NetLogoModelStructureInterface):
       
     uncertainties = [
 #                      ParameterUncertainty((0.25, 0.4), "electricity_price_day_fix"),
-                     ParameterUncertainty((0.1, 0.25), "electricity_price_night_fix"),
-                     ParameterUncertainty((0, 0.40), "difference_between_day_and_night_price"),
+                     ParameterUncertainty((0.1, 0.25), 
+                                          "electricity_price_night_fix"),
+                     ParameterUncertainty((0, 0.40),
+                                          "difference_between_day_and_night_price"),
                      ParameterUncertainty((6, 14), "division_effect_media",integer=True),
                     ParameterUncertainty((10,16),"A_S_L_Unique_interaction_1",integer=True),
                     ParameterUncertainty((7,13),"A_S_L_Unique_interaction_2",integer=True),
