@@ -39,8 +39,8 @@ for key, value in outcomes.items():
 #                       show_envelope=True, experiments_to_show=indices, 
 #                       titles="")
 
-#             n = key
-#             plt.savefig("./pictures/KDE {}.png".format(key), dpi=75)
+            n = key
+            plt.savefig("./pictures/KDE {}.png".format(key), dpi=75)
     
 '''==============================================================================
 to print for only selected outcomes and group by model:
@@ -56,7 +56,7 @@ to print for only selected outcomes and group by model:
     
 
 
-plt.show()
+# plt.show()
     
 
 # n = key
