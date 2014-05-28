@@ -26,6 +26,7 @@ class DiffusionModelInterface(NetLogoModelStructureInterface):
 #                      ParameterUncertainty((0.25, 0.4), "electricity_price_day_fix"),
                      ParameterUncertainty((0.1, 0.25), 
                                           "electricity_price_night_fix"),
+<<<<<<< HEAD
                      ParameterUncertainty((0, 0.15), 
                                           "difference_between_day_and_night_price"),
                      ParameterUncertainty((6, 14), 
@@ -40,6 +41,16 @@ class DiffusionModelInterface(NetLogoModelStructureInterface):
                                           "A_S_L_Unique_interaction_4",integer=True),
                      ParameterUncertainty((1,5),
                                           "A_S_L_Unique_interaction_5",integer=True),
+=======
+                     ParameterUncertainty((0, 0.40),
+                                          "difference_between_day_and_night_price"),
+                     ParameterUncertainty((6, 14), "division_effect_media",integer=True),
+                    ParameterUncertainty((10,16),"A_S_L_Unique_interaction_1",integer=True),
+                    ParameterUncertainty((7,13),"A_S_L_Unique_interaction_2",integer=True),
+                    ParameterUncertainty((5,10),"A_S_L_Unique_interaction_3",integer=True),
+                    ParameterUncertainty((3,8),"A_S_L_Unique_interaction_4",integer=True),
+                    ParameterUncertainty((1,5),"A_S_L_Unique_interaction_5",integer=True),
+>>>>>>> 07b310b20f027f886c372bf7472bca0c80d7d666
 #                      ParameterUncertainty((0.5,1.5),"A_S_L_Unique_interaction_multiplicator"),
                      ParameterUncertainty((2,6),
                                           "A_S_L_Combined_interaction_short_1",integer=True),
