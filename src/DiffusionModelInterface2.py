@@ -24,87 +24,7 @@ class DiffusionModelInterface(NetLogoModelStructureInterface):
       
     uncertainties = [
 #                      ParameterUncertainty((0.25, 0.4), "electricity_price_peak_fix"),
-<<<<<<< HEAD
-                     ParameterUncertainty((0.1, 0.25), 
-                                          "electricity_price_offpeak_fix"),
-                     ParameterUncertainty((0, 0.15), 
-                                          "difference_between_peak_and_offpeak_price"),
-                     ParameterUncertainty((6, 14), 
-                                          "division_effect_media",integer=True),
-                     ParameterUncertainty((10,16),
-                                          "A_S_L_Unique_interaction_1",integer=True),
-                     ParameterUncertainty((7,13),
-                                          "A_S_L_Unique_interaction_2",integer=True),
-                     ParameterUncertainty((5,10),
-                                          "A_S_L_Unique_interaction_3",integer=True),
-                     ParameterUncertainty((3,8),
-                                          "A_S_L_Unique_interaction_4",integer=True),
-                     ParameterUncertainty((1,5),
-                                          "A_S_L_Unique_interaction_5",integer=True),
-#                      ParameterUncertainty((0.5,1.5),"A_S_L_Unique_interaction_multiplicator"),
-                     ParameterUncertainty((2,6),
-                                          "A_S_L_Combined_interaction_short_1",integer=True),
-                     ParameterUncertainty((1,5),
-                                          "A_S_L_Combined_interaction_short_2",integer=True),
-                     ParameterUncertainty((1,3),
-                                          "A_S_L_Combined_interaction_short_3",integer=True),
-                     ParameterUncertainty((1,3),
-                                          "A_S_L_Combined_interaction_short_4",integer=True),
-                     ParameterUncertainty((0,2),
-                                          "A_S_L_Combined_interaction_short_5",integer=True),
-#                      ParameterUncertainty((0.5,1.5),"A_S_L_Combined_interaction_short_multiplicator"),
-                     ParameterUncertainty((7,13),
-                                          "A_S_L_Combined_interaction_long_1",integer=True),
-                     ParameterUncertainty((5,11),
-                                          "A_S_L_Combined_interaction_long_2",integer=True),
-                     ParameterUncertainty((3,9),
-                                          "A_S_L_Combined_interaction_long_3",integer=True),
-                     ParameterUncertainty((2,6),
-                                          "A_S_L_Combined_interaction_long_4",integer=True),
-                     ParameterUncertainty((1,4),
-                                          "A_S_L_Combined_interaction_long_5",integer=True),
-#                      ParameterUncertainty((0.5,1.5),"A_S_L_Combined_interaction_long_multiplicator"),
-                     ParameterUncertainty((0.5,1),
-                                          "A_S_L_preferred_information_source_innovator_1"),
-#                     ParameterUncertainty((0,0),"A_S_L_preferred_information_source_innovator_2"),
-#                     ParameterUncertainty((0,0),"A_S_L_preferred_information_source_innovator_3"),
-#                     ParameterUncertainty((0,0),"A_S_L_preferred_information_source_innovator_4"),
-#                     ParameterUncertainty((0,0),"A_S_L_preferred_information_source_innovator_5"),
-                     ParameterUncertainty((0.25,0.55),
-                                          "A_S_L_preferred_information_source_early_adopter_1"),
-                     ParameterUncertainty((0.15,0.45),
-                                          "A_S_L_preferred_information_source_early_adopter_2"),
-#                     ParameterUncertainty((0,0),"A_S_L_preferred_information_source_early_adopter_3"),
-#                     ParameterUncertainty((0,0),"A_S_L_preferred_information_source_early_adopter_4"),
-#                     ParameterUncertainty((0,0),"A_S_L_preferred_information_source_early_adopter_5"),
-                     ParameterUncertainty((0,0.2),
-                                          "A_S_L_preferred_information_source_early_majority_1"),
-                     ParameterUncertainty((0.15,0.45),
-                                          "A_S_L_preferred_information_source_early_majority_2"),
-                     ParameterUncertainty((0.1,0.3),
-                                          "A_S_L_preferred_information_source_early_majority_3"),
-#                     ParameterUncertainty((0,0),"A_S_L_preferred_information_source_early_majority_4"),
-#                     ParameterUncertainty((0,0),"A_S_L_preferred_information_source_early_majority_5"),
-                     ParameterUncertainty((0,0.1),
-                                          "A_S_L_preferred_information_source_late_majority_1"),
-                     ParameterUncertainty((0,0.1),
-                                          "A_S_L_preferred_information_source_late_majority_2"),
-                     ParameterUncertainty((0.35,0.65),
-                                          "A_S_L_preferred_information_source_late_majority_3"),
-                     ParameterUncertainty((0.1,0.3),
-                                          "A_S_L_preferred_information_source_late_majority_4"),
-#                      ParameterUncertainty((0,0),"A_S_L_preferred_information_source_late_majority_5"),
-#                     ParameterUncertainty((0,0),"A_S_L_preferred_information_source_laggard_1"),
-#                      ParameterUncertainty((0,0),"A_S_L_preferred_information_source_laggard_2"),
-                     ParameterUncertainty((0,0.2),
-                                          "A_S_L_preferred_information_source_laggard_3"),
-                     ParameterUncertainty((0.1,0.3),
-                                          "A_S_L_preferred_information_source_laggard_4"),
-                     ParameterUncertainty((0.2,0.4),
-                                          "A_S_L_preferred_information_source_laggard_5"),
-                     
-#                      ParameterUncertainty((-2,2),"Change_accepted_savings_neoclassical_rational",integer=True),
-=======
+
                       ParameterUncertainty((0.15, 0.30), 
                                            "electricity_price_offpeak_fix"),
                       ParameterUncertainty((0.05, 0.20), 
@@ -194,7 +114,6 @@ class DiffusionModelInterface(NetLogoModelStructureInterface):
                                            "A_S_L_preferred_information_source_laggard_5"),
 #                      
 #                       ParameterUncertainty((-.15,.15),"Change_accepted_savings_neoclassical_rational"),
->>>>>>> 79463ab02718ef9f8b5ff73b6b15ab29aaf917af
 #                      ParameterUncertainty((0,0),"A_S_L_valuation_of_savings_neoclassical_rational_1"),
 #                      ParameterUncertainty((0,0),"A_S_L_valuation_of_savings_neoclassical_rational_2",integer=True),
 #                      ParameterUncertainty((0,0),"A_S_L_valuation_of_savings_neoclassical_rational_3",integer=True),
@@ -269,20 +188,6 @@ class DiffusionModelInterface(NetLogoModelStructureInterface):
 #                      ParameterUncertainty((0.95,1),"Learning_rate_appliances_6"),
 #                      ParameterUncertainty((0.95,1),"Learning_rate_appliances_7"),
 #                      ParameterUncertainty((0.95,1),"Learning_rate_appliances_8"),
-<<<<<<< HEAD
-                     ParameterUncertainty((12,36),
-                                          "max_memory_electricity_bill",integer=True),
-                     ParameterUncertainty((2,6),
-                                          "max_memory_electricity_bill_bounded_rationality",integer=True),
-#                      ParameterUncertainty((0.05,0.3),"Beta_prospect_theory"),
-#                      ParameterUncertainty((1,5),"Gamma_prospect_theory"),
-#                      ParameterUncertainty((0.60,0.90),"correlation_electricity_price"),
-#                      ParameterUncertainty((0.5,0.7),"offpeak_percentage_of_peak_price"),
-                     ParameterUncertainty((24,74),
-                                          "Duration_information_complexity_validity",integer=True),
-                     ParameterUncertainty((8,16),
-                                          "Lifetime_ISG_appliance",integer=True),
-=======
 #                      ParameterUncertainty((12,36),
 #                                           "max_memory_electricity_bill",integer=True),
 #                      ParameterUncertainty((2,6),
@@ -295,7 +200,7 @@ class DiffusionModelInterface(NetLogoModelStructureInterface):
 #                                           "Duration_information_complexity_validity",integer=True),
                       ParameterUncertainty((8,16),
                                            "Lifetime_ISG_appliance",integer=True),
->>>>>>> 79463ab02718ef9f8b5ff73b6b15ab29aaf917af
+
 #                        ParameterUncertainty((24,48),"memory_calculation_of_savings",integer=True), #if neoclassical rationality
 #                       ParameterUncertainty((2,6),"memory_calculation_of_savings",integer=True), #if bounded rationality
                       ParameterUncertainty((0.05,0.2),
@@ -372,19 +277,13 @@ class DiffusionModelInterface(NetLogoModelStructureInterface):
                 Outcome("block_at_finding_information_data_leak", time=True),
                 Outcome("block_at_finding_information_complexity", time=True),
                 Outcome("block_at_finding_information_savings", time=True),
-<<<<<<< HEAD
-                Outcome("electricity_price_peak", time=True),
-                Outcome("electricity_price_offpeak", time=True),
-                Outcome("ISG_appliance_part_1_costs", time=True),
-                Outcome("savings_made_by_last_adopters", time=True)]
-=======
                 Outcome("block_at_finding_information", time=True)
 #                 Outcome("electricity_price_peak", time=True),
 #                 Outcome("electricity_price_offpeak", time=True),
 #                 Outcome("ISG_appliance_part_1_costs", time=True),
 #                 Outcome("savings_made_by_last_adopters", time=True)
                 ]
->>>>>>> 79463ab02718ef9f8b5ff73b6b15ab29aaf917af
+
          
 
 #    def model_init(self, policy, kwargs):
