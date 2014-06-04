@@ -1488,7 +1488,7 @@ to update_status_product
   let g 1
   while [g <= length data_2][
     ifelse (runresult (word "Switch_appliance_"g)) = False [set g g + 1][
-      run (word "set " "ISG_appliance_part_"g"_costs ((item 0 ISG_appliance_part_"g")*((ticks + 1) / (1))^(log (Learning_rate_appliances_"g") 2))")
+      run (word "set " "ISG_appliance_part_"g"_costs ((item 0 ISG_appliance_part_"g" - Height_of_purchase_subsidy)*((ticks + 1) / (1))^(log (Learning_rate_appliances_"g") 2))")
       set g g + 1]]
 end
 
@@ -4250,7 +4250,7 @@ difference_between_peak_and_offpeak_price
 difference_between_peak_and_offpeak_price
 0
 0.4
-0.12
+0.26
 0.01
 1
 NIL
@@ -4755,7 +4755,7 @@ Learning_rate_appliances_1
 Learning_rate_appliances_1
 0.8
 1
-0.94
+0.96
 0.01
 1
 NIL
@@ -5351,10 +5351,10 @@ NIL
 HORIZONTAL
 
 SLIDER
-66
-1908
-324
-1941
+63
+1978
+321
+2011
 length_memory_savings_for_renewal
 length_memory_savings_for_renewal
 0
@@ -5411,7 +5411,7 @@ Number_of_month_before_decision_rejection
 Number_of_month_before_decision_rejection
 0
 60
-36
+60
 1
 1
 NIL
@@ -5466,10 +5466,10 @@ NIL
 HORIZONTAL
 
 SLIDER
-68
-1958
-272
-1991
+63
+2020
+267
+2053
 max_memory_electricity_bill
 max_memory_electricity_bill
 12
@@ -5481,10 +5481,10 @@ NIL
 HORIZONTAL
 
 SLIDER
-56
-2019
-378
-2052
+63
+2063
+385
+2096
 max_memory_electricity_bill_bounded_rationality
 max_memory_electricity_bill_bounded_rationality
 2
@@ -5496,10 +5496,10 @@ NIL
 HORIZONTAL
 
 SLIDER
-73
-2084
-251
-2117
+63
+2104
+241
+2137
 Lifetime_ISG_appliance
 Lifetime_ISG_appliance
 8
@@ -5726,6 +5726,21 @@ change_threshold_to_reach_for_weights_5
 1.5
 1
 0.1
+1
+NIL
+HORIZONTAL
+
+SLIDER
+68
+1910
+278
+1943
+Height_of_purchase_subsidy
+Height_of_purchase_subsidy
+0
+200
+150
+10
 1
 NIL
 HORIZONTAL
