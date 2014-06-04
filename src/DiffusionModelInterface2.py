@@ -23,12 +23,11 @@ class DiffusionModelInterface(NetLogoModelStructureInterface):
 
       
     uncertainties = [
-#                      ParameterUncertainty((0.25, 0.4), "electricity_price_day_fix"),
+#                      ParameterUncertainty((0.25, 0.4), "electricity_price_peak_fix"),
                      ParameterUncertainty((0.1, 0.25), 
-                                          "electricity_price_night_fix"),
-<<<<<<< HEAD
+                                          "electricity_price_offpeak_fix"),
                      ParameterUncertainty((0, 0.15), 
-                                          "difference_between_day_and_night_price"),
+                                          "difference_between_peak_and_offpeak_price"),
                      ParameterUncertainty((6, 14), 
                                           "division_effect_media",integer=True),
                      ParameterUncertainty((10,16),
@@ -41,16 +40,6 @@ class DiffusionModelInterface(NetLogoModelStructureInterface):
                                           "A_S_L_Unique_interaction_4",integer=True),
                      ParameterUncertainty((1,5),
                                           "A_S_L_Unique_interaction_5",integer=True),
-=======
-                     ParameterUncertainty((0, 0.40),
-                                          "difference_between_day_and_night_price"),
-                     ParameterUncertainty((6, 14), "division_effect_media",integer=True),
-                    ParameterUncertainty((10,16),"A_S_L_Unique_interaction_1",integer=True),
-                    ParameterUncertainty((7,13),"A_S_L_Unique_interaction_2",integer=True),
-                    ParameterUncertainty((5,10),"A_S_L_Unique_interaction_3",integer=True),
-                    ParameterUncertainty((3,8),"A_S_L_Unique_interaction_4",integer=True),
-                    ParameterUncertainty((1,5),"A_S_L_Unique_interaction_5",integer=True),
->>>>>>> 07b310b20f027f886c372bf7472bca0c80d7d666
 #                      ParameterUncertainty((0.5,1.5),"A_S_L_Unique_interaction_multiplicator"),
                      ParameterUncertainty((2,6),
                                           "A_S_L_Combined_interaction_short_1",integer=True),
@@ -187,7 +176,7 @@ class DiffusionModelInterface(NetLogoModelStructureInterface):
 #                      ParameterUncertainty((0.05,0.3),"Beta_prospect_theory"),
 #                      ParameterUncertainty((1,5),"Gamma_prospect_theory"),
 #                      ParameterUncertainty((0.60,0.90),"correlation_electricity_price"),
-#                      ParameterUncertainty((0.5,0.7),"Night_percentage_of_day_price"),
+#                      ParameterUncertainty((0.5,0.7),"offpeak_percentage_of_peak_price"),
                      ParameterUncertainty((24,74),
                                           "Duration_information_complexity_validity",integer=True),
                      ParameterUncertainty((8,16),
@@ -258,8 +247,8 @@ class DiffusionModelInterface(NetLogoModelStructureInterface):
                 Outcome("block_at_finding_information_data_leak", time=True),
                 Outcome("block_at_finding_information_complexity", time=True),
                 Outcome("block_at_finding_information_savings", time=True),
-                Outcome("electricity_price_day", time=True),
-                Outcome("electricity_price_night", time=True),
+                Outcome("electricity_price_peak", time=True),
+                Outcome("electricity_price_offpeak", time=True),
                 Outcome("ISG_appliance_part_1_costs", time=True),
                 Outcome("savings_made_by_last_adopters", time=True)]
          
