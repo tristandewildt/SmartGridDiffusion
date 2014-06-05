@@ -22,10 +22,7 @@ class DiffusionModelInterface(NetLogoModelStructureInterface):
 #     replications = 5
 
       
-    uncertainties = [
-#                      ParameterUncertainty((0.25, 0.4), "electricity_price_peak_fix"),
-
-                      ParameterUncertainty((0.15, 0.30), 
+    uncertainties = [ ParameterUncertainty((0.15, 0.30), 
                                            "electricity_price_offpeak_fix"),
                       ParameterUncertainty((0.05, 0.25), 
                                            "difference_between_peak_and_offpeak_price"),
@@ -124,7 +121,7 @@ class DiffusionModelInterface(NetLogoModelStructureInterface):
 #                      ParameterUncertainty((0.55,0.85),"A_S_L_valuation_of_savings_bounded_rational_3"),
 #                      ParameterUncertainty((0.65,0.95),"A_S_L_valuation_of_savings_bounded_rational_4"),
 #                      ParameterUncertainty((0.75,1),"A_S_L_valuation_of_savings_bounded_rational_5"),
-                      ParameterUncertainty((1,3),
+                      ParameterUncertainty((1,2),
                                             "Change_minimum_amount_savings_bounded_rational"),
                       ParameterUncertainty((0.02,0.20),
                                             "minimum_percentage_for_no_rejection"),
@@ -161,7 +158,7 @@ class DiffusionModelInterface(NetLogoModelStructureInterface):
 #                      ParameterUncertainty((0,0.01),"Probability_of_failure_list_4"),
                       ParameterUncertainty((6,36),
                                            "introduction_phase",integer=True),
-                      ParameterUncertainty((6,72),
+                      ParameterUncertainty((6,36),
                                            "growth_phase",integer=True),
                       ParameterUncertainty((0.5,4),
                                            "Multiplication_SD_minimum_amount_of_savings"),
@@ -169,8 +166,8 @@ class DiffusionModelInterface(NetLogoModelStructureInterface):
                                            "memory",integer=True),
                       ParameterUncertainty((0,20),
                                            "Increase_in_memory_for_late_categories",integer=True),
-                      ParameterUncertainty((36,84),
-                                           "Number_of_month_before_decision_rejection",integer=True),
+                       ParameterUncertainty((100,120),
+                                            "Number_of_month_before_decision_rejection",integer=True),
 #                      ParameterUncertainty((2,4),
 #                                           "Diffusion_information_number_links",integer=True),
                       ParameterUncertainty((0.2,0.8),
@@ -211,14 +208,14 @@ class DiffusionModelInterface(NetLogoModelStructureInterface):
                                            "social_value_difference_to_mean"),
                       ParameterUncertainty((0.5,1.5),
                                            "change_threshold_to_reach_for_weights_1"),
-                      ParameterUncertainty((0.5,4),
+                      ParameterUncertainty((0.5,2),
                                            "change_threshold_to_reach_for_weights_2"),
-                      ParameterUncertainty((0.5,4),
+                      ParameterUncertainty((0.5,2),
                                            "change_threshold_to_reach_for_weights_3"),
-                      ParameterUncertainty((0.5,4),
+                      ParameterUncertainty((0.5,2),
                                            "change_threshold_to_reach_for_weights_4"),
-                      ParameterUncertainty((0.5,4),
-                                           "change_threshold_to_reach_for_weights_5"),
+                      ParameterUncertainty((0.5,2),
+                                           "change_threshold_to_reach_for_weights_5")
 # #                         ParameterUncertainty((0.5,1.5),
 # #                                              "change_threshold_to_reach_for_weights_information_complexity_only_per_process"),
 # #                         ParameterUncertainty((0.5,1.5),
@@ -334,7 +331,7 @@ if __name__ == '__main__':
 #     print time.time()-starttime
     
 
-    n = 1000
+    n = 1500
     results = ensemble.perform_experiments(n)
 
     fn = r'./data/{} runs.bz2'.format(n)
