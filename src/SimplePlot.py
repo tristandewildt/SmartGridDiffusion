@@ -17,7 +17,7 @@ results = (experiments, outcomes)
 '''==============================================================================
  print out the lines, envelope and KDE
 =============================================================================='''
-desired__nr_lines = 30
+desired__nr_lines = 250
 nr_cases = experiments.shape[0]
 indices = np.arange(0, nr_cases, nr_cases/desired__nr_lines)
 
@@ -28,7 +28,7 @@ indices = np.arange(0, nr_cases, nr_cases/desired__nr_lines)
 #                   titles="")
 
 for key, value in outcomes.items():
-#          if key == 'percentage_of_households_owning_ISG_app':
+          if key == 'percentage_of_early_majority_with_ISG_appliances':
             fig, axes = lines(results, outcomes_to_show=key, density=KDE,
                       show_envelope=True, experiments_to_show=indices, 
                       titles="")
@@ -56,7 +56,7 @@ to print for only selected outcomes and group by model:
     
 
 
-# plt.show()
+#plt.show()
     
 
 # n = key
