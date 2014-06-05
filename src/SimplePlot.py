@@ -10,7 +10,7 @@ from analysis.plotting import lines, KDE, envelopes
 ema_logging.log_to_stderr(level=ema_logging.DEFAULT_LEVEL)
 
 #load the data
-experiments, outcomes = load_results(r'Data/1000 runs.bz2')
+experiments, outcomes = load_results(r'Data/2500_runs_experiment_2.bz2')
 
 results = (experiments, outcomes)
 

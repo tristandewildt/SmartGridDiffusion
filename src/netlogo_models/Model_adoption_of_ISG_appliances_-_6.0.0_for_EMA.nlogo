@@ -4224,7 +4224,7 @@ Change_minimum_amount_savings_bounded_rational
 Change_minimum_amount_savings_bounded_rational
 -5
 10
-1
+2
 1
 1
 NIL
@@ -4250,7 +4250,7 @@ difference_between_peak_and_offpeak_price
 difference_between_peak_and_offpeak_price
 0
 0.4
-0.26
+0.17
 0.01
 1
 NIL
@@ -4515,7 +4515,7 @@ A_S_L_preferred_information_source_early_majority_2
 A_S_L_preferred_information_source_early_majority_2
 0
 1
-0.3
+0.31
 0.01
 1
 NIL
@@ -4755,7 +4755,7 @@ Learning_rate_appliances_1
 Learning_rate_appliances_1
 0.8
 1
-0.96
+0.94
 0.01
 1
 NIL
@@ -5201,7 +5201,7 @@ introduction_phase
 introduction_phase
 12
 36
-15
+20
 1
 1
 NIL
@@ -5216,7 +5216,7 @@ growth_phase
 growth_phase
 12
 36
-15
+20
 1
 1
 NIL
@@ -5410,9 +5410,9 @@ SLIDER
 Number_of_month_before_decision_rejection
 Number_of_month_before_decision_rejection
 0
-60
-60
-1
+120
+120
+5
 1
 NIL
 HORIZONTAL
@@ -5459,7 +5459,7 @@ Increase_in_memory_for_late_categories
 Increase_in_memory_for_late_categories
 0
 100
-14
+10
 1
 1
 NIL
@@ -5731,15 +5731,15 @@ NIL
 HORIZONTAL
 
 SLIDER
-68
-1910
-278
-1943
+65
+1905
+383
+1938
 Height_of_purchase_subsidy
 Height_of_purchase_subsidy
 0
+400
 200
-150
 10
 1
 NIL
