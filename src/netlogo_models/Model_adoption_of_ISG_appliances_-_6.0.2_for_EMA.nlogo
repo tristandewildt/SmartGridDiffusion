@@ -9,22 +9,22 @@ Undirected-link-breed [randomlinks randomlink]
 
 Globals [
   ; Globals constants
-  Electricity_price_day
-  Initial_Electricity_price_day
-  Electricity_price_night
-  Initial_Electricity_price_night
-  percentage_RE_Netherlands
-  percentage_SH_Netherlands
-  division_effect_media
+  Electricity_price_peak
+  Initial_Electricity_price_peak
+  Electricity_price_offpeak
+  Initial_Electricity_price_offpeak
+;  division_effect_media
   Beta_prospect_theory
   Gamma_prospect_theory
-  Number_of_trials_decision_making
+;  Number_of_trials_decision_making
   correlation_electricity_price
-  Night_percentage_of_day_price
+  offpeak_percentage_of_peak_price
 ;  A_S_L_Unique_interaction_multiplicator
 ;  A_S_L_Combined_interaction_short_multiplicator
 ;  A_S_L_Combined_interaction_long_multiplicator
-  difference_between_day_and_night_price
+  ;difference_between_peak_and_offpeak_price
+  memory_for_late_categories
+  minimum_amount_savings_bounded_rational
 
 
   
@@ -34,7 +34,7 @@ Globals [
   product_lifecycle
   ISG_appliance_initial_cost
   Not_smart_appliance_ initial_cost
-  Lifetime_ISG_appliance
+;  Lifetime_ISG_appliance
   complexity
   complexity_list
   Probability_of_technical_failure
@@ -56,10 +56,10 @@ Globals [
   ISG_appliance_part_7_costs
   ISG_appliance_part_8_costs
   number_of_appliance_switched_on
-  ;Learning_rate_appliances_1
-  ;Learning_rate_appliances_2
-  ;Learning_rate_appliances_3
-  ;Learning_rate_appliances_4
+;  Learning_rate_appliances_1
+  Learning_rate_appliances_2
+  Learning_rate_appliances_3
+  Learning_rate_appliances_4
   Learning_rate_appliances_5
   Learning_rate_appliances_6
   Learning_rate_appliances_7
@@ -101,7 +101,8 @@ Globals [
   A_S_L_Min_duration_proof_no_failure
   A_S_L_Max_complexity_tolerated
   A_S_L_Max_difference_in_price_tolerated
-  social_value_difference_to_mean
+  
+;  social_value_difference_to_mean
   
   
   
@@ -154,6 +155,27 @@ Globals [
   block_at_finding_information_data_leak
   block_at_finding_information_complexity
   block_at_finding_information_savings
+  block_at_finding_information
+  Monthly_electricity_consumption_h1
+  Monthly_electricity_consumption_h2
+  Monthly_electricity_consumption_h3
+  Monthly_electricity_consumption_h4
+  Monthly_electricity_consumption_h5
+  total_savings_after_purchase_h1
+  total_savings_after_purchase_h2
+  total_savings_after_purchase_h3
+  total_savings_after_purchase_h4
+  total_savings_after_purchase_h5
+  households_with_whom_interacted_c1
+  households_with_whom_interacted_c2
+  households_with_whom_interacted_c3
+  households_with_whom_interacted_c4
+  households_with_whom_interacted_c5
+  number_of_information_pieces_data_leak_h1
+  number_of_information_pieces_data_leak_h2
+  number_of_information_pieces_data_leak_h3
+  number_of_information_pieces_data_leak_h4
+  number_of_information_pieces_data_leak_h5
   
   
   
@@ -230,31 +252,31 @@ Globals [
   A_S_L_Max_complexity_tolerated_3
   A_S_L_Max_complexity_tolerated_4
   A_S_L_Max_complexity_tolerated_5
-  A_S_L_preferred_information_source_innovator_1
-  A_S_L_preferred_information_source_innovator_2
-  A_S_L_preferred_information_source_innovator_3
-  A_S_L_preferred_information_source_innovator_4
-  A_S_L_preferred_information_source_innovator_5
-  A_S_L_preferred_information_source_early_adopter_1
-  A_S_L_preferred_information_source_early_adopter_2
-  A_S_L_preferred_information_source_early_adopter_3
-  A_S_L_preferred_information_source_early_adopter_4
-  A_S_L_preferred_information_source_early_adopter_5
-  A_S_L_preferred_information_source_early_majority_1
-  A_S_L_preferred_information_source_early_majority_2
-  A_S_L_preferred_information_source_early_majority_3
-  A_S_L_preferred_information_source_early_majority_4
-  A_S_L_preferred_information_source_early_majority_5
-  A_S_L_preferred_information_source_late_majority_1
-  A_S_L_preferred_information_source_late_majority_2
-  A_S_L_preferred_information_source_late_majority_3
-  A_S_L_preferred_information_source_late_majority_4
-  A_S_L_preferred_information_source_late_majority_5
-  A_S_L_preferred_information_source_laggard_1
-  A_S_L_preferred_information_source_laggard_2
-  A_S_L_preferred_information_source_laggard_3
-  A_S_L_preferred_information_source_laggard_4
-  A_S_L_preferred_information_source_laggard_5
+;  A_S_L_preferred_information_source_innovator_1
+;  A_S_L_preferred_information_source_innovator_2
+;  A_S_L_preferred_information_source_innovator_3
+;  A_S_L_preferred_information_source_innovator_4
+;  A_S_L_preferred_information_source_innovator_5
+;  A_S_L_preferred_information_source_early_adopter_1
+;  A_S_L_preferred_information_source_early_adopter_2
+;  A_S_L_preferred_information_source_early_adopter_3
+;  A_S_L_preferred_information_source_early_adopter_4
+;  A_S_L_preferred_information_source_early_adopter_5
+;  A_S_L_preferred_information_source_early_majority_1
+;  A_S_L_preferred_information_source_early_majority_2
+;  A_S_L_preferred_information_source_early_majority_3
+;  A_S_L_preferred_information_source_early_majority_4
+;  A_S_L_preferred_information_source_early_majority_5
+;  A_S_L_preferred_information_source_late_majority_1
+;  A_S_L_preferred_information_source_late_majority_2
+;  A_S_L_preferred_information_source_late_majority_3
+;  A_S_L_preferred_information_source_late_majority_4
+;  A_S_L_preferred_information_source_late_majority_5
+;  A_S_L_preferred_information_source_laggard_1
+;  A_S_L_preferred_information_source_laggard_2
+;  A_S_L_preferred_information_source_laggard_3
+;  A_S_L_preferred_information_source_laggard_4
+;  A_S_L_preferred_information_source_laggard_5
   A_S_L_Max_difference_in_price_tolerated_1
   A_S_L_Max_difference_in_price_tolerated_2 
   A_S_L_Max_difference_in_price_tolerated_3
@@ -269,61 +291,73 @@ Globals [
   Probability_of_failure_list_3
   Probability_of_failure_list_4
   threshold_to_reach_for_weights_information_complexity
-  change_threshold_to_reach_for_weights_information_complexity_only_per_process
+;  change_threshold_to_reach_for_weights_information_complexity_only_per_process
   threshold_to_reach_for_weights_information_reliability
-  change_threshold_to_reach_for_weights_information_reliability_only_per_process
+;  change_threshold_to_reach_for_weights_information_reliability_only_per_process
   threshold_to_reach_for_weights_information_data_leak
-  change_threshold_to_reach_for_weights_information_data_leak_only_per_process
+;  change_threshold_to_reach_for_weights_information_data_leak_only_per_process
   threshold_to_reach_for_weights_information_savings
-  change_threshold_to_reach_for_weights_information_savings_only_per_process
-  threshold_to_reach_for_weights_information_complexity_1
-  threshold_to_reach_for_weights_information_complexity_2
-  threshold_to_reach_for_weights_information_complexity_3
-  threshold_to_reach_for_weights_information_complexity_4
-  threshold_to_reach_for_weights_information_complexity_5
-  threshold_to_reach_for_weights_information_reliability_1
-  threshold_to_reach_for_weights_information_reliability_2
-  threshold_to_reach_for_weights_information_reliability_3
-  threshold_to_reach_for_weights_information_reliability_4
-  threshold_to_reach_for_weights_information_reliability_5
-  threshold_to_reach_for_weights_information_data_leak_1
-  threshold_to_reach_for_weights_information_data_leak_2
-  threshold_to_reach_for_weights_information_data_leak_3
-  threshold_to_reach_for_weights_information_data_leak_4
-  threshold_to_reach_for_weights_information_data_leak_5
-  threshold_to_reach_for_weights_information_savings_1
-  threshold_to_reach_for_weights_information_savings_2
-  threshold_to_reach_for_weights_information_savings_3
-  threshold_to_reach_for_weights_information_savings_4
-  threshold_to_reach_for_weights_information_savings_5
+;  change_threshold_to_reach_for_weights_information_savings_only_per_process
+;  threshold_to_reach_for_weights_information_complexity_1
+;  threshold_to_reach_for_weights_information_complexity_2
+;  threshold_to_reach_for_weights_information_complexity_3
+;  threshold_to_reach_for_weights_information_complexity_4
+;  threshold_to_reach_for_weights_information_complexity_5
+;  threshold_to_reach_for_weights_information_reliability_1
+;  threshold_to_reach_for_weights_information_reliability_2
+;  threshold_to_reach_for_weights_information_reliability_3
+;  threshold_to_reach_for_weights_information_reliability_4
+;  threshold_to_reach_for_weights_information_reliability_5
+;  threshold_to_reach_for_weights_information_data_leak_1
+;  threshold_to_reach_for_weights_information_data_leak_2
+;  threshold_to_reach_for_weights_information_data_leak_3
+;  threshold_to_reach_for_weights_information_data_leak_4
+;  threshold_to_reach_for_weights_information_data_leak_5
+;  threshold_to_reach_for_weights_information_savings_1
+;  threshold_to_reach_for_weights_information_savings_2
+;  threshold_to_reach_for_weights_information_savings_3
+;  threshold_to_reach_for_weights_information_savings_4
+;  threshold_to_reach_for_weights_information_savings_5
   percentage_postive_information_needed_1
   percentage_postive_information_needed_2 
   percentage_postive_information_needed_3
   percentage_postive_information_needed_4
   percentage_postive_information_needed_5
   percentage_postive_information_needed
+  percentage_postive_information_needed_savings_1
+  percentage_postive_information_needed_savings_2
+  percentage_postive_information_needed_savings_3
+  percentage_postive_information_needed_savings_4
+  percentage_postive_information_needed_savings_5
+  percentage_postive_information_needed_savings
+;  Change_accepted_savings_neoclassical_rational
+;  change_threshold_to_reach_for_weights_1
+;  change_threshold_to_reach_for_weights_2
+;  change_threshold_to_reach_for_weights_3
+;  change_threshold_to_reach_for_weights_4
+;  change_threshold_to_reach_for_weights_5
   
 
   
   ;Multiply_media_interaction
-  ;electricity_price_day_fix
-  ;electricity_price_night_fix
-  ;introduction_phase
-  ;growth_phase
-  ;maturity_phase
-  ;memory
+  electricity_price_peak_fix
+  ;electricity_price_offpeak_fix
+;  introduction_phase
+;  growth_phase
+  maturity_phase
+;  memory
   ;Moment_of_data_leak_event
-  Duration_information_complexity_validity
+;  Duration_information_complexity_validity
   run_length
   Start_year_introduction_smart_grid_Netherlands
-  ;Diffusion_information_number_links
-  Degree_of_correlation_with_previous_data
+;  Diffusion_information_number_links
+;  Degree_of_correlation_with_previous_data
   ;Minimum_savings_for_majority_of_population
   Amount_of_month_before_purchase_enthousiasm_stops
-  ;variation_of_SD_normal_distribution_properties_of_households
-  ;variation_of_SD_normal_distribution_properties_of_adopters
-  valuation_per_household_encountered_early_adopters
-  valuation_per_household_encountered_late_majority
+;  variation_of_SD_normal_distribution_properties_of_households
+;  variation_of_SD_normal_distribution_properties_of_adopters
+;  valuation_per_household_encountered_early_adopters
+;  valuation_per_household_encountered_late_majority
   
   
   
@@ -387,11 +421,16 @@ Households-own [
   knowledge_of_data_leak_event_list
   knowledge_complexity_list
   memory_electricity_bill_list
-  max_memory_electricity_bill
-  max_memory_electricity_bill_bounded_rationality
+;  max_memory_electricity_bill
+;  max_memory_electricity_bill_bounded_rationality
   Lifetime_of_my_appliance
   Number_of_trials_decision_making_I_still_have
   my_valuation_households_ISG_appliance_encountered_for_social_recognition
+  my_memory_savings_for_renewal
+  my_Number_of_month_before_decision_rejection
+  my_change_threshold_to_reach_for_weights
+  Lifetime_of_my_appliance_innovator
+  
   
   ; temp
   my_list_of_neighbors
@@ -406,9 +445,10 @@ Households-own [
   knowledge_of_complexity
   memory_calculation_of_savings
   memory_montly_electricity_consumption
-  memory_electricity_price_day
-  memory_electricity_price_night
+  memory_electricity_price_peak
+  memory_electricity_price_offpeak
   list_households_without_ISG_appliance_encountered
+  list_households_without_ISG_appliance_encountered_after_pruchase
   list_households_with_ISG_appliance_encountered
   total_savings
   total_savings_after_purchase
@@ -444,6 +484,22 @@ Households-own [
   Previous_threshold_enough_information_for_correlation 
   threshold_enough_savings_list
   Previous_threshold_enough_savings_for_correlation
+  Consumption_of_appliance_part_1
+  Consumption_of_appliance_part_2
+  Consumption_of_appliance_part_3
+  Consumption_of_appliance_part_4
+  Consumption_of_appliance_part_5
+  Consumption_of_appliance_part_6
+  Consumption_of_appliance_part_7
+  Consumption_of_appliance_part_8
+  Previous_consumption_of_appliance_part_1
+  Previous_consumption_of_appliance_part_2
+  Previous_consumption_of_appliance_part_3
+  Previous_consumption_of_appliance_part_4
+  Previous_consumption_of_appliance_part_5
+  Previous_consumption_of_appliance_part_6
+  Previous_consumption_of_appliance_part_7
+  Previous_consumption_of_appliance_part_8  
   threshold_investment_risk_accepted
   Previous_threshold_investment_risk_accepted_for_correlation
   threshold_social_recognition_list
@@ -483,98 +539,55 @@ Households-own [
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 to setup
-  ;profiler:start
+;  profiler:start
   Clear-all
   Reset-ticks
   read-data
-  setup_environment
-  setup_adopter_properties
-  setup_households
-  setup_links
-  setup_for_ema
-  setup_ISG_appliance
-  set_relevant_lists_to_0
-end
 
-to read-data
-  ;first data households
-  set filename_1 "Dataset_of_households_temp.txt"
-  set number-of-columns_1 5
-  
-  set data_1 []
-  let line_1 []
-  let input-item_1 0
-  
-  file-open filename_1
-  repeat number-of-columns_1 [set input-item_1 file-read]
-  
-  while [not file-at-end?] [
-    set line_1 []
-    repeat number-of-columns_1 [
-      if not file-at-end? [
-        set input-item_1 file-read
-        set line_1 lput input-item_1 line_1
-      ]
-    ]
-    set data_1 lput line_1 data_1
-  ]
-  file-close
-;  show (word length data_1 " number of households read in.")
-  
-  ;then data ISG appliance
-  set filename_2 "Dataset_of_ISG_appliances_temp.txt"
-  set number-of-columns_2 12
-  
-  set data_2 []
-  let line_2 []
-  let input-item_2 0
-  
-  file-open filename_2
-  repeat number-of-columns_2 [set input-item_2 file-read]
-  
-  while [not file-at-end?] [
-    set line_2 []
-    repeat number-of-columns_2 [
-      if not file-at-end? [
-        set input-item_2 file-read
-        set line_2 lput input-item_2 line_2
-      ]
-    ]
-    set data_2 lput line_2 data_2
-  ]
-  file-close
-;  show (word length data_2 " ISG appliances read in.")
-end
-
-
-to setup_environment
-  set percentage_RE_Netherlands 10.48
-  set percentage_SH_Netherlands 0
-  ;set Electricity_price_day 0.235
-  set Initial_Electricity_price_day Electricity_price_day
-  ;set Electricity_price_night 0.215
-  set Initial_Electricity_price_night Electricity_price_night
-  set division_effect_media 10
+  set Electricity_price_peak 0.235
+  set Initial_Electricity_price_peak Electricity_price_peak
+  set Electricity_price_offpeak 0.215
+  set Initial_Electricity_price_offpeak Electricity_price_offpeak
+;  set division_effect_media 10
   set Beta_prospect_theory 0.12
   set Gamma_prospect_theory 2.25
-  set Lifetime_ISG_appliance 12
-  set Number_of_trials_decision_making 10
+;  set Lifetime_ISG_appliance 12
+;  set Number_of_trials_decision_making 10
   set correlation_electricity_price .75
-  set Night_percentage_of_day_price .6
+  set offpeak_percentage_of_peak_price .6
+    ;set electricity_price_peak_fix 0.365
+;  set electricity_price_offpeak_fix 0.15
+;  set difference_between_peak_and_offpeak_price 0.2
+;  set introduction_phase 30
+;  set growth_phase 30
+  set maturity_phase 600
+;  set memory 2
+  ;set Moment_of_data_leak_event 20
+;  set Duration_information_complexity_validity 48
+  ;set run_length 10
+;  set Diffusion_information_number_links 3
+;  set Degree_of_correlation_with_previous_data 0.5
+  ;set Multiply_media_interaction 1
+  ;set Minimum_savings_for_majority_of_population 1.3
+  ;set Amount_of_month_before_purchase_enthousiasm_stops 1
+;  set variation_of_SD_normal_distribution_properties_of_households 1
+;  set variation_of_SD_normal_distribution_properties_of_adopters 1
+  
+  
+  ;set temp_name13 1
 
-end
 
-to setup_adopter_properties
 ;  set A_S_L_Unique_interaction_multiplicator 1
 ;  set A_S_L_Combined_interaction_short_multiplicator 1
 ;  set A_S_L_Combined_interaction_long_multiplicator 1
-  set change_threshold_to_reach_for_weights_information_complexity_only_per_process 1
-  set change_threshold_to_reach_for_weights_information_reliability_only_per_process 1
-  set change_threshold_to_reach_for_weights_information_data_leak_only_per_process 1
-  set change_threshold_to_reach_for_weights_information_savings_only_per_process 1
+;  set change_threshold_to_reach_for_weights_information_complexity_only_per_process 1
+;  set change_threshold_to_reach_for_weights_information_reliability_only_per_process 1
+;  set change_threshold_to_reach_for_weights_information_data_leak_only_per_process 1
+;  set change_threshold_to_reach_for_weights_information_savings_only_per_process 1
 ;  set valuation_per_household_encountered_early_adopters 0.15
 ;  set valuation_per_household_encountered_late_majority 0.15
-  set social_value_difference_to_mean 0.5
+;  set social_value_difference_to_mean 0.5
+;  set Change_accepted_savings_neoclassical_rational 0
   
   
   
@@ -667,47 +680,47 @@ to setup_adopter_properties
   
   ;A_S_L_preferred_information_source
   set A_S_L_preferred_information_source_innovator []
-  set A_S_L_preferred_information_source_innovator_1 0.8
-  set A_S_L_preferred_information_source_innovator_2 0
-  set A_S_L_preferred_information_source_innovator_3 0
-  set A_S_L_preferred_information_source_innovator_4 0
-  set A_S_L_preferred_information_source_innovator_5 0
+;  set A_S_L_preferred_information_source_innovator_1 0.8
+;  set A_S_L_preferred_information_source_innovator_2 0
+;  set A_S_L_preferred_information_source_innovator_3 0
+;  set A_S_L_preferred_information_source_innovator_4 0
+;  set A_S_L_preferred_information_source_innovator_5 0
   set temp_for_creation_preferred_information_properties (word "A_S_L_preferred_information_source_innovator")
   structure_creation_list_preferred_information
   
   set A_S_L_preferred_information_source_early_adopter []
-  set A_S_L_preferred_information_source_early_adopter_1 0.4
-  set A_S_L_preferred_information_source_early_adopter_2 0.3
-  set A_S_L_preferred_information_source_early_adopter_3 0
-  set A_S_L_preferred_information_source_early_adopter_4 0
-  set A_S_L_preferred_information_source_early_adopter_5 0
+;  set A_S_L_preferred_information_source_early_adopter_1 0.4
+;  set A_S_L_preferred_information_source_early_adopter_2 0.3
+;  set A_S_L_preferred_information_source_early_adopter_3 0
+;  set A_S_L_preferred_information_source_early_adopter_4 0
+;  set A_S_L_preferred_information_source_early_adopter_5 0
   set temp_for_creation_preferred_information_properties (word "A_S_L_preferred_information_source_early_adopter")
   structure_creation_list_preferred_information
   
   set A_S_L_preferred_information_source_early_majority []
-  set A_S_L_preferred_information_source_early_majority_1 0.1
-  set A_S_L_preferred_information_source_early_majority_2 0.3;0.5
-  set A_S_L_preferred_information_source_early_majority_3 0.2
-  set A_S_L_preferred_information_source_early_majority_4 0
-  set A_S_L_preferred_information_source_early_majority_5 0
+;  set A_S_L_preferred_information_source_early_majority_1 0.1
+;  set A_S_L_preferred_information_source_early_majority_2 0.3;0.5
+;  set A_S_L_preferred_information_source_early_majority_3 0.2
+;  set A_S_L_preferred_information_source_early_majority_4 0
+;  set A_S_L_preferred_information_source_early_majority_5 0
   set temp_for_creation_preferred_information_properties (word "A_S_L_preferred_information_source_early_majority")
   structure_creation_list_preferred_information
   
   set A_S_L_preferred_information_source_late_majority []
-  set A_S_L_preferred_information_source_late_majority_1 0.05
-  set A_S_L_preferred_information_source_late_majority_2 0.05
-  set A_S_L_preferred_information_source_late_majority_3 0.5
-  set A_S_L_preferred_information_source_late_majority_4 0.2
-  set A_S_L_preferred_information_source_late_majority_5 0;0.3
+;  set A_S_L_preferred_information_source_late_majority_1 0.05
+;  set A_S_L_preferred_information_source_late_majority_2 0.05
+;  set A_S_L_preferred_information_source_late_majority_3 0.5
+;  set A_S_L_preferred_information_source_late_majority_4 0.2
+;  set A_S_L_preferred_information_source_late_majority_5 0;0.3
   set temp_for_creation_preferred_information_properties (word "A_S_L_preferred_information_source_late_majority")
   structure_creation_list_preferred_information
   
   set A_S_L_preferred_information_source_laggard []
-  set A_S_L_preferred_information_source_laggard_1 0
-  set A_S_L_preferred_information_source_laggard_2 0.1
-  set A_S_L_preferred_information_source_laggard_3 0.2
-  set A_S_L_preferred_information_source_laggard_4 0.3
-  set A_S_L_preferred_information_source_laggard_5 0.2
+;  set A_S_L_preferred_information_source_laggard_1 0
+;  set A_S_L_preferred_information_source_laggard_2 0.1
+;  set A_S_L_preferred_information_source_laggard_3 0.2
+;  set A_S_L_preferred_information_source_laggard_4 0.3
+;  set A_S_L_preferred_information_source_laggard_5 0.2
   set temp_for_creation_preferred_information_properties (word "A_S_L_preferred_information_source_laggard")
   structure_creation_list_preferred_information
   
@@ -794,53 +807,53 @@ to setup_adopter_properties
   set A_S_L_Max_difference_in_price_tolerated adopter_specific_list
   set A_S_L_Max_difference_in_price_tolerated_1 .4
   set A_S_L_Max_difference_in_price_tolerated_2 .35 
-  set A_S_L_Max_difference_in_price_tolerated_3 .15
-  set A_S_L_Max_difference_in_price_tolerated_4 .10
-  set A_S_L_Max_difference_in_price_tolerated_5 .05
+  set A_S_L_Max_difference_in_price_tolerated_3 .30;.15
+  set A_S_L_Max_difference_in_price_tolerated_4 .25;.10
+  set A_S_L_Max_difference_in_price_tolerated_5 .15;.05
   set temp_for_creation_adopter_properties (word "A_S_L_Max_difference_in_price_tolerated")
   structure_creation_list_adopters
   
   
   ;threshold_to_reach_for_weights_information_complexity
   set threshold_to_reach_for_weights_information_complexity adopter_specific_list
-  set threshold_to_reach_for_weights_information_complexity_1 1
-  set threshold_to_reach_for_weights_information_complexity_2 1 
-  set threshold_to_reach_for_weights_information_complexity_3 1
-  set threshold_to_reach_for_weights_information_complexity_4 1
-  set threshold_to_reach_for_weights_information_complexity_5 1
+;  set threshold_to_reach_for_weights_information_complexity_1 1
+;  set threshold_to_reach_for_weights_information_complexity_2 1 
+;  set threshold_to_reach_for_weights_information_complexity_3 1
+;  set threshold_to_reach_for_weights_information_complexity_4 1
+;  set threshold_to_reach_for_weights_information_complexity_5 1
   set temp_for_creation_adopter_properties (word "threshold_to_reach_for_weights_information_complexity")
   structure_creation_list_adopters
   
   
   ;threshold_to_reach_for_weights_information_reliability
   set threshold_to_reach_for_weights_information_reliability adopter_specific_list
-  set threshold_to_reach_for_weights_information_reliability_1 1
-  set threshold_to_reach_for_weights_information_reliability_2 1 
-  set threshold_to_reach_for_weights_information_reliability_3 1
-  set threshold_to_reach_for_weights_information_reliability_4 1
-  set threshold_to_reach_for_weights_information_reliability_5 1
+;  set threshold_to_reach_for_weights_information_reliability_1 1
+;  set threshold_to_reach_for_weights_information_reliability_2 1 
+;  set threshold_to_reach_for_weights_information_reliability_3 1
+;  set threshold_to_reach_for_weights_information_reliability_4 1
+;  set threshold_to_reach_for_weights_information_reliability_5 1
   set temp_for_creation_adopter_properties (word "threshold_to_reach_for_weights_information_reliability")
   structure_creation_list_adopters
   
   
   ;threshold_to_reach_for_weights_information_data_leak
   set threshold_to_reach_for_weights_information_data_leak adopter_specific_list
-  set threshold_to_reach_for_weights_information_data_leak_1 1
-  set threshold_to_reach_for_weights_information_data_leak_2 1 
-  set threshold_to_reach_for_weights_information_data_leak_3 1
-  set threshold_to_reach_for_weights_information_data_leak_4 1
-  set threshold_to_reach_for_weights_information_data_leak_5 1
+;  set threshold_to_reach_for_weights_information_data_leak_1 1
+;  set threshold_to_reach_for_weights_information_data_leak_2 1 
+;  set threshold_to_reach_for_weights_information_data_leak_3 1
+;  set threshold_to_reach_for_weights_information_data_leak_4 1
+;  set threshold_to_reach_for_weights_information_data_leak_5 1
   set temp_for_creation_adopter_properties (word "threshold_to_reach_for_weights_information_data_leak")
   structure_creation_list_adopters
   
   
   ;threshold_to_reach_for_weights_information_savings
   set threshold_to_reach_for_weights_information_savings adopter_specific_list
-  set threshold_to_reach_for_weights_information_savings_1 1
-  set threshold_to_reach_for_weights_information_savings_2 1 
-  set threshold_to_reach_for_weights_information_savings_3 1
-  set threshold_to_reach_for_weights_information_savings_4 1
-  set threshold_to_reach_for_weights_information_savings_5 1
+;  set threshold_to_reach_for_weights_information_savings_1 1
+;  set threshold_to_reach_for_weights_information_savings_2 1 
+;  set threshold_to_reach_for_weights_information_savings_3 1
+;  set threshold_to_reach_for_weights_information_savings_4 1
+;  set threshold_to_reach_for_weights_information_savings_5 1
   set temp_for_creation_adopter_properties (word "threshold_to_reach_for_weights_information_savings")
   structure_creation_list_adopters
   
@@ -854,9 +867,16 @@ to setup_adopter_properties
   set temp_for_creation_adopter_properties (word "percentage_postive_information_needed")
   structure_creation_list_adopters
 
-end
+  ;percentage_postive_information_needed_savings
+  set percentage_postive_information_needed_savings adopter_specific_list
+  set percentage_postive_information_needed_savings_1 0
+  set percentage_postive_information_needed_savings_2 0 
+  set percentage_postive_information_needed_savings_3 0.8
+  set percentage_postive_information_needed_savings_4 0.8
+  set percentage_postive_information_needed_savings_5 0.8
+  set temp_for_creation_adopter_properties (word "percentage_postive_information_needed_savings")
+  structure_creation_list_adopters
 
-to setup_households
   let number_households (length data_1)
   create-households number_households 
   let f 0
@@ -872,8 +892,9 @@ to setup_households
           set Monthly_electricity_consumption (item 3 (item g data_1))
           if Normality_of_household_properties = True and Switch_uniformity_household_properties = True [
             let l (item 3 (item g data_1))
-            let m (20 * variation_of_SD_normal_distribution_properties_of_households)
+            let m 20 * variation_of_SD_normal_distribution_properties_of_households
             set Monthly_electricity_consumption random-normal l m
+;            print Monthly_electricity_consumption
             if Monthly_electricity_consumption < 0 [
               set Monthly_electricity_consumption 0]
             if Normality_of_household_properties = True and Calculation_new_normality_properties_households = "each step" and Switch_uniformity_household_properties = True [
@@ -922,15 +943,17 @@ to setup_households
   
   ; set-up the decision making list
   ; The structure of the list is the following:
-  ; (1 (have_ISG_app just_have_considered awareness)) (2 (experience_info_OK)) (3 (expected_savings_OK risks_investment_OK Social_recognition_OK Risk_data_leak_OK reliability_OK)) (4 (complexity_OK))
+  ; (1 (have_ISG_app just_have_considered awareness never_adopt_again)) (2 (experience_info_OK)) (3 (expected_savings_OK risks_investment_OK Social_recognition_OK Risk_data_leak_OK reliability_OK)) (4 (complexity_OK))
   ; each variable is determined by 0 or 1. 1 means that the step/fact is accepted by the household.
   
   ask households [
     ifelse Owner_of_ISG_appliance = 0
-    [set Decision_making_status_list [[1 [0 0 0]] [2 [0]] [3 [0 0 0 0 0]] [4 [0]]]]
-    [set Decision_making_status_list [[1 [1 0 1]] [2 [1]] [3 [1 1 1 1 1]] [4 [1]]]
-      set Lifetime_of_my_appliance random-float (Lifetime_ISG_appliance) * 12]]
+    [set Decision_making_status_list [[1 [0 0 0 0]] [2 [0]] [3 [0 0 0 0 0]] [4 [0]]]]
+    [set Decision_making_status_list [[1 [1 0 1 0]] [2 [1]] [3 [1 1 1 1 1]] [4 [1]]]
+      set Lifetime_of_my_appliance int (random-float (Lifetime_ISG_appliance) * 12)
+      set Lifetime_of_my_appliance_innovator int( random-normal 24 2 + 0.5)]]
   
+;  ask households [ if category_number = 1 [set Lifetime_of_my_appliance_innovator 0]]
   
   ;here wil will provide the thresholds to each individual household
   ask households [
@@ -982,8 +1005,8 @@ to setup_households
   ask households [
     
     set memory_montly_electricity_consumption []
-    set memory_electricity_price_day []
-    set memory_electricity_price_night []
+    set memory_electricity_price_peak []
+    set memory_electricity_price_offpeak []
     
     let h 0
     while [h < memory_calculation_of_savings] [  
@@ -992,18 +1015,19 @@ to setup_households
     
     let i 0
     while [i < memory_calculation_of_savings] [  
-      set memory_electricity_price_day lput Electricity_price_day memory_electricity_price_day
+      set memory_electricity_price_peak lput Electricity_price_peak memory_electricity_price_peak
       set i i + 1]
     
     let j 0
     while [j < memory_calculation_of_savings] [  
-      set memory_electricity_price_night lput Electricity_price_night memory_electricity_price_night
+      set memory_electricity_price_offpeak lput Electricity_price_offpeak memory_electricity_price_offpeak
       set j j + 1]
   ]
   
   ask households [
     if category_number = 2 [
-      set list_households_without_ISG_appliance_encountered []]
+      set list_households_without_ISG_appliance_encountered []
+      set list_households_without_ISG_appliance_encountered_after_pruchase []]
     if category_number = 4 [
       set list_households_with_ISG_appliance_encountered []]
   ]
@@ -1021,6 +1045,14 @@ to setup_households
     set m_list_5 []
     set threshold_enough_savings_list []
     set threshold_investment_risk_accepted []
+    set Consumption_of_appliance_part_1 []
+    set Consumption_of_appliance_part_2 []
+    set Consumption_of_appliance_part_3 []
+    set Consumption_of_appliance_part_4 []
+    set Consumption_of_appliance_part_5 []
+    set Consumption_of_appliance_part_6 []
+    set Consumption_of_appliance_part_7 []
+    set Consumption_of_appliance_part_8 []
     set threshold_enough_information_list []
     set threshold_social_recognition_list []
     set threshold_percentage_positive_information_needed_list []
@@ -1030,14 +1062,156 @@ to setup_households
     set threshold_purchase_acceptability_list []
     set total_savings_after_purchase_list []
     set memory_electricity_bill_list []
-    set max_memory_electricity_bill 24
-    set max_memory_electricity_bill_bounded_rationality 6
+;    set max_memory_electricity_bill 24
+;    set max_memory_electricity_bill_bounded_rationality 6
     set awareness_step_done 0
     set information_step_done 0
     set evaluation_step_done 0
+    set my_memory_savings_for_renewal []
+    ifelse Switch_uniformity_number_of_month_before_evaluation = TRUE and Normality_of_household_properties = TRUE
+    [set my_Number_of_month_before_decision_rejection int (random-normal (Number_of_month_before_decision_rejection + 0.5) (10 * variation_of_SD_normal_distribution_properties_of_households))  ]
+    [set my_Number_of_month_before_decision_rejection Number_of_month_before_decision_rejection]
   ]
   
+  ask households [
+    let y 1
+    while [y < category_number][set y y + 1]
+    run (word "set my_change_threshold_to_reach_for_weights change_threshold_to_reach_for_weights_"y)]
+
+  setup_links
+
+
+
+
+  
+  ;first the caracteristics of each ISG appliances are set into lists
+  
+  let g 0
+  let h 0
+  while [g < length data_2][
+    if runresult (word "Switch_appliance_"(g + 1)) = TRUE [set h h + 1]
+    set g g + 1]
+  set number_of_appliance_switched_on h
+  
+  let i 0
+  while [i < length data_2][
+    if (runresult (word "Switch_appliance_"(i + 1))) = TRUE [
+      run (word "set ISG_appliance_part_"(i + 1) " item "i" data_2")
+      let j (runresult (word "Switch_appliance_"(i + 1)))    ]
+    set i i + 1]
+  
+  ask households [
+    if Owner_of_ISG_appliance = 1 [
+      let u 1
+      while [u <= length data_2][
+        ifelse (runresult (word "Switch_appliance_"u)) = False [set u u + 1][
+          run (word "set my_ISG_appliance_part_"u"_costs item 0 ISG_appliance_part_"u)
+          set u u + 1]]]]
+    
+  
+  ;the development trend of the ISG appliance is made here
+  set scenario_specific_list []
+  set scenario_specific_list lput (list 1 0) scenario_specific_list
+  set scenario_specific_list lput (list 2 0) scenario_specific_list
+  set scenario_specific_list lput (list 3 0) scenario_specific_list
+  set scenario_specific_list lput (list 4 0) scenario_specific_list
+  
+  set complexity_list scenario_specific_list
+  set complexity_list_1 3
+  set complexity_list_2 2
+  set complexity_list_3 1
+  set complexity_list_4 2
+  set temp_for_creation_scenario_properties (word "complexity_list")
+  structure_creation_list_scenarios
+   
+  set Probability_of_failure_list scenario_specific_list
+  set Probability_of_failure_list_1 0.03
+  set Probability_of_failure_list_2 0.0075
+  set Probability_of_failure_list_3 0.0025
+  set Probability_of_failure_list_4 0.0025
+  set temp_for_creation_scenario_properties (word "Probability_of_failure_list")
+  structure_creation_list_scenarios
+  
+  
+  ;here we set the duration of each of the market phase of the product
+  ; let introduction_phase 30
+  ; let growth_phase 30
+  ; let maturity_phase 360
+  let decline_phase run_length - introduction_phase - growth_phase - maturity_phase
+  if decline_phase < 0 [set decline_phase 0]
+  set product_lifecycle []
+  set product_lifecycle lput introduction_phase product_lifecycle
+  set product_lifecycle lput growth_phase product_lifecycle
+  set product_lifecycle lput maturity_phase product_lifecycle
+  set product_lifecycle lput decline_phase product_lifecycle
+  
+  
+;  set Learning_rate_appliances_1 0.97
+  set Learning_rate_appliances_2 0.97
+  set Learning_rate_appliances_3 0.97
+  set Learning_rate_appliances_4 0.97
+  set Learning_rate_appliances_5 0.97
+  set Learning_rate_appliances_6 0.97
+  set Learning_rate_appliances_7 0.97
+  set Learning_rate_appliances_8 0.97
+
+  set_relevant_lists_to_0
 end
+
+to read-data
+  ;first data households
+  set filename_1 "Dataset_of_households_temp.txt"
+  set number-of-columns_1 5
+  
+  set data_1 []
+  let line_1 []
+  let input-item_1 0
+  
+  file-open filename_1
+  repeat number-of-columns_1 [set input-item_1 file-read]
+  
+  while [not file-at-end?] [
+    set line_1 []
+    repeat number-of-columns_1 [
+      if not file-at-end? [
+        set input-item_1 file-read
+        set line_1 lput input-item_1 line_1
+      ]
+    ]
+    set data_1 lput line_1 data_1
+  ]
+  file-close
+;  show (word length data_1 " number of households read in.")
+  
+  ;then data ISG appliance
+  set filename_2 "Dataset_of_ISG_appliances_temp.txt"
+  set number-of-columns_2 12
+  
+  set data_2 []
+  let line_2 []
+  let input-item_2 0
+  
+  file-open filename_2
+  repeat number-of-columns_2 [set input-item_2 file-read]
+  
+  while [not file-at-end?] [
+    set line_2 []
+    repeat number-of-columns_2 [
+      if not file-at-end? [
+        set input-item_2 file-read
+        set line_2 lput input-item_2 line_2
+      ]
+    ]
+    set data_2 lput line_2 data_2
+  ]
+  file-close
+;  show (word length data_2 " ISG appliances read in.")
+end
+
+
+
+
+
 
 
 to setup_links
@@ -1048,23 +1222,35 @@ to setup_links
   let my_combined_interaction_long_links 0
   ask households [
     
+
+
+
     let a 0
     while [a < 5][
       if Category_number = (item 0 (item a A_S_L_Unique_interaction))
-      [set my_unique_interaction_links int((item 1 (item a A_S_L_Unique_interaction)) * A_S_L_Unique_interaction_multiplicator + 0.5)]
+      [let d runresult (word "Interaction_"(a + 1)"_multiplicator")
+        set my_unique_interaction_links int((item 1 (item a A_S_L_Unique_interaction)) * d + 0.5)]
       set a a + 1]
     
     let b 0
     while [b < 5][
       if Category_number = (item 0 (item b A_S_L_Combined_interaction_short))
-      [set my_combined_interaction_short_links int((item 1 (item b A_S_L_Combined_interaction_short)) * A_S_L_Combined_interaction_short_multiplicator + 0.5)]
+      [
+        let f runresult (word "Interaction_"(b + 1)"_multiplicator")
+        set my_combined_interaction_short_links int((item 1 (item b A_S_L_Combined_interaction_short)) * f + 0.5)]
       set b b + 1]
     
     let c 0
     while [c < 5][
       if Category_number = (item 0 (item c A_S_L_Combined_interaction_long))
-      [set my_combined_interaction_long_links int((item 1 (item c A_S_L_Combined_interaction_long)) * A_S_L_Combined_interaction_long_multiplicator + 0.5)]
+      [set my_combined_interaction_long_links int((item 1 (item c A_S_L_Combined_interaction_long)) + 0.5)]
       set c c + 1]
+    
+    
+
+    
+;      let t 10
+;  ask household 50 [set my_unique_interaction_links my_unique_interaction_links * t set my_combined_interaction_short_links  my_combined_interaction_short_links * t  set my_combined_interaction_long_links my_combined_interaction_long_links * t ]
     
     ifelse (neighbor_interactions = TRUE and friend_interactions = TRUE and random_interactions = TRUE )[
       set Amount_neighbor_interactions my_combined_interaction_short_links
@@ -1075,6 +1261,8 @@ to setup_links
       set Amount_neighbor_interactions my_combined_interaction_short_links
       set Amount_friend_interactions my_combined_interaction_long_links
       set Amount_random_interactions 0]
+    
+    
     
     [ifelse (neighbor_interactions = TRUE and random_interactions = TRUE )[
       set Amount_neighbor_interactions my_combined_interaction_short_links
@@ -1103,7 +1291,7 @@ to setup_links
     [print "Household says: Please give me some interactions!"
     ]]]]]]]
   ]
-  
+
   
   
   If Normality_of_adopter_properties = true and Switch_uniformity_interactions = True and friend_interactions = True[
@@ -1172,71 +1360,7 @@ end
 
 
 
-to setup_ISG_appliance
-  
-  ;first the caracteristics of each ISG appliances are set into lists
-  
-  let c 0
-  let d 0
-  while [c < length data_2][
-    if runresult (word "Switch_appliance_"(c + 1)) = TRUE [set d d + 1]
-    set c c + 1]
-  set number_of_appliance_switched_on d
-  
-  let a 0
-  while [a < length data_2][
-    if (runresult (word "Switch_appliance_"(a + 1))) = TRUE [
-      run (word "set ISG_appliance_part_"(a + 1) " item "a" data_2")
-      let f (runresult (word "Switch_appliance_"(a + 1)))    ]
-    set a a + 1]
-  
-  
-  ;the development trend of the ISG appliance is made here
-  set scenario_specific_list []
-  set scenario_specific_list lput (list 1 0) scenario_specific_list
-  set scenario_specific_list lput (list 2 0) scenario_specific_list
-  set scenario_specific_list lput (list 3 0) scenario_specific_list
-  set scenario_specific_list lput (list 4 0) scenario_specific_list
-  
-  set complexity_list scenario_specific_list
-  set complexity_list_1 3
-  set complexity_list_2 2
-  set complexity_list_3 1
-  set complexity_list_4 2
-  set temp_for_creation_scenario_properties (word "complexity_list")
-  structure_creation_list_scenarios
-   
-  set Probability_of_failure_list scenario_specific_list
-  set Probability_of_failure_list_1 0.03
-  set Probability_of_failure_list_2 0.0075
-  set Probability_of_failure_list_3 0.0025
-  set Probability_of_failure_list_4 0.0025
-  set temp_for_creation_scenario_properties (word "Probability_of_failure_list")
-  structure_creation_list_scenarios
-  
-  
-  ;here we set the duration of each of the market phase of the product
-  ; let introduction_phase 30
-  ; let growth_phase 30
-  ; let maturity_phase 360
-  let decline_phase run_length - introduction_phase - growth_phase - maturity_phase
-  if decline_phase < 0 [set decline_phase 0]
-  set product_lifecycle []
-  set product_lifecycle lput introduction_phase product_lifecycle
-  set product_lifecycle lput growth_phase product_lifecycle
-  set product_lifecycle lput maturity_phase product_lifecycle
-  set product_lifecycle lput decline_phase product_lifecycle
-  
-  
-  ;set Learning_rate_appliances_1 0.97
-  ;set Learning_rate_appliances_2 0.97
-  ;set Learning_rate_appliances_3 0.97
-  ;set Learning_rate_appliances_4 0.97
-  set Learning_rate_appliances_5 0.97
-  set Learning_rate_appliances_6 0.97
-  set Learning_rate_appliances_7 0.97
-  set Learning_rate_appliances_8 0.97
-end
+
 
 to set_relevant_lists_to_0
   set list_new_households_with_ISG_appliances []
@@ -1250,27 +1374,7 @@ to set_relevant_lists_to_0
 end
 
 
-to setup_for_ema
-  ;set electricity_price_day_fix 0.365
-  ;set electricity_price_night_fix 0.155
-  ;set introduction_phase 30
-  ;set growth_phase 30
-  ;set maturity_phase 300
-  ;set memory 2
-  ;set Moment_of_data_leak_event 20
-  set Duration_information_complexity_validity 48
-  ;set run_length 10
-  ;set Diffusion_information_number_links 3
-  set Degree_of_correlation_with_previous_data 0.5
-  ;set Multiply_media_interaction 1
-  ;set Minimum_savings_for_majority_of_population 1.3
-  set Amount_of_month_before_purchase_enthousiasm_stops 1
-  ;set variation_of_SD_normal_distribution_properties_of_households 1
-  ;set variation_of_SD_normal_distribution_properties_of_adopters 1
-  
-  
-  ;set temp_name13 1
-end
+
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -1312,8 +1416,10 @@ to go
   
   ask neighborlinks [ die]
   ask randomlinks [ die]
-;  ifelse ticks < 100[
-    tick
+;  ifelse ticks < 150[
+    tick 
+;    ][ ;print "Simulation is finished"
+;     stop]
 ;  ][profiler:stop          ;; stop profiling
 ;  print profiler:report  ;; view the results
 ;  profiler:reset         ;; clear the data
@@ -1330,22 +1436,24 @@ end
 to Update_environment
   
   if Fix_electricity_prices = False [
-    if Progressive_increase_of_prices = True [set Initial_Electricity_price_day Initial_Electricity_price_day + 0.0008333]
+    if Progressive_increase_of_prices = True [set Initial_Electricity_price_peak Initial_Electricity_price_peak + 0.0008333]
       let d random-normal 1 0.2
-      let g (Electricity_price_day - Initial_Electricity_price_day) / Initial_Electricity_price_day
+      let g (Electricity_price_peak - Initial_Electricity_price_peak) / Initial_Electricity_price_peak
       let h 0
       if g >= 0.25 [set h (g - 0.25) ^ 2]
       if g <= (0 - 0.25) [set h (g + 0.25) ^ 2]
-    set Electricity_price_day (Electricity_price_day * correlation_electricity_price + Electricity_price_day * d * (1 - correlation_electricity_price)) * (1 - h) + Initial_Electricity_price_day * h
+    set Electricity_price_peak (Electricity_price_peak * correlation_electricity_price + Electricity_price_peak * d * (1 - correlation_electricity_price)) * (1 - h) + Initial_Electricity_price_peak * h
     
-    let f random-normal Night_percentage_of_day_price 0.15
-    set Electricity_price_night Electricity_price_night * correlation_electricity_price + Electricity_price_day * f * (1 - correlation_electricity_price)
+    let f random-normal offpeak_percentage_of_peak_price 0.15
+    set Electricity_price_offpeak Electricity_price_offpeak * correlation_electricity_price + Electricity_price_peak * f * (1 - correlation_electricity_price)
   ]
   
   if Fix_electricity_prices = true [
-    set Electricity_price_day Electricity_price_night_fix + difference_between_day_and_night_price
-    set Electricity_price_night Electricity_price_night_fix]
+    set Electricity_price_peak Electricity_price_offpeak_fix + difference_between_peak_and_offpeak_price
+    set Electricity_price_offpeak Electricity_price_offpeak_fix]
   
+
+
 end
 
 
@@ -1388,8 +1496,11 @@ to update_status_product
   let g 1
   while [g <= length data_2][
     ifelse (runresult (word "Switch_appliance_"g)) = False [set g g + 1][
-      run (word "set " "ISG_appliance_part_"g"_costs ((item 0 ISG_appliance_part_"g")*((ticks + 1) / (1))^(log (Learning_rate_appliances_"g") 2))")
+      run (word "set " "ISG_appliance_part_"g"_costs ((item 0 ISG_appliance_part_"g" - Height_of_purchase_subsidy)*((ticks + 1) / (1))^(log (Learning_rate_appliances_"g") 2))")
       set g g + 1]]
+  
+    set minimum_amount_savings_bounded_rational ((ISG_appliance_part_1_costs - item 2 ISG_appliance_part_1) / (item 0 ISG_appliance_part_1 - item 2 ISG_appliance_part_1)) * Initial_minimum_amount_savings_bounded_rational
+;  print minimum_amount_savings_bounded_rational
 end
 
 
@@ -1516,7 +1627,7 @@ end
 
 to update_memory_for_savings_calculation
   ;first we update the memory of monthly total electricity costs
-  
+
   ask households [
     set memory_montly_electricity_consumption remove-item 0 memory_montly_electricity_consumption
     set temp_name2 Initial_monthly_electricity_consumption
@@ -1525,19 +1636,23 @@ to update_memory_for_savings_calculation
       set multiplication_SD 20
       set temp_name8 1 ; min0
       set temp_name9 0 ; max1
-      structure_normality_each_step_no_int]
+;      print ""
+;      print temp_name2
+      structure_normality_each_step_no_int
+;      print temp_name2
+    ]
     set memory_montly_electricity_consumption lput temp_name2 memory_montly_electricity_consumption]
   
   
-  ;then we update the memory of electricity price at day
+  ;then we update the memory of electricity price at peak
   ask households [
-    set memory_electricity_price_day remove-item 0 memory_electricity_price_day
-    set memory_electricity_price_day lput Electricity_price_day memory_electricity_price_day]
+    set memory_electricity_price_peak remove-item 0 memory_electricity_price_peak
+    set memory_electricity_price_peak lput Electricity_price_peak memory_electricity_price_peak]
   
-  ;then we update the memory of electricity price at night
+  ;then we update the memory of electricity price at offpeak
   ask households [
-    set memory_electricity_price_night remove-item 0 memory_electricity_price_night
-    set memory_electricity_price_night lput Electricity_price_night memory_electricity_price_night]
+    set memory_electricity_price_offpeak remove-item 0 memory_electricity_price_offpeak
+    set memory_electricity_price_offpeak lput Electricity_price_offpeak memory_electricity_price_offpeak]
 end
 
 
@@ -1550,6 +1665,31 @@ to update_households_with_without_ISGapp_encountered
       set temp_name2 1 ;item in list that contains memory 
       structure_update_memory_in_list
       set list_households_without_ISG_appliance_encountered temp_name]
+    
+    if (item 0 (item 1 (item 0 Decision_making_status_list))) = 1 and category_number = 2 [
+      set temp_name list_households_without_ISG_appliance_encountered_after_pruchase
+      set temp_name2 1 ;item in list that contains memory 
+      structure_update_memory_in_list
+      set list_households_without_ISG_appliance_encountered_after_pruchase temp_name
+      let a 0
+      let f 0
+      while [a < length households_with_whom_interacted] [
+        let Decision_making_status_list_copy []
+        set f item a households_with_whom_interacted
+        if [category_number] of household f > 2 [
+          ask household f [
+            ask myself [ set Decision_making_status_list_copy [Decision_making_status_list] of myself]]
+          let sub_list []
+          set sub_list lput item a households_with_whom_interacted sub_list
+          set sub_list lput (memory * 2) sub_list
+          if item 0 (item 1 (item 0 Decision_making_status_list_copy)) = 1 [set sub_list lput 1 sub_list]
+          if item 0 (item 1 (item 0 Decision_making_status_list_copy)) = 0 [set sub_list lput 0 sub_list]
+          set list_households_without_ISG_appliance_encountered_after_pruchase lput sub_list list_households_without_ISG_appliance_encountered_after_pruchase]
+        set a a + 1]]
+      
+      
+    
+    
     
     if (item 2 (item 1 (item 0 Decision_making_status_list))) = 1 and (item 0 (item 1 (item 0 Decision_making_status_list))) = 0 and category_number = 4 [
       set temp_name list_households_with_ISG_appliance_encountered
@@ -1579,7 +1719,7 @@ to update_savings_made_after_purchase
     if item 0 (item 1 (item 0 Decision_making_status_list)) = 1 [
       ; so first calculate savings
       set total_savings_after_purchase 0
-      let monthly_electricity_costs (monthly_electricity_consumption * electricity_price_day * .8 + monthly_electricity_consumption * electricity_price_night * .2)
+      let monthly_electricity_costs (monthly_electricity_consumption * electricity_price_peak * .8 + monthly_electricity_consumption * electricity_price_offpeak * .2)
       let g 1
       let n 0
       while [g <= length data_2] [
@@ -1587,89 +1727,147 @@ to update_savings_made_after_purchase
           let a 0
           let b 0
           let k runresult (word "(item 4 ISG_appliance_part_"g" * item 5 ISG_appliance_part_"g" * item 6 ISG_appliance_part_"g")")
+          
+          set temp_name2 k
+          if Normality_of_household_properties = True and Calculation_new_normality_properties_adopters = "each run" and Switch_uniformity_household_consumption_of_appliances = true [
+            set temp_name7 (word "Consumption_of_appliance_part_"g)
+            set multiplication_SD 1
+            set temp_name8 1 ; min0
+            set temp_name9 0 ; max1
+            structure_normality_each_run_no_int]
+          
+          if Normality_of_household_properties = True and Calculation_new_normality_properties_adopters = "each step" and Switch_uniformity_household_consumption_of_appliances = true [
+            set temp_name7 (word "Previous_consumption_of_appliance_part_"g)
+            set multiplication_SD 1
+            set temp_name8 1 ; min0
+            set temp_name9 0 ; max1
+            structure_normality_each_step_no_int]
+          
+          set k temp_name2
           if amount_of_householders = 1 [set k k / 2]
           if amount_of_householders = 3 [set k k * 1.5]
           if amount_of_householders = 4 [set k k * 2]
           if amount_of_householders = 5 [set k k * 2.5]
-          let c (k * electricity_price_day * (item 7 runresult ( word "ISG_appliance_part_"g))) + (k * electricity_price_night * (item 8 runresult ( word "ISG_appliance_part_"g)))
-          let d (k * electricity_price_day * (item 9 runresult ( word "ISG_appliance_part_"g))) + (k * electricity_price_night * (item 10 runresult ( word "ISG_appliance_part_"g)))
+          let c (k * electricity_price_peak * (item 7 runresult ( word "ISG_appliance_part_"g))) + (k * electricity_price_offpeak * (item 8 runresult ( word "ISG_appliance_part_"g)))
+          let d (k * electricity_price_peak * (item 9 runresult ( word "ISG_appliance_part_"g))) + (k * electricity_price_offpeak * (item 10 runresult ( word "ISG_appliance_part_"g)))
           let m c - d
           ifelse Communication_satisfaction_incl_fixed_costs = TRUE [
           ifelse item 11 runresult (word "ISG_appliance_part_"g) = 2 
           [set n runresult (word "(my_ISG_appliance_part_"g"_costs ) / (item 3 ISG_appliance_part_"g" * 12)")]
           [set n runresult (word "(my_ISG_appliance_part_"g"_costs - item 2 ISG_appliance_part_"g") / (item 3 ISG_appliance_part_"g" * 12)")]][set n 0]
-          let p m + n
-          set total_savings_after_purchase total_savings_after_purchase + p]
+          let p m - n
+          set total_savings_after_purchase total_savings_after_purchase + p
+          ]
         set g g + 1]  
       set total_savings_after_purchase total_savings_after_purchase / number_of_appliance_switched_on  
       
-      if length total_savings_after_purchase_list > memory
+      if length total_savings_after_purchase_list > 20 ;memory
       [set total_savings_after_purchase_list remove-item 0 total_savings_after_purchase_list]
       set total_savings_after_purchase_list lput total_savings_after_purchase total_savings_after_purchase_list
-      
-;      let b 0
-;      let temp_list []
-;      while [length total_savings_after_purchase_list > b and b < 3][
-;        let a length total_savings_after_purchase_list
-;        set temp_list lput item (a - (b + 1)) total_savings_after_purchase_list temp_list
-;        set b b + 1]
+
       
       let f 0
       while [f < (Category_number - 1)] [ set f f + 1]
-      let q item 1 item f A_S_L_valuation_of_savings_bounded_rational
-      if Switch_minimum_amount_savings_bounded_rational = TRUE [set q Change_minimum_amount_savings_bounded_rational]
+      let q 0
+      if rationality =  "neoclassical_rationality" [set q item 1 item f A_S_L_valuation_of_savings_neoclassical_rational]
+      if rationality =  "bounded_rationality" [set q item 1 item f A_S_L_valuation_of_savings_bounded_rational
+        if Switch_minimum_amount_savings_bounded_rational = TRUE [set q minimum_amount_savings_bounded_rational]]
+      
       set temp_name2 q
-      ;print ""
-      ;print temp_name2
       if Normality_of_adopter_properties = True and Calculation_new_normality_properties_adopters = "each run" and Switch_uniformity_valuation_of_savings = true[
         set temp_name7 (word "threshold_enough_savings_list ")
-        set multiplication_SD 0.2
+        set multiplication_SD 1
         set temp_name8 0 ; min0
         set temp_name9 0 ; max1
         structure_normality_each_run_no_int]
       
-      if Normality_of_adopter_properties = True and Calculation_new_normality_properties_adopters = "each step" and Switch_uniformity_valuation_of_savings = true[
+      if Normality_of_adopter_properties = True and Calculation_new_normality_properties_adopters = "each step" and Switch_uniformity_valuation_of_savings = true and category_number > 2[
         set temp_name7 (word "Previous_threshold_enough_savings_for_correlation")
-        set multiplication_SD 0.2
+        ifelse category_number > 2 [set multiplication_SD Multiplication_SD_minimum_amount_of_savings * category_number][set multiplication_SD 1]
         set temp_name8 0 ; min0
         set temp_name9 0 ; max1
         structure_normality_each_step_no_int]
-      ;print temp_name2
 
-      ifelse mean total_savings_after_purchase_list >= temp_name2 [set satisfaction_savings 1][set satisfaction_savings 0]]]
-       ;print mean total_savings_after_purchase_list
-       ;print satisfaction_savings
-      
-      
-;      ; then calculate satisfaction
-;      ifelse length total_savings_after_purchase_list < Amount_of_month_before_purchase_enthousiasm_stops [
-;        let c (5 / Minimum_savings_for_majority_of_population)
-;        set satisfaction_savings (((1 * (5 / Minimum_savings_for_majority_of_population)) - ((length total_savings_after_purchase_list - 1) * (1 / Amount_of_month_before_purchase_enthousiasm_stops))) + (last_savings_made * 0.1 * ((length total_savings_after_purchase_list - 1) * (1 / Amount_of_month_before_purchase_enthousiasm_stops))))]
-;      [set satisfaction_savings last_savings_made * 0.1]
-;      if satisfaction_savings < 0 [set satisfaction_savings 0]]]
+      ifelse mean total_savings_after_purchase_list >= temp_name2 [set satisfaction_savings 1][set satisfaction_savings -1]
+      if length my_memory_savings_for_renewal > length_memory_savings_for_renewal [set my_memory_savings_for_renewal remove-item 0 my_memory_savings_for_renewal]
+      set my_memory_savings_for_renewal lput satisfaction_savings my_memory_savings_for_renewal
+       ]]
 end
 
 to update_list_memory_of_electricity_price
   ask households [
     if length memory_electricity_bill_list > max_memory_electricity_bill [
       set memory_electricity_bill_list remove-item 0 memory_electricity_bill_list]
-      let monthly_electricity_costs (monthly_electricity_consumption * electricity_price_day * .8 + monthly_electricity_consumption * electricity_price_night * .2)
+      let monthly_electricity_costs (monthly_electricity_consumption * electricity_price_peak * .8 + monthly_electricity_consumption * electricity_price_offpeak * .2)
   set memory_electricity_bill_list lput monthly_electricity_costs memory_electricity_bill_list]
 end
 
 to update_replacement_of_ISG_appliance
   
+;  ask households [
+;    if Replacement_ISG_appliance_possible = TRUE [
+;      if item 2 (item 1 (item 0 Decision_making_status_list)) = 0 [set Lifetime_of_my_appliance Lifetime_of_my_appliance - 1]
+;      if item 0 (item 1 (item 0 Decision_making_status_list)) = 1 [
+;        set Lifetime_of_my_appliance Lifetime_of_my_appliance - 1 
+;        if Lifetime_of_my_appliance <= 0 [
+;          let a 0
+;          let positive 0
+;          let negative 0
+;          while [a < length my_memory_savings_for_renewal]
+;          [if item a my_memory_savings_for_renewal = 1 [set positive positive + 1]
+;            if item a my_memory_savings_for_renewal = -1 [set negative negative + 1]
+;            set a a + 1]
+;          ifelse negative >= positive and Switch_never_adopt_again_after_deception = TRUE[
+;          set Decision_making_status_list [[1 [0 0 1 1]] [2 [0]] [3 [0 0 0 0 0]] [4 [0]]]
+;          set color white
+;          set satisfaction_savings -1]
+;          [set Decision_making_status_list [[1 [0 0 1 0]] [2 [0]] [3 [0 0 0 0 0]] [4 [0]]]
+;          set color yellow
+;          set satisfaction_savings 1]
+;        ]]]]
+  
   ask households [
-    if Replacement_ISG_appliance_possible = TRUE [
-      if item 0 (item 1 (item 0 Decision_making_status_list)) = 1 [
-        set Lifetime_of_my_appliance Lifetime_of_my_appliance - 1 
-        if Lifetime_of_my_appliance <= 0 [
-          set Decision_making_status_list [[1 [0 0 1]] [2 [0]] [3 [0 0 0 0 0]] [4 [0]]]
-          set color yellow
-          set awareness_step_done 1
-          set information_step_done 0
-          set evaluation_step_done 0
+    if Replacement_ISG_appliance_possible_for_innovators = TRUE and ticks < introduction_phase[
+      if item 0 (item 1 (item 0 Decision_making_status_list)) = 1 [ 
+        if category_number = 1 [
+          set Lifetime_of_my_appliance_innovator Lifetime_of_my_appliance_innovator - 1
+          if Lifetime_of_my_appliance_innovator <= 0 
+          [set Decision_making_status_list [[1 [0 0 1 0]] [2 [0]] [3 [0 0 0 0 0]] [4 [0]]]
+            set color yellow
+            set satisfaction_savings 1]]]]]
+  
+  Ask households [
+    if item 0 (item 1 (item 0 Decision_making_status_list)) = 1 [
+      if Switch_never_adopt_again_after_deception_short = TRUE[
+        set Lifetime_of_my_appliance Lifetime_of_my_appliance - 1
+        ;        print ""
+        ;        print Lifetime_of_my_appliance
+        ;        print Lifetime_ISG_appliance * 12
+        if (Lifetime_ISG_appliance * 12) - Lifetime_of_my_appliance = my_Number_of_month_before_decision_rejection [
+          if Base_for_evaluation = "Based_on_costs" [
+            let a 0
+            let positive 0
+            let negative 0
+            while [a < length my_memory_savings_for_renewal]
+            [if item a my_memory_savings_for_renewal = 1 [set positive positive + 1]
+              if item a my_memory_savings_for_renewal = -1 [set negative negative + 1]
+              set a a + 1]
+            if category_number > 1 [
+              if negative >= positive [set Decision_making_status_list [[1 [0 0 1 1]] [2 [0]] [3 [0 0 0 0 0]] [4 [0]]]
+                set color white
+                set satisfaction_savings -1]]]
+          if Base_for_evaluation = "Based_on_number_of_adopted" [
+            if category_number = 2 [
+              let d 0
+              let percentage_households_encountered_with_ISG_appliance_after_purchase 0
+              while [d < length list_households_without_ISG_appliance_encountered_after_pruchase]
+              [if item 2 (item d list_households_without_ISG_appliance_encountered_after_pruchase) = 1 [set percentage_households_encountered_with_ISG_appliance_after_purchase percentage_households_encountered_with_ISG_appliance_after_purchase + 1]
+                set d d + 1]
+              if (percentage_households_encountered_with_ISG_appliance_after_purchase / length list_households_without_ISG_appliance_encountered_after_pruchase) < minimum_percentage_for_no_rejection [set Decision_making_status_list [[1 [0 0 1 1]] [2 [0]] [3 [0 0 0 0 0]] [4 [0]]]
+                set color white
+                set satisfaction_savings -1]]]
         ]]]]
+   
 end
 
 
@@ -1732,7 +1930,7 @@ to setup_interactions_random
       set Amount_random_interactions int (temp_name2 + 0.5)]]
 
     ask households [set my_list_of_random_interactions []
-    set amount_of_random_interactions_I_still_need Amount_random_interactions]
+      set amount_of_random_interactions_I_still_need Amount_random_interactions]
 
   
   ask households [
@@ -1740,7 +1938,7 @@ to setup_interactions_random
       let d (amount_of_random_interactions_I_still_need - length my_list_of_random_interactions)
       let c 0
       while [c < d][
-        let b one-of households with [SELF != myself and amount_of_neighbor_interactions_I_still_need > 0]
+        let b one-of households with [SELF != myself and amount_of_random_interactions_I_still_need > 0]
         let a [household_number] of b
         create-randomlink-with household a [if Dont_show_links = TRUE [hide-link]]
         set my_list_of_random_interactions lput a my_list_of_random_interactions
@@ -1751,7 +1949,6 @@ to setup_interactions_random
         set c c + 1]]]
 
 end
-
 
 
 to check_for_awareness_of_interactions
@@ -1778,8 +1975,11 @@ to check_for_awareness_of_interactions
         set my_list_of_random_interactions_temp remove-item 0 my_list_of_random_interactions_temp]]
 
 
+
   ask households [
-    if (item 2 (item 1 (item 0 Decision_making_status_list))) = 0 and (item 0 (item 1 (item 0 Decision_making_status_list))) = 0  [
+    let z 0
+    ifelse Switch_household_already_have_appliance_at_start = TRUE [ifelse lifetime_of_my_appliance = 0 [set z 0][set z 1]][set z 1]
+    if (item 2 (item 1 (item 0 Decision_making_status_list))) = 0 and (item 0 (item 1 (item 0 Decision_making_status_list))) = 0 and z = 1[
       
       ; first each household ask to their interactions if they have a ISG appliance. If it is the case, they add a sublist to their ISG_appliance_awareness_process.
       ; a sub_list is composed of two elements: the first is a 1 which corresponds to the fact that the household with whom contact was made had a ISG appliance
@@ -1836,8 +2036,8 @@ to check_for_awareness_of_interactions
         set i i + 1]
       
       if Normality_of_adopter_properties = True and Calculation_new_normality_properties_adopters = "each step" and Switch_uniformity_awareness = True[
-        print ""
-        print Initial_my_ISG_appliance_awareness_threshold
+;        print ""
+;        print Initial_my_ISG_appliance_awareness_threshold
         set temp_name7 (word "Previous_my_ISG_appliance_awareness_threshold_for_correlation")
         set temp_name2 Initial_my_ISG_appliance_awareness_threshold
         set multiplication_SD 1
@@ -1845,7 +2045,7 @@ to check_for_awareness_of_interactions
         set temp_name9 0 ; max1
         structure_normality_each_step_int_min0
         set My_ISG_appliance_awareness_threshold int(temp_name2 + 0.5)
-        print My_ISG_appliance_awareness_threshold
+;        print My_ISG_appliance_awareness_threshold
       ]
       
       if temp_total_awareness >= (My_ISG_appliance_awareness_threshold * memory) [
@@ -1864,7 +2064,7 @@ to receive_information_from_interactions
   ;So we deal with experience information. In this model it is assumed that experience information can only be found from interaction with households
   ;first households look if one of the household with whom he interacted has knowledge of a reliability problem
   ask households [
-    if (item 1 (item 1 (item 0 Decision_making_status_list)) = 0) and (item 2 (item 1 (item 0 Decision_making_status_list)) = 1) [
+    if (item 1 (item 1 (item 0 Decision_making_status_list)) = 0) and (item 2 (item 1 (item 0 Decision_making_status_list)) = 1) and (item 3 (item 1 (item 0 Decision_making_status_list)) = 0)[
       
       let d 0
       let f 0
@@ -1884,7 +2084,8 @@ to receive_information_from_interactions
           set temp_name2 0 ; m
           structure_preferred_information_source
           set sub_list_1 lput temp_name2 sub_list_1
-          set sub_list_1 lput memory sub_list_1
+          Ifelse category_number > 2 [set sub_list_1 lput (memory + Increase_in_memory_for_late_categories) sub_list_1]
+          [set sub_list_1 lput memory sub_list_1]
           set sub_list_1 lput 0 sub_list_1
           set Knowledge_of_failure_event_list lput sub_list_1 Knowledge_of_failure_event_list]
         set d d + 1]
@@ -1935,7 +2136,7 @@ to receive_information_from_interactions
         let r 0
         while [h < length threshold_to_reach_for_weights_information_complexity][
           if item 0 (item h threshold_to_reach_for_weights_information_complexity) = Category_number [
-            set r (item 1 (item h threshold_to_reach_for_weights_information_complexity)) * change_threshold_to_reach_for_weights_information_complexity_only_per_process]
+            set r (item 1 (item h threshold_to_reach_for_weights_information_complexity)) * change_threshold_to_reach_for_weights_information_complexity_only_per_process * my_change_threshold_to_reach_for_weights]
           set h h + 1]
                
         if w >= r * my_valuation_households_ISG_appliance_encountered_for_social_recognition[
@@ -1946,7 +2147,7 @@ to receive_information_from_interactions
   ;then we do the same for knowledge about leakage events
   
   ask households [
-    if (item 1 (item 1 (item 0 Decision_making_status_list)) = 0) and (item 2 (item 1 (item 0 Decision_making_status_list)) = 1) [
+    if (item 1 (item 1 (item 0 Decision_making_status_list)) = 0) and (item 2 (item 1 (item 0 Decision_making_status_list)) = 1) and (item 3 (item 1 (item 0 Decision_making_status_list)) = 0)[
       ifelse data_leak_event  = TRUE[
         
         let d 0
@@ -1967,7 +2168,8 @@ to receive_information_from_interactions
             set temp_name2 0 ; s
             structure_preferred_information_source
             set sub_list_1 lput temp_name2 sub_list_1
-            set sub_list_1 lput memory sub_list_1
+            Ifelse category_number > 2 [set sub_list_1 lput (memory + Increase_in_memory_for_late_categories) sub_list_1]
+            [set sub_list_1 lput memory sub_list_1]
             set sub_list_1 lput 0 sub_list_1
             set knowledge_of_data_leak_event_list lput sub_list_1 knowledge_of_data_leak_event_list]
           set d d + 1]
@@ -2024,7 +2226,7 @@ to receive_information_from_interactions
           let r 0
           while [h < length threshold_to_reach_for_weights_information_data_leak][
             if item 0 (item h threshold_to_reach_for_weights_information_data_leak) = Category_number [
-              set r (item 1 (item h threshold_to_reach_for_weights_information_data_leak)) * change_threshold_to_reach_for_weights_information_data_leak_only_per_process]
+              set r (item 1 (item h threshold_to_reach_for_weights_information_data_leak)) * change_threshold_to_reach_for_weights_information_data_leak_only_per_process * my_change_threshold_to_reach_for_weights]
             set h h + 1]
           
           ifelse w >= r * my_valuation_households_ISG_appliance_encountered_for_social_recognition [
@@ -2038,7 +2240,7 @@ to receive_information_from_interactions
   ; Then households will exchange information about the complexity of ISG appliances
   
   ask households [
-    if (item 1 (item 1 (item 0 Decision_making_status_list)) = 0) and (item 2 (item 1 (item 0 Decision_making_status_list)) = 1) [
+    if (item 1 (item 1 (item 0 Decision_making_status_list)) = 0) and (item 2 (item 1 (item 0 Decision_making_status_list)) = 1) and (item 3 (item 1 (item 0 Decision_making_status_list)) = 0)[
       
       let d 0
       let f 0
@@ -2057,9 +2259,9 @@ to receive_information_from_interactions
           
           set temp_name2 0 ; m
           structure_preferred_information_source
-            set sub_list_1 lput temp_name2 sub_list_1
-         
-          set sub_list_1 lput memory sub_list_1
+          set sub_list_1 lput temp_name2 sub_list_1
+          Ifelse category_number > 2 [set sub_list_1 lput (memory + Increase_in_memory_for_late_categories) sub_list_1]
+          [set sub_list_1 lput memory sub_list_1]
           set sub_list_1 lput 0 sub_list_1
           set knowledge_complexity_list lput sub_list_1 knowledge_complexity_list]
         set d d + 1]
@@ -2076,7 +2278,7 @@ to receive_information_from_interactions
         let r 0
         while [h < length threshold_to_reach_for_weights_information_reliability][
           if item 0 (item h threshold_to_reach_for_weights_information_reliability) = Category_number [
-            set r (item 1 (item h threshold_to_reach_for_weights_information_reliability)) * change_threshold_to_reach_for_weights_information_reliability_only_per_process]
+            set r (item 1 (item h threshold_to_reach_for_weights_information_reliability)) * change_threshold_to_reach_for_weights_information_reliability_only_per_process * my_change_threshold_to_reach_for_weights]
           set h h + 1]
         
         ifelse w >= r * my_valuation_households_ISG_appliance_encountered_for_social_recognition [
@@ -2088,7 +2290,7 @@ to receive_information_from_interactions
   
   ; here we do an other exchange of information, just in case of bounded rationality. The communication is here about the realization of savings
   ask households [
-    if (item 1 (item 1 (item 0 Decision_making_status_list)) = 0) and (item 2 (item 1 (item 0 Decision_making_status_list)) = 1) and (item 0 (item 1 (item 0 Decision_making_status_list)) = 0) [
+    if (item 1 (item 1 (item 0 Decision_making_status_list)) = 0) and (item 2 (item 1 (item 0 Decision_making_status_list)) = 1) and (item 0 (item 1 (item 0 Decision_making_status_list)) = 0) and (item 3 (item 1 (item 0 Decision_making_status_list)) = 0)[
       
       let d 0
       let f 0
@@ -2107,9 +2309,9 @@ to receive_information_from_interactions
           
           set temp_name2 0 ; m
           structure_preferred_information_source
-            set sub_list_1 lput temp_name2 sub_list_1
-          
-          set sub_list_1 lput memory sub_list_1
+          set sub_list_1 lput temp_name2 sub_list_1
+          Ifelse category_number > 2 [set sub_list_1 lput (memory + Increase_in_memory_for_late_categories) sub_list_1]
+          [set sub_list_1 lput memory sub_list_1]
           set sub_list_1 lput 0 sub_list_1
           set knowledge_of_satisfaction_savings_list lput sub_list_1 knowledge_of_satisfaction_savings_list]
         set d d + 1]
@@ -2125,7 +2327,7 @@ to receive_information_from_interactions
         let r 0
         while [h < length threshold_to_reach_for_weights_information_savings][
           if item 0 (item h threshold_to_reach_for_weights_information_savings) = Category_number [
-            set r (item 1 (item h threshold_to_reach_for_weights_information_savings)) * change_threshold_to_reach_for_weights_information_savings_only_per_process]
+            set r (item 1 (item h threshold_to_reach_for_weights_information_savings)) * change_threshold_to_reach_for_weights_information_savings_only_per_process * my_change_threshold_to_reach_for_weights]
           set h h + 1]
         
         ifelse w >= r * my_valuation_households_ISG_appliance_encountered_for_social_recognition [
@@ -2143,7 +2345,7 @@ to make_final_judgment_enough_information
   
   ;  if Rationality = "neoclassical_rationality" [
   ask households [
-    if (item 2 (item 1 (item 0 Decision_making_status_list)) = 1) and (item 0 (item 1 (item 0 Decision_making_status_list)) = 0) and (item 1 (item 1 (item 0 Decision_making_status_list)) = 0) [
+    if (item 2 (item 1 (item 0 Decision_making_status_list)) = 1) and (item 0 (item 1 (item 0 Decision_making_status_list)) = 0) and (item 1 (item 1 (item 0 Decision_making_status_list)) = 0) and (item 3 (item 1 (item 0 Decision_making_status_list)) = 0)[
       let f 0
       if Rationality = "neoclassical_rationality" [
         let x 0
@@ -2201,7 +2403,7 @@ to evaluation_social_recognition
   ask households [
     if 
     ;(item 0 (item 1 (item 1 Decision_making_status_list)) = 1) and 
-    (item 0 (item 1 (item 0 Decision_making_status_list)) = 0) and (item 1 (item 1 (item 0 Decision_making_status_list)) = 0) [
+    (item 0 (item 1 (item 0 Decision_making_status_list)) = 0) and (item 1 (item 1 (item 0 Decision_making_status_list)) = 0) and (item 3 (item 1 (item 0 Decision_making_status_list)) = 0) [
       set Decision_making_status_list (replace-item 2 Decision_making_status_list (replace-item 1 (item 2 Decision_making_status_list ) replace-item 2 (item 1 (item 2 Decision_making_status_list )) 1))
       
       if Category_number = 2 [
@@ -2227,11 +2429,9 @@ to evaluation_social_recognition
         [if item 2 (item d list_households_without_ISG_appliance_encountered) = 0 [set amount_households_encountered_without_ISG_appliance amount_households_encountered_without_ISG_appliance + 1]
           set d d + 1]
 
-
-        set my_valuation_households_ISG_appliance_encountered_for_social_recognition (1 + social_value_difference_to_mean) - (amount_households_encountered_without_ISG_appliance / length list_households_without_ISG_appliance_encountered) * (social_value_difference_to_mean * 2)
+        ifelse length list_households_without_ISG_appliance_encountered = 0 [set my_valuation_households_ISG_appliance_encountered_for_social_recognition 0]
+        [set my_valuation_households_ISG_appliance_encountered_for_social_recognition (1 + social_value_difference_to_mean) - (amount_households_encountered_without_ISG_appliance / length list_households_without_ISG_appliance_encountered) * (social_value_difference_to_mean * 2)]
         set valuation_social_recognition_early_adopters_list lput my_valuation_households_ISG_appliance_encountered_for_social_recognition valuation_social_recognition_early_adopters_list]
-      
-      
       if Category_number = 4 [
         let a 0
         let f 0
@@ -2256,7 +2456,8 @@ to evaluation_social_recognition
         [if item 2 (item d list_households_with_ISG_appliance_encountered) = 0 [set amount_households_encountered_with_ISG_appliance amount_households_encountered_with_ISG_appliance + 1]
           set d d + 1]
         
-        set my_valuation_households_ISG_appliance_encountered_for_social_recognition (1 - social_value_difference_to_mean) + (amount_households_encountered_with_ISG_appliance / length list_households_with_ISG_appliance_encountered) * (social_value_difference_to_mean * 2)
+        ifelse length list_households_with_ISG_appliance_encountered = 0 [set my_valuation_households_ISG_appliance_encountered_for_social_recognition 0]
+        [set my_valuation_households_ISG_appliance_encountered_for_social_recognition (1 - social_value_difference_to_mean) + (amount_households_encountered_with_ISG_appliance / length list_households_with_ISG_appliance_encountered) * (social_value_difference_to_mean * 2)]
         set valuation_social_recognition_late_majority_list lput my_valuation_households_ISG_appliance_encountered_for_social_recognition valuation_social_recognition_late_majority_list]
       
       if Category_number = 1 or Category_number = 3 or Category_number = 5 [ set my_valuation_households_ISG_appliance_encountered_for_social_recognition 1]
@@ -2282,12 +2483,12 @@ to evaluation_savings
   
   ask households [
     if (item 0 (item 1 (item 1 Decision_making_status_list)) = 1) and (item 1 (item 1 (item 0 Decision_making_status_list)) = 0) and (item 0 (item 1 (item 0 Decision_making_status_list)) = 0) and (item 2 (item 1 (item 0 Decision_making_status_list)) = 1) 
-    
+    and (item 3 (item 1 (item 0 Decision_making_status_list)) = 0)
     [
-      if Rationality = "neoclassical_rationality" [  
+      if Rationality = "neoclassical_rationality" [
         
         set total_savings 0
-        let monthly_electricity_costs ((mean memory_montly_electricity_consumption) * (mean memory_electricity_price_day) * .8 + (mean memory_montly_electricity_consumption) * (mean memory_electricity_price_night) * .2)
+        let monthly_electricity_costs ((mean memory_montly_electricity_consumption) * (mean memory_electricity_price_peak) * .8 + (mean memory_montly_electricity_consumption) * (mean memory_electricity_price_offpeak) * .2)
         let g 1
         let n 0
         while [g <= length data_2] [
@@ -2295,18 +2496,40 @@ to evaluation_savings
             let a 0
             let b 0
             let k runresult (word "(item 4 ISG_appliance_part_"g" * item 5 ISG_appliance_part_"g" * item 6 ISG_appliance_part_"g")")
+            
+;            if household_number = 0 [print "" print monthly_electricity_costs print item 4 ISG_appliance_part_1 print item 5 ISG_appliance_part_1 print item 6 ISG_appliance_part_1 print k]
+            
+            set temp_name2 k
+            if Normality_of_household_properties = True and Calculation_new_normality_properties_adopters = "each run" and Switch_uniformity_household_consumption_of_appliances = true [
+              set temp_name7 (word "Consumption_of_appliance_part_"g)
+              set multiplication_SD 1
+              set temp_name8 1 ; min0
+              set temp_name9 0 ; max1
+              structure_normality_each_run_no_int]
+            
+            if Normality_of_household_properties = True and Calculation_new_normality_properties_adopters = "each step" and Switch_uniformity_household_consumption_of_appliances = true [
+              set temp_name7 (word "Previous_consumption_of_appliance_part_"g)
+              set multiplication_SD 1
+              set temp_name8 1 ; min0
+              set temp_name9 0 ; max1
+              structure_normality_each_step_no_int]
+            
+            set k temp_name2
             if amount_of_householders = 1 [set k k / 2]
             if amount_of_householders = 3 [set k k * 1.5]
             if amount_of_householders = 4 [set k k * 2]
             if amount_of_householders = 5 [set k k * 2.5]
-            let c (k * (mean memory_electricity_price_day) * (item 7 runresult ( word "ISG_appliance_part_"g))) + (k * (mean memory_electricity_price_night) * (item 8 runresult ( word "ISG_appliance_part_"g)))
-            let d (k * (mean memory_electricity_price_day) * (item 9 runresult ( word "ISG_appliance_part_"g))) + (k * (mean memory_electricity_price_night) * (item 10 runresult ( word "ISG_appliance_part_"g)))
+            let c (k * (mean memory_electricity_price_peak) * (item 7 runresult ( word "ISG_appliance_part_"g))) + (k * (mean memory_electricity_price_offpeak) * (item 8 runresult ( word "ISG_appliance_part_"g)))
+            let d (k * (mean memory_electricity_price_peak) * (item 9 runresult ( word "ISG_appliance_part_"g))) + (k * (mean memory_electricity_price_offpeak) * (item 10 runresult ( word "ISG_appliance_part_"g)))
             let m c - d
             ifelse item 11 runresult (word "ISG_appliance_part_"g) = 2 
             [set n runresult (word "(ISG_appliance_part_"g"_costs ) / (item 3 ISG_appliance_part_"g" * 12)")]
             [set n runresult (word "(ISG_appliance_part_"g"_costs - item 2 ISG_appliance_part_"g") / (item 3 ISG_appliance_part_"g" * 12)")]
             let p m - n
-            set total_savings total_savings + p]
+;            if household_number = 0 [print mean memory_electricity_price_peak print mean memory_electricity_price_offpeak print m print n print p]
+            set total_savings total_savings + p
+;            if household_number = 0 [print total_savings]
+            ]
           set g g + 1]
         set total_savings total_savings / number_of_appliance_switched_on 
         
@@ -2329,7 +2552,7 @@ to evaluation_savings
           structure_normality_each_step_no_int]
         
         if total_savings >= temp_name2
-          [set Decision_making_status_list (replace-item 2 Decision_making_status_list (replace-item 1 (item 2 Decision_making_status_list ) replace-item 0 (item 1 (item 2 Decision_making_status_list )) 1))]
+          [ set Decision_making_status_list (replace-item 2 Decision_making_status_list (replace-item 1 (item 2 Decision_making_status_list ) replace-item 0 (item 1 (item 2 Decision_making_status_list )) 1))]
       ]
       
       if Rationality = "bounded_rationality" [
@@ -2346,16 +2569,20 @@ to evaluation_savings
           set total_positive_information total_positive_information + item 0 (item i knowledge_of_satisfaction_savings_list) * item 1 (item i knowledge_of_satisfaction_savings_list)]
           set i i + 1]
         
-        
+        let j 0
+        let total_negative_information 0
+        while [j < length knowledge_of_satisfaction_savings_list] [
+          if item 0 (item j knowledge_of_satisfaction_savings_list) = -1 [
+            set total_negative_information total_negative_information + (item 0 (item j knowledge_of_satisfaction_savings_list) * -1) * item 1 (item j knowledge_of_satisfaction_savings_list)]
+          set j j + 1]
         
         let f 0
         while [f < (Category_number - 1)] [ set f f + 1]
-        let g item 1 item f percentage_postive_information_needed
+        let g item 1 item f percentage_postive_information_needed_savings
         set temp_name2 g
-;        print ""
-;        print household_number
+;        if household_number = 1 [print ""
 ;        print knowledge_of_satisfaction_savings_list
-;        print temp_name2
+;        print temp_name2]
         if Normality_of_adopter_properties = True and Calculation_new_normality_properties_adopters = "each run" and Switch_uniformity_percentage_postive_information_needed = true[
           set temp_name7 (word "threshold_percentage_positive_information_needed_list ")
           set multiplication_SD 0.05
@@ -2371,14 +2598,15 @@ to evaluation_savings
           structure_normality_each_step_no_int]
 ;        print temp_name2
         
-        ifelse total_valuation_received = 0 [set Decision_making_status_list (replace-item 2 Decision_making_status_list (replace-item 1 (item 2 Decision_making_status_list ) replace-item 0 (item 1 (item 2 Decision_making_status_list )) 0))][     
-        ifelse total_positive_information / total_valuation_received >= temp_name2
+        ifelse total_positive_information + total_negative_information = 0 [set Decision_making_status_list (replace-item 2 Decision_making_status_list (replace-item 1 (item 2 Decision_making_status_list ) replace-item 0 (item 1 (item 2 Decision_making_status_list )) 0))  ;if household_number = 1 [print "check"]
+          ][     
+        ifelse total_positive_information / (total_positive_information + total_negative_information) >= temp_name2
           [set Decision_making_status_list (replace-item 2 Decision_making_status_list (replace-item 1 (item 2 Decision_making_status_list ) replace-item 0 (item 1 (item 2 Decision_making_status_list )) 1))]
           [set Decision_making_status_list (replace-item 2 Decision_making_status_list (replace-item 1 (item 2 Decision_making_status_list ) replace-item 0 (item 1 (item 2 Decision_making_status_list )) 0))]
-;          print total_positive_information
+;          if household_number = 1 [print total_positive_information
 ;          print total_valuation_received
 ;          print total_positive_information / total_valuation_received
-;          print item 0 (item 1 (item 2 Decision_making_status_list))
+;          print item 0 (item 1 (item 2 Decision_making_status_list))]
       ]]]]
 end
 
@@ -2389,7 +2617,7 @@ to evaluation_purchase_risks
   
   
   ask households [
-    if (item 0 (item 1 (item 1 Decision_making_status_list)) = 1) and (item 0 (item 1 (item 0 Decision_making_status_list)) = 0) and (item 1 (item 1 (item 0 Decision_making_status_list)) = 0)[
+    if (item 0 (item 1 (item 1 Decision_making_status_list)) = 1) and (item 0 (item 1 (item 0 Decision_making_status_list)) = 0) and (item 1 (item 1 (item 0 Decision_making_status_list)) = 0) and (item 3 (item 1 (item 0 Decision_making_status_list)) = 0)[
       ifelse Prospect_theory = TRUE 
       [
         let h 0
@@ -2463,7 +2691,7 @@ end
 
 to evalution_protection_data
   ask households [
-    if (item 0 (item 1 (item 1 Decision_making_status_list)) = 1) and (item 0 (item 1 (item 0 Decision_making_status_list)) = 0) and (item 1 (item 1 (item 0 Decision_making_status_list)) = 0)[
+    if (item 0 (item 1 (item 1 Decision_making_status_list)) = 1) and (item 0 (item 1 (item 0 Decision_making_status_list)) = 0) and (item 1 (item 1 (item 0 Decision_making_status_list)) = 0) and (item 3 (item 1 (item 0 Decision_making_status_list)) = 0)[
       if knowledge_of_data_leak = 0 and item 1 My_experience_information_list = 1 [
         set Decision_making_status_list (replace-item 2 Decision_making_status_list (replace-item 1 (item 2 Decision_making_status_list ) replace-item 3 (item 1 (item 2 Decision_making_status_list )) 1))
       ]]]
@@ -2472,7 +2700,7 @@ end
 
 to evalation_reliability
   ask households [
-    if (item 0 (item 1 (item 1 Decision_making_status_list)) = 1) and (item 0 (item 1 (item 0 Decision_making_status_list)) = 0) and (item 1 (item 1 (item 0 Decision_making_status_list)) = 0)[
+    if (item 0 (item 1 (item 1 Decision_making_status_list)) = 1) and (item 0 (item 1 (item 0 Decision_making_status_list)) = 0) and (item 1 (item 1 (item 0 Decision_making_status_list)) = 0) and (item 3 (item 1 (item 0 Decision_making_status_list)) = 0)[
       if knowledge_of_failure = 0 and item 0 My_experience_information_list = 1 [
         set Decision_making_status_list (replace-item 2 Decision_making_status_list (replace-item 1 (item 2 Decision_making_status_list ) replace-item 4 (item 1 (item 2 Decision_making_status_list )) 1))
       ]]]
@@ -2481,7 +2709,7 @@ end
 
 to final_judgement_evaluation
     ask households [
-      if (item 0 (item 1 (item 1 Decision_making_status_list)) = 1) and (item 0 (item 1 (item 0 Decision_making_status_list)) = 0) and (item 1 (item 1 (item 0 Decision_making_status_list)) = 0)[
+      if (item 0 (item 1 (item 1 Decision_making_status_list)) = 1) and (item 0 (item 1 (item 0 Decision_making_status_list)) = 0) and (item 1 (item 1 (item 0 Decision_making_status_list)) = 0) and (item 3 (item 1 (item 0 Decision_making_status_list)) = 0)[
         ifelse sum item 1 (item 2 Decision_making_status_list) = 5 [
           set final_evaluation 1
           set evaluation_step_done 1
@@ -2506,21 +2734,23 @@ to decision_making
   ; here we consider that if a households is neoclassicaly rational, it will adopt an ISG appliance whatever the complexity it represents
   if Rationality = "neoclassical_rationality" [
     ask households [
-      if item 0 (item 1 (item 0 Decision_making_status_list)) = 0 and final_evaluation = 1 and (item 1 (item 1 (item 0 Decision_making_status_list)) = 0) and (item 2 (item 1 (item 0 Decision_making_status_list)) = 1)
+      if item 0 (item 1 (item 0 Decision_making_status_list)) = 0 and final_evaluation = 1 and (item 1 (item 1 (item 0 Decision_making_status_list)) = 0) and (item 2 (item 1 (item 0 Decision_making_status_list)) = 1) and (item 3 (item 1 (item 0 Decision_making_status_list)) = 0)
       [set Decision_making_status_list replace-item 0 Decision_making_status_list (replace-item 1 (item 0 Decision_making_status_list) (replace-item 0 (item 1 (item 0 Decision_making_status_list)) 1))
         set new_households_with_ISG_appliance new_households_with_ISG_appliance + 1 
         set color red
         set knowledge_of_complexity replace-item 0 knowledge_of_complexity complexity
         set new_households_with_complexity_OK new_households_with_complexity_OK + 1
-        set Lifetime_of_my_appliance Lifetime_ISG_appliance * 12
+        ifelse Switch_uniformity_lifetime_appliance = TRUE
+        [set Lifetime_of_my_appliance int (random-normal (Lifetime_ISG_appliance * 12 + 0.5) (10 * variation_of_SD_normal_distribution_properties_of_households))  ]
+        [set Lifetime_of_my_appliance Lifetime_ISG_appliance * 12]
         if Normality_of_adopter_properties = True and Switch_uniformity_lifetime_of_ISG_appliance_purchased = true [
-          set Lifetime_of_my_appliance random-normal Lifetime_of_my_appliance (Lifetime_of_my_appliance * 0.2 * variation_of_SD_normal_distribution_properties_of_adopters)]
+          set Lifetime_of_my_appliance int (random-normal Lifetime_of_my_appliance (Lifetime_of_my_appliance * 0.2 * variation_of_SD_normal_distribution_properties_of_adopters))]
         set savings_made_by_last_adopters_list lput total_savings savings_made_by_last_adopters_list
       ]]]
   
   if Rationality = "bounded_rationality" [
     ask households [
-      if item 0 (item 1 (item 0 Decision_making_status_list)) = 0 and final_evaluation = 1 and (item 1 (item 1 (item 0 Decision_making_status_list)) = 0) and (item 2 (item 1 (item 0 Decision_making_status_list)) = 1)[
+      if item 0 (item 1 (item 0 Decision_making_status_list)) = 0 and final_evaluation = 1 and (item 1 (item 1 (item 0 Decision_making_status_list)) = 0) and (item 2 (item 1 (item 0 Decision_making_status_list)) = 1) and (item 3 (item 1 (item 0 Decision_making_status_list)) = 0)[
         
         ; we check if the complexity is acceptable
         
@@ -2594,16 +2824,19 @@ to decision_making
   ; now we make the final evaluation of the complexity. If at this stage the complexity is considered acceptable, households accepts to purchase the ISG appliance.
   
   ask households [
-    if item 0 (item 1 (item 0 Decision_making_status_list)) = 0 and final_evaluation = 1 and (item 1 (item 1 (item 0 Decision_making_status_list)) = 0) and (item 2 (item 1 (item 0 Decision_making_status_list)) = 1)[
+    if item 0 (item 1 (item 0 Decision_making_status_list)) = 0 and final_evaluation = 1 and (item 1 (item 1 (item 0 Decision_making_status_list)) = 0) and (item 2 (item 1 (item 0 Decision_making_status_list)) = 1) and (item 3 (item 1 (item 0 Decision_making_status_list)) = 0)[
       ifelse sum (item 1 (item 3 Decision_making_status_list)) = 1 [
         set Decision_making_status_list replace-item 0 Decision_making_status_list (replace-item 1 (item 0 Decision_making_status_list) (replace-item 0 (item 1 (item 0 Decision_making_status_list)) 1)) 
         set new_households_with_ISG_appliance new_households_with_ISG_appliance + 1 
         set color red
         set knowledge_of_complexity replace-item 0 knowledge_of_complexity complexity
+        if category_number = 1 [set Lifetime_of_my_appliance_innovator int( random-normal 24 2 + 0.5)]
         set new_households_with_complexity_OK new_households_with_complexity_OK + 1
-        set Lifetime_of_my_appliance Lifetime_ISG_appliance * 12
+        ifelse Switch_uniformity_lifetime_appliance = TRUE
+        [set Lifetime_of_my_appliance int (random-normal (Lifetime_ISG_appliance * 12 + 0.5) (10 * variation_of_SD_normal_distribution_properties_of_households))  ]
+        [set Lifetime_of_my_appliance Lifetime_ISG_appliance * 12]
         if Normality_of_adopter_properties = True and Switch_uniformity_lifetime_of_ISG_appliance_purchased = true [
-          set Lifetime_of_my_appliance random-normal Lifetime_of_my_appliance (Lifetime_of_my_appliance * 0.2 * variation_of_SD_normal_distribution_properties_of_adopters)]
+          set Lifetime_of_my_appliance int (random-normal Lifetime_of_my_appliance (Lifetime_of_my_appliance * 0.2 * variation_of_SD_normal_distribution_properties_of_adopters))]
         
         let a 1
         while [a <= 8][
@@ -2696,6 +2929,7 @@ to for_monitoring
   set block_at_finding_information_data_leak 0
   set block_at_finding_information_complexity 0
   set block_at_finding_information_savings 0
+  set block_at_finding_information 0
   set block_at_refuse_decision_making 0
 ;  set valuation_social_recognition_early_adopters 0
 ;  set valuation_social_recognition_late_majority 0
@@ -2713,17 +2947,82 @@ to for_monitoring
         if item 0 My_experience_information_list = 0 [set block_at_finding_information_reliability block_at_finding_information_reliability + 1]
         if item 0 My_experience_information_list = 0 [set block_at_finding_information_data_leak block_at_finding_information_data_leak + 1]
         if item 0 My_experience_information_list = 0 [set block_at_finding_information_complexity block_at_finding_information_complexity + 1]
-        if item 0 My_experience_information_list = 0 [set block_at_finding_information_savings block_at_finding_information_savings + 1]]
+        if item 0 My_experience_information_list = 0 [set block_at_finding_information_savings block_at_finding_information_savings + 1]
+        if item 0 My_experience_information_list = 0 [set block_at_finding_information block_at_finding_information + 1]]
       
       if item 1 (item 1 (item 0 Decision_making_status_list)) = 1 [set block_at_refuse_decision_making block_at_refuse_decision_making + 1]]]
 
+ let h1 48
+ let h2 3
+ let h3 463
+ let h4 125
+ let h5 156
+ ask households [if household_number = h1 [set Monthly_electricity_consumption_h1 mean memory_montly_electricity_consumption]]
+ ask households [if household_number = h2 [set Monthly_electricity_consumption_h2 mean memory_montly_electricity_consumption]]
+ ask households [if household_number = h3 [set Monthly_electricity_consumption_h3 mean memory_montly_electricity_consumption]]
+ ask households [if household_number = h4 [set Monthly_electricity_consumption_h4 mean memory_montly_electricity_consumption]]
+ ask households [if household_number = h5 [set Monthly_electricity_consumption_h5 mean memory_montly_electricity_consumption]]
+ 
+ ask households [if household_number = h1 [if length total_savings_after_purchase_list > 0 [set total_savings_after_purchase_h1 mean total_savings_after_purchase_list]]]
+ ask households [if household_number = h2 [if length total_savings_after_purchase_list > 0 [set total_savings_after_purchase_h2 mean total_savings_after_purchase_list]]]
+ ask households [if household_number = h3 [if length total_savings_after_purchase_list > 0 [set total_savings_after_purchase_h3 mean total_savings_after_purchase_list]]]
+ ask households [if household_number = h4 [if length total_savings_after_purchase_list > 0 [set total_savings_after_purchase_h4 mean total_savings_after_purchase_list]]]
+ ask households [if household_number = h5 [if length total_savings_after_purchase_list > 0 [set total_savings_after_purchase_h5 mean total_savings_after_purchase_list]]]
+ 
+ let c1 3
+ let c2 29
+ let c3 200
+ let c4 300
+ let c5 480
+ ask households [if household_number = c1 [if length households_with_whom_interacted > 0 [set households_with_whom_interacted_c1 length households_with_whom_interacted]]]
+ ask households [if household_number = c2 [if length households_with_whom_interacted > 0 [set households_with_whom_interacted_c2 length households_with_whom_interacted]]]
+ ask households [if household_number = c3 [if length households_with_whom_interacted > 0 [set households_with_whom_interacted_c3 length households_with_whom_interacted]]]
+ ask households [if household_number = c4 [if length households_with_whom_interacted > 0 [set households_with_whom_interacted_c4 length households_with_whom_interacted]]]
+ ask households [if household_number = c5 [if length households_with_whom_interacted > 0 [set households_with_whom_interacted_c5 length households_with_whom_interacted]]]
+ 
+; ask households [if household_number = c1 [if length households_with_whom_interacted > 0 [set households_with_whom_interacted_c1 length my_list_of_friends + length my_list_of_neighbors + length my_list_of_random_interactions]]]
+; ask households [if household_number = c2 [if length households_with_whom_interacted > 0 [set households_with_whom_interacted_c2 length my_list_of_friends + length my_list_of_neighbors + length my_list_of_random_interactions]]]
+; ask households [if household_number = c3 [if length households_with_whom_interacted > 0 [set households_with_whom_interacted_c3 length my_list_of_friends + length my_list_of_neighbors + length my_list_of_random_interactions]]]
+; ask households [if household_number = c4 [if length households_with_whom_interacted > 0 [set households_with_whom_interacted_c4 length my_list_of_friends + length my_list_of_neighbors + length my_list_of_random_interactions]]]
+; ask households [if household_number = c5 [if length households_with_whom_interacted > 0 [set households_with_whom_interacted_c5 length my_list_of_friends + length my_list_of_neighbors + length my_list_of_random_interactions]]]
 
 
-  
-  
+
+set number_of_information_pieces_data_leak_h1 0
+set number_of_information_pieces_data_leak_h2 0
+set number_of_information_pieces_data_leak_h3 0
+set number_of_information_pieces_data_leak_h4 0
+set number_of_information_pieces_data_leak_h5 0
+
+ask households [if household_number = c1 [ let d1 0 
+    while [d1 < length knowledge_of_data_leak_event_list ] 
+    [set number_of_information_pieces_data_leak_h1 number_of_information_pieces_data_leak_h1 + item 0 (item d1 knowledge_of_data_leak_event_list)
+      set d1 d1 + 1]]]
+ask households [if household_number = c2 [ let d1 0 
+    while [d1 < length knowledge_of_data_leak_event_list ] 
+    [set number_of_information_pieces_data_leak_h2 number_of_information_pieces_data_leak_h2 + item 0 (item d1 knowledge_of_data_leak_event_list)
+      set d1 d1 + 1]]]
+ask households [if household_number = c3 [ let d1 0 
+    while [d1 < length knowledge_of_data_leak_event_list ] 
+    [set number_of_information_pieces_data_leak_h3 number_of_information_pieces_data_leak_h3 + item 0 (item d1 knowledge_of_data_leak_event_list)
+      set d1 d1 + 1]]]
+ask households [if household_number = c4 [ let d1 0 
+    while [d1 < length knowledge_of_data_leak_event_list ] 
+    [set number_of_information_pieces_data_leak_h4 number_of_information_pieces_data_leak_h4 + item 0 (item d1 knowledge_of_data_leak_event_list)
+      set d1 d1 + 1]]]
+ask households [if household_number = c5 [ let d1 0 
+    while [d1 < length knowledge_of_data_leak_event_list ] 
+    [set number_of_information_pieces_data_leak_h5 number_of_information_pieces_data_leak_h5 + item 0 (item d1 knowledge_of_data_leak_event_list)
+      set d1 d1 + 1]]]
+    
+ 
+ 
+ 
+ 
+ 
+ 
+ 
 end
-
-
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -2830,6 +3129,8 @@ to structure_find_if_other_household_has_knowledge_of_event
     if item 0 (item g temp_name3) > 0 [         
       if item 3 (item g temp_name3) <= Diffusion_information_number_links [
         let h (item g temp_name3)
+        Ifelse category_number > 2 [set h replace-item 2 h (memory + Increase_in_memory_for_late_categories)]
+          [set h replace-item 2 h memory]
         set h replace-item 2 h memory
         set h replace-item 3 h ((item 3 h) + 1)
         run (word "set Knowledge_of_"temp_name4"_event_list lput h Knowledge_of_"temp_name4"_event_list")
@@ -2875,7 +3176,7 @@ to structure_normality_each_step_no_int
   if runresult temp_name7 = 0 [
     run (word "set "temp_name7" temp_name2")]
   let l temp_name2
-  let m (0.1 * variation_of_SD_normal_distribution_properties_of_adopters)
+  let m (multiplication_SD * variation_of_SD_normal_distribution_properties_of_adopters)
   let temp_name2_temp random-normal l m
   if temp_name8 = 1 [if temp_name2_temp < 0 [set temp_name2_temp 0]]
   if temp_name9 = 1 [if temp_name2_temp > 1 [set temp_name2_temp 1]]
@@ -2944,10 +3245,10 @@ ticks
 30.0
 
 BUTTON
-136
-42
-203
-75
+991
+638
+1107
+725
 NIL
 setup
 NIL
@@ -2961,10 +3262,10 @@ NIL
 1
 
 BUTTON
-135
-84
-203
-117
+992
+735
+1109
+819
 NIL
 go
 T
@@ -3033,33 +3334,23 @@ Rationalities
 CHOOSER
 78
 438
-253
+299
 483
 Rationality
 Rationality
 "neoclassical_rationality" "bounded_rationality"
-0
+1
 
 SWITCH
 77
 510
-248
+298
 543
 Prospect_theory
 Prospect_theory
 1
 1
 -1000
-
-TEXTBOX
-84
-551
-234
-569
-Memory of agents (month)
-11
-0.0
-1
 
 TEXTBOX
 318
@@ -3100,7 +3391,7 @@ CHOOSER
 Data_leak_event_category
 Data_leak_event_category
 "Category_1_data_leak" "Category_2_data_leak" "Category_3_data_leak"
-0
+1
 
 PLOT
 1169
@@ -3154,8 +3445,8 @@ true
 false
 "" ""
 PENS
-"default" 1.0 0 -16777216 true "" "plot electricity_price_day"
-"pen-1" 1.0 0 -7500403 true "" "plot electricity_price_night"
+"default" 1.0 0 -16777216 true "" "plot electricity_price_peak"
+"pen-1" 1.0 0 -7500403 true "" "plot electricity_price_offpeak"
 
 SWITCH
 619
@@ -3198,12 +3489,12 @@ PENS
 
 SWITCH
 619
-744
+742
 763
-777
+775
 Fix_complexities
 Fix_complexities
-0
+1
 1
 -1000
 
@@ -3234,9 +3525,9 @@ HORIZONTAL
 
 TEXTBOX
 623
-726
+724
 790
-746
+744
 To fix the complexities\n
 11
 0.0
@@ -3266,10 +3557,10 @@ ISG appliances can brake down (reputational damage)
 MONITOR
 1167
 690
-1295
+1301
 735
 NIL
-electricity_price_day
+electricity_price_peak
 17
 1
 11
@@ -3277,10 +3568,10 @@ electricity_price_day
 MONITOR
 1310
 689
-1445
+1460
 734
 NIL
-electricity_price_night
+electricity_price_offpeak
 17
 1
 11
@@ -3344,7 +3635,7 @@ Minimum_time_between_2_decisions
 Minimum_time_between_2_decisions
 0
 12
-2
+1
 1
 1
 NIL
@@ -3357,7 +3648,7 @@ SWITCH
 921
 Normality_of_household_properties
 Normality_of_household_properties
-1
+0
 1
 -1000
 
@@ -3368,7 +3659,7 @@ SWITCH
 976
 Normality_of_adopter_properties
 Normality_of_adopter_properties
-1
+0
 1
 -1000
 
@@ -3390,13 +3681,13 @@ CHOOSER
 Calculation_new_normality_properties_adopters
 Calculation_new_normality_properties_adopters
 "each run" "each step"
-0
+1
 
 SWITCH
-1167
-1064
-1435
-1097
+1444
+1148
+1768
+1181
 Switch_uniformity_interactions
 Switch_uniformity_interactions
 1
@@ -3404,10 +3695,10 @@ Switch_uniformity_interactions
 -1000
 
 TEXTBOX
-1073
-1546
-1220
-1564
+1055
+2617
+1202
+2683
 a
 11
 0.0
@@ -3434,10 +3725,10 @@ Switch on and off different uniformities
 1
 
 SWITCH
-1166
-1104
-1435
-1137
+1444
+1190
+1769
+1223
 Switch_uniformity_awareness
 Switch_uniformity_awareness
 1
@@ -3445,10 +3736,10 @@ Switch_uniformity_awareness
 -1000
 
 SWITCH
-1444
-1024
-1767
-1057
+1443
+1023
+1766
+1056
 Switch_uniformity_preferred_information_source
 Switch_uniformity_preferred_information_source
 1
@@ -3462,7 +3753,7 @@ SWITCH
 1098
 Switch_uniformity_valuation_of_savings
 Switch_uniformity_valuation_of_savings
-1
+0
 1
 -1000
 
@@ -3495,7 +3786,7 @@ SWITCH
 1057
 Switch_uniformity_household_properties
 Switch_uniformity_household_properties
-1
+0
 1
 -1000
 
@@ -3533,37 +3824,6 @@ TEXTBOX
 566
 597
 Introduce minimum time between two decisions
-11
-0.0
-1
-
-SWITCH
-65
-904
-310
-937
-evaluation_savings_obligatory
-evaluation_savings_obligatory
-1
-1
--1000
-
-TEXTBOX
-66
-886
-323
-914
-Evaluation: Make some evaluations obligatory
-11
-0.0
-1
-
-TEXTBOX
-313
-492
-589
-534
-Change the minimum savings that the majority of the population will accept (only for bounded rationality)
 11
 0.0
 1
@@ -3753,50 +4013,6 @@ Switch_appliance_8
 1
 -1000
 
-SWITCH
-64
-946
-310
-979
-evaluation_purchase_risks_obligatory
-evaluation_purchase_risks_obligatory
-1
-1
--1000
-
-SWITCH
-64
-988
-310
-1021
-evaluation_social_recognition_obligatory
-evaluation_social_recognition_obligatory
-1
-1
--1000
-
-SWITCH
-64
-1030
-310
-1063
-evalution_protection_data_obligatory
-evalution_protection_data_obligatory
-1
-1
--1000
-
-SWITCH
-64
-1071
-309
-1104
-evalation_reliability_obligatory
-evalation_reliability_obligatory
-1
-1
--1000
-
 TEXTBOX
 81
 490
@@ -3819,10 +4035,10 @@ Switch_uniformity_threshold_investment_risk
 -1000
 
 SWITCH
-69
-687
-295
-720
+70
+615
+296
+648
 Replacement_ISG_appliance_possible
 Replacement_ISG_appliance_possible
 1
@@ -3876,7 +4092,7 @@ SWITCH
 594
 Progressive_increase_of_prices
 Progressive_increase_of_prices
-1
+0
 1
 -1000
 
@@ -3897,21 +4113,6 @@ false
 "" ""
 PENS
 "default" 1.0 0 -16777216 true "" "plot savings_made_by_last_adopters"
-
-SLIDER
-62
-1141
-381
-1174
-Change_accepted_savings_neoclassical_rational
-Change_accepted_savings_neoclassical_rational
--3
-3
-0
-1
-1
-NIL
-HORIZONTAL
 
 PLOT
 1529
@@ -3940,41 +4141,11 @@ PENS
 "Not enough info complexity" 1.0 0 -8630108 true "" "plot block_at_finding_information_complexity"
 "Not enough info savings" 1.0 0 -5825686 true "" "plot block_at_finding_information_savings"
 
-SLIDER
-79
-370
-275
-403
-Multiply_media_interaction
-Multiply_media_interaction
-0
-3
-1
-.1
-1
-NIL
-HORIZONTAL
-
-SLIDER
-76
-576
-248
-609
-memory
-memory
-0
-5
-3
-1
-1
-NIL
-HORIZONTAL
-
 TEXTBOX
-77
-627
-296
-685
+78
+555
+297
+613
 If this is switched on, appliances have a lifetime and household have to go through a new decision-making process when the lifetime has passed by
 11
 0.0
@@ -4001,21 +4172,6 @@ The color of the patch stands for its adopter category: green for innovators, da
 1
 
 SLIDER
-320
-211
-594
-244
-Diffusion_information_number_links
-Diffusion_information_number_links
-0
-4
-3
-1
-1
-NIL
-HORIZONTAL
-
-SLIDER
 318
 365
 593
@@ -4024,234 +4180,21 @@ Moment_of_data_leak_event
 Moment_of_data_leak_event
 0
 480
-10
+42
 1
 1
 NIL
 HORIZONTAL
-
-SLIDER
-645
-635
-1030
-668
-electricity_price_day_fix
-electricity_price_day_fix
-0
-0.5
-0.155
-0.005
-1
-NIL
-HORIZONTAL
-
-SLIDER
-644
-674
-1030
-707
-electricity_price_night_fix
-electricity_price_night_fix
-0
-0.5
-0.14
-0.005
-1
-NIL
-HORIZONTAL
-
-SLIDER
-313
-528
-590
-561
-Minimum_savings_for_majority_of_population
-Minimum_savings_for_majority_of_population
-0
-20
-0.1
-0.1
-1
-NIL
-HORIZONTAL
-
-SLIDER
-1678
-888
-2025
-921
-variation_of_SD_normal_distribution_properties_of_households
-variation_of_SD_normal_distribution_properties_of_households
-0
-3
-1
-0.1
-1
-NIL
-HORIZONTAL
-
-SLIDER
-1678
-943
-2025
-976
-variation_of_SD_normal_distribution_properties_of_adopters
-variation_of_SD_normal_distribution_properties_of_adopters
-0
-3
-1
-0.1
-1
-NIL
-HORIZONTAL
-
-INPUTBOX
-1529
-211
-1632
-271
-introduction_phase
-30
-1
-0
-Number
-
-INPUTBOX
-1645
-210
-1752
-270
-growth_phase
-30
-1
-0
-Number
-
-INPUTBOX
-1765
-210
-1879
-270
-maturity_phase
-600
-1
-0
-Number
 
 TEXTBOX
 2319
 524
 2619
-580
+554
 Set learning rate of appliances (Learning_rate_appliances_1 stands for learning rate of appliance 1)
 11
 0.0
 1
-
-SLIDER
-2317
-563
-2522
-596
-Learning_rate_appliances_1
-Learning_rate_appliances_1
-0.8
-1
-0.97
-0.01
-1
-NIL
-HORIZONTAL
-
-SLIDER
-2317
-602
-2522
-635
-Learning_rate_appliances_2
-Learning_rate_appliances_2
-0.8
-1
-0.97
-0.01
-1
-NIL
-HORIZONTAL
-
-SLIDER
-2317
-643
-2522
-676
-Learning_rate_appliances_3
-Learning_rate_appliances_3
-0.8
-1
-0.97
-0.01
-1
-NIL
-HORIZONTAL
-
-SLIDER
-2317
-683
-2522
-716
-Learning_rate_appliances_4
-Learning_rate_appliances_4
-0.8
-1
-0.97
-0.01
-1
-NIL
-HORIZONTAL
-
-SLIDER
-620
-14
-860
-47
-A_S_L_Unique_interaction_multiplicator
-A_S_L_Unique_interaction_multiplicator
-0.5
-3
-1
-0.1
-1
-NIL
-HORIZONTAL
-
-SLIDER
-869
-13
-1152
-46
-A_S_L_Combined_interaction_short_multiplicator
-A_S_L_Combined_interaction_short_multiplicator
-0.5
-3
-1
-0.1
-1
-NIL
-HORIZONTAL
-
-SLIDER
-1162
-13
-1441
-46
-A_S_L_Combined_interaction_long_multiplicator
-A_S_L_Combined_interaction_long_multiplicator
-0.5
-3
-1
-0.1
-1
-NIL
-HORIZONTAL
 
 PLOT
 2119
@@ -4297,14 +4240,14 @@ Communication_satisfaction_incl_fixed_costs
 SLIDER
 308
 743
-593
+596
 776
-Change_minimum_amount_savings_bounded_rational
-Change_minimum_amount_savings_bounded_rational
+Initial_minimum_amount_savings_bounded_rational
+Initial_minimum_amount_savings_bounded_rational
 -5
 10
 3
-1
+0.1
 1
 NIL
 HORIZONTAL
@@ -4316,6 +4259,1521 @@ SWITCH
 825
 Switch_minimum_amount_savings_bounded_rational
 Switch_minimum_amount_savings_bounded_rational
+0
+1
+-1000
+
+SLIDER
+646
+675
+932
+708
+difference_between_peak_and_offpeak_price
+difference_between_peak_and_offpeak_price
+0
+0.4
+0.15
+0.01
+1
+NIL
+HORIZONTAL
+
+SLIDER
+645
+635
+931
+668
+Electricity_price_offpeak_fix
+Electricity_price_offpeak_fix
+0.1
+0.25
+0.22
+0.01
+1
+NIL
+HORIZONTAL
+
+TEXTBOX
+74
+1287
+250
+1315
+Definition of parameters for EMA
+11
+0.0
+1
+
+SLIDER
+68
+1310
+385
+1343
+division_effect_media
+division_effect_media
+6
+14
+10
+1
+1
+NIL
+HORIZONTAL
+
+SLIDER
+67
+1350
+385
+1383
+A_S_L_Unique_interaction_multiplicator
+A_S_L_Unique_interaction_multiplicator
+0.5
+1.5
+1
+0.1
+1
+NIL
+HORIZONTAL
+
+SLIDER
+66
+1391
+385
+1424
+A_S_L_Combined_interaction_short_multiplicator
+A_S_L_Combined_interaction_short_multiplicator
+0.5
+1.5
+1
+0.1
+1
+NIL
+HORIZONTAL
+
+SLIDER
+66
+1429
+385
+1462
+A_S_L_Combined_interaction_long_multiplicator
+A_S_L_Combined_interaction_long_multiplicator
+0.5
+1.5
+1
+0.1
+1
+NIL
+HORIZONTAL
+
+SLIDER
+484
+1309
+815
+1342
+A_S_L_preferred_information_source_innovator_1
+A_S_L_preferred_information_source_innovator_1
+0
+1
+0.8
+0.01
+1
+NIL
+HORIZONTAL
+
+SLIDER
+484
+1349
+815
+1382
+A_S_L_preferred_information_source_innovator_2
+A_S_L_preferred_information_source_innovator_2
+0
+1
+0
+0.01
+1
+NIL
+HORIZONTAL
+
+SLIDER
+484
+1389
+815
+1422
+A_S_L_preferred_information_source_innovator_3
+A_S_L_preferred_information_source_innovator_3
+0
+1
+0
+0.01
+1
+NIL
+HORIZONTAL
+
+SLIDER
+483
+1429
+814
+1462
+A_S_L_preferred_information_source_innovator_4
+A_S_L_preferred_information_source_innovator_4
+0
+1
+0
+0.01
+1
+NIL
+HORIZONTAL
+
+SLIDER
+483
+1470
+814
+1503
+A_S_L_preferred_information_source_innovator_5
+A_S_L_preferred_information_source_innovator_5
+0
+1
+0
+0.01
+1
+NIL
+HORIZONTAL
+
+SLIDER
+483
+1511
+814
+1544
+A_S_L_preferred_information_source_early_adopter_1
+A_S_L_preferred_information_source_early_adopter_1
+0
+1
+0.4
+0.01
+1
+NIL
+HORIZONTAL
+
+SLIDER
+483
+1553
+815
+1586
+A_S_L_preferred_information_source_early_adopter_2
+A_S_L_preferred_information_source_early_adopter_2
+0
+1
+0.3
+0.01
+1
+NIL
+HORIZONTAL
+
+SLIDER
+483
+1594
+815
+1627
+A_S_L_preferred_information_source_early_adopter_3
+A_S_L_preferred_information_source_early_adopter_3
+0
+1
+0
+0.01
+1
+NIL
+HORIZONTAL
+
+SLIDER
+482
+1636
+815
+1669
+A_S_L_preferred_information_source_early_adopter_4
+A_S_L_preferred_information_source_early_adopter_4
+0
+1
+0
+0.01
+1
+NIL
+HORIZONTAL
+
+SLIDER
+483
+1675
+814
+1708
+A_S_L_preferred_information_source_early_adopter_5
+A_S_L_preferred_information_source_early_adopter_5
+0
+1
+0
+0.01
+1
+NIL
+HORIZONTAL
+
+SLIDER
+483
+1715
+816
+1748
+A_S_L_preferred_information_source_early_majority_1
+A_S_L_preferred_information_source_early_majority_1
+0
+1
+0.1
+0.01
+1
+NIL
+HORIZONTAL
+
+SLIDER
+483
+1755
+816
+1788
+A_S_L_preferred_information_source_early_majority_2
+A_S_L_preferred_information_source_early_majority_2
+0
+1
+0.31
+0.01
+1
+NIL
+HORIZONTAL
+
+SLIDER
+483
+1796
+816
+1829
+A_S_L_preferred_information_source_early_majority_3
+A_S_L_preferred_information_source_early_majority_3
+0
+1
+0.4
+0.01
+1
+NIL
+HORIZONTAL
+
+SLIDER
+483
+1836
+816
+1869
+A_S_L_preferred_information_source_early_majority_4
+A_S_L_preferred_information_source_early_majority_4
+0
+1
+0
+0.01
+1
+NIL
+HORIZONTAL
+
+SLIDER
+482
+1875
+816
+1908
+A_S_L_preferred_information_source_early_majority_5
+A_S_L_preferred_information_source_early_majority_5
+0
+1
+0
+0.01
+1
+NIL
+HORIZONTAL
+
+SLIDER
+482
+1914
+816
+1947
+A_S_L_preferred_information_source_late_majority_1
+A_S_L_preferred_information_source_late_majority_1
+0
+1
+0.05
+0.01
+1
+NIL
+HORIZONTAL
+
+SLIDER
+482
+1953
+815
+1986
+A_S_L_preferred_information_source_late_majority_2
+A_S_L_preferred_information_source_late_majority_2
+0
+1
+0.05
+0.01
+1
+NIL
+HORIZONTAL
+
+SLIDER
+480
+1991
+815
+2024
+A_S_L_preferred_information_source_late_majority_3
+A_S_L_preferred_information_source_late_majority_3
+0
+1
+0.3
+0.01
+1
+NIL
+HORIZONTAL
+
+SLIDER
+480
+2030
+814
+2063
+A_S_L_preferred_information_source_late_majority_4
+A_S_L_preferred_information_source_late_majority_4
+0
+1
+0.2
+0.01
+1
+NIL
+HORIZONTAL
+
+SLIDER
+480
+2070
+814
+2103
+A_S_L_preferred_information_source_late_majority_5
+A_S_L_preferred_information_source_late_majority_5
+0
+1
+0
+0.01
+1
+NIL
+HORIZONTAL
+
+SLIDER
+480
+2109
+814
+2142
+A_S_L_preferred_information_source_laggard_1
+A_S_L_preferred_information_source_laggard_1
+0
+1
+0
+0.01
+1
+NIL
+HORIZONTAL
+
+SLIDER
+480
+2150
+815
+2183
+A_S_L_preferred_information_source_laggard_2
+A_S_L_preferred_information_source_laggard_2
+0
+1
+0
+0.01
+1
+NIL
+HORIZONTAL
+
+SLIDER
+480
+2190
+814
+2223
+A_S_L_preferred_information_source_laggard_3
+A_S_L_preferred_information_source_laggard_3
+0
+1
+0.1
+0.01
+1
+NIL
+HORIZONTAL
+
+SLIDER
+480
+2231
+814
+2264
+A_S_L_preferred_information_source_laggard_4
+A_S_L_preferred_information_source_laggard_4
+0
+1
+0.2
+0.01
+1
+NIL
+HORIZONTAL
+
+SLIDER
+479
+2272
+814
+2305
+A_S_L_preferred_information_source_laggard_5
+A_S_L_preferred_information_source_laggard_5
+0
+1
+0.3
+0.01
+1
+NIL
+HORIZONTAL
+
+SLIDER
+66
+1469
+385
+1502
+Change_accepted_savings_neoclassical_rational
+Change_accepted_savings_neoclassical_rational
+-2
+2
+0
+1
+1
+NIL
+HORIZONTAL
+
+SLIDER
+66
+1507
+385
+1540
+memory
+memory
+1
+5
+3
+1
+1
+NIL
+HORIZONTAL
+
+SLIDER
+2316
+573
+2521
+606
+Learning_rate_appliances_1
+Learning_rate_appliances_1
+0.8
+1
+0.97
+0.01
+1
+NIL
+HORIZONTAL
+
+SLIDER
+66
+1548
+385
+1581
+Duration_information_complexity_validity
+Duration_information_complexity_validity
+24
+74
+24
+1
+1
+NIL
+HORIZONTAL
+
+SLIDER
+66
+1588
+384
+1621
+valuation_per_household_encountered_early_adopters
+valuation_per_household_encountered_early_adopters
+0.05
+0.2
+0.15
+0.01
+1
+NIL
+HORIZONTAL
+
+SLIDER
+65
+1628
+385
+1661
+valuation_per_household_encountered_late_majority
+valuation_per_household_encountered_late_majority
+0.05
+0.1
+0.1
+0.01
+1
+NIL
+HORIZONTAL
+
+SLIDER
+66
+1669
+385
+1702
+social_value_difference_to_mean
+social_value_difference_to_mean
+0.4
+1
+1
+0.1
+1
+NIL
+HORIZONTAL
+
+SLIDER
+981
+1314
+1360
+1347
+threshold_to_reach_for_weights_information_complexity_1
+threshold_to_reach_for_weights_information_complexity_1
+0.5
+1.5
+1
+0.1
+1
+NIL
+HORIZONTAL
+
+SLIDER
+981
+1355
+1360
+1388
+threshold_to_reach_for_weights_information_complexity_2
+threshold_to_reach_for_weights_information_complexity_2
+0.5
+1.5
+1
+0.1
+1
+NIL
+HORIZONTAL
+
+SLIDER
+980
+1395
+1359
+1428
+threshold_to_reach_for_weights_information_complexity_3
+threshold_to_reach_for_weights_information_complexity_3
+0.5
+1.5
+1
+0.1
+1
+NIL
+HORIZONTAL
+
+SLIDER
+982
+1436
+1361
+1469
+threshold_to_reach_for_weights_information_complexity_4
+threshold_to_reach_for_weights_information_complexity_4
+0.5
+1.5
+1
+0.1
+1
+NIL
+HORIZONTAL
+
+SLIDER
+982
+1477
+1361
+1510
+threshold_to_reach_for_weights_information_complexity_5
+threshold_to_reach_for_weights_information_complexity_5
+0.5
+1.5
+1
+0.1
+1
+NIL
+HORIZONTAL
+
+SLIDER
+982
+1519
+1351
+1552
+threshold_to_reach_for_weights_information_reliability_1
+threshold_to_reach_for_weights_information_reliability_1
+0.5
+1.5
+1
+0.1
+1
+NIL
+HORIZONTAL
+
+SLIDER
+981
+1559
+1350
+1592
+threshold_to_reach_for_weights_information_reliability_2
+threshold_to_reach_for_weights_information_reliability_2
+0.5
+1.5
+1
+0.1
+1
+NIL
+HORIZONTAL
+
+SLIDER
+981
+1601
+1350
+1634
+threshold_to_reach_for_weights_information_reliability_3
+threshold_to_reach_for_weights_information_reliability_3
+0.5
+1.5
+1
+0.1
+1
+NIL
+HORIZONTAL
+
+SLIDER
+982
+1641
+1351
+1674
+threshold_to_reach_for_weights_information_reliability_4
+threshold_to_reach_for_weights_information_reliability_4
+0.5
+1.5
+1
+0.1
+1
+NIL
+HORIZONTAL
+
+SLIDER
+983
+1681
+1352
+1714
+threshold_to_reach_for_weights_information_reliability_5
+threshold_to_reach_for_weights_information_reliability_5
+0.5
+1.5
+1
+0.1
+1
+NIL
+HORIZONTAL
+
+SLIDER
+983
+1721
+1357
+1754
+threshold_to_reach_for_weights_information_data_leak_1
+threshold_to_reach_for_weights_information_data_leak_1
+0.5
+1.5
+1
+0.1
+1
+NIL
+HORIZONTAL
+
+SLIDER
+982
+1762
+1356
+1795
+threshold_to_reach_for_weights_information_data_leak_2
+threshold_to_reach_for_weights_information_data_leak_2
+0.5
+1.5
+1
+0.1
+1
+NIL
+HORIZONTAL
+
+SLIDER
+982
+1803
+1356
+1836
+threshold_to_reach_for_weights_information_data_leak_3
+threshold_to_reach_for_weights_information_data_leak_3
+0.5
+1.5
+1
+0.1
+1
+NIL
+HORIZONTAL
+
+SLIDER
+983
+1842
+1357
+1875
+threshold_to_reach_for_weights_information_data_leak_4
+threshold_to_reach_for_weights_information_data_leak_4
+0.5
+1.5
+1
+0.1
+1
+NIL
+HORIZONTAL
+
+SLIDER
+982
+1882
+1356
+1915
+threshold_to_reach_for_weights_information_data_leak_5
+threshold_to_reach_for_weights_information_data_leak_5
+0.5
+1.5
+1
+0.1
+1
+NIL
+HORIZONTAL
+
+SLIDER
+981
+1923
+1343
+1956
+threshold_to_reach_for_weights_information_savings_1
+threshold_to_reach_for_weights_information_savings_1
+0.5
+1.5
+1
+0.1
+1
+NIL
+HORIZONTAL
+
+SLIDER
+981
+1964
+1343
+1997
+threshold_to_reach_for_weights_information_savings_2
+threshold_to_reach_for_weights_information_savings_2
+0.5
+1.5
+1
+0.1
+1
+NIL
+HORIZONTAL
+
+SLIDER
+982
+2004
+1344
+2037
+threshold_to_reach_for_weights_information_savings_3
+threshold_to_reach_for_weights_information_savings_3
+0.5
+1.5
+1
+0.1
+1
+NIL
+HORIZONTAL
+
+SLIDER
+983
+2046
+1345
+2079
+threshold_to_reach_for_weights_information_savings_4
+threshold_to_reach_for_weights_information_savings_4
+0.5
+1.5
+1
+0.1
+1
+NIL
+HORIZONTAL
+
+SLIDER
+983
+2087
+1345
+2120
+threshold_to_reach_for_weights_information_savings_5
+threshold_to_reach_for_weights_information_savings_5
+0.5
+1.5
+1
+0.1
+1
+NIL
+HORIZONTAL
+
+SLIDER
+1431
+1322
+1948
+1355
+change_threshold_to_reach_for_weights_information_complexity_only_per_process
+change_threshold_to_reach_for_weights_information_complexity_only_per_process
+0.5
+1.5
+1
+0.1
+1
+NIL
+HORIZONTAL
+
+SLIDER
+1432
+1363
+1939
+1396
+change_threshold_to_reach_for_weights_information_reliability_only_per_process
+change_threshold_to_reach_for_weights_information_reliability_only_per_process
+0.5
+1.5
+1
+0.1
+1
+NIL
+HORIZONTAL
+
+SLIDER
+1432
+1402
+1944
+1435
+change_threshold_to_reach_for_weights_information_data_leak_only_per_process
+change_threshold_to_reach_for_weights_information_data_leak_only_per_process
+0.5
+1.5
+1
+0.1
+1
+NIL
+HORIZONTAL
+
+SLIDER
+1433
+1443
+1933
+1476
+change_threshold_to_reach_for_weights_information_savings_only_per_process
+change_threshold_to_reach_for_weights_information_savings_only_per_process
+0.5
+1.5
+1
+0.1
+1
+NIL
+HORIZONTAL
+
+SWITCH
+1166
+1063
+1435
+1096
+Switch_uniformity_household_consumption_of_appliances
+Switch_uniformity_household_consumption_of_appliances
+0
+1
+-1000
+
+SLIDER
+66
+1709
+385
+1742
+introduction_phase
+introduction_phase
+12
+36
+28
+1
+1
+NIL
+HORIZONTAL
+
+SLIDER
+66
+1750
+385
+1783
+growth_phase
+growth_phase
+12
+36
+19
+1
+1
+NIL
+HORIZONTAL
+
+SLIDER
+66
+1789
+385
+1822
+variation_of_SD_normal_distribution_properties_of_households
+variation_of_SD_normal_distribution_properties_of_households
+0.5
+1.5
+1.4
+0.1
+1
+NIL
+HORIZONTAL
+
+PLOT
+2005
+1324
+3053
+1614
+plot 1
+NIL
+NIL
+0.0
+10.0
+0.0
+10.0
+true
+true
+"" ""
+PENS
+"Monthly electricity consumption when 1 householders" 1.0 0 -16777216 true "" "plot Monthly_electricity_consumption_h1"
+"Monthly electricity consumption when 2 householders" 1.0 0 -7500403 true "" "plot Monthly_electricity_consumption_h2"
+"Monthly electricity consumption when 3 householders" 1.0 0 -2674135 true "" "plot Monthly_electricity_consumption_h3"
+"Monthly electricity consumption when 4 householders" 1.0 0 -955883 true "" "plot Monthly_electricity_consumption_h4"
+"Monthly electricity consumption when 5 householders" 1.0 0 -6459832 true "" "plot Monthly_electricity_consumption_h5"
+
+PLOT
+2006
+1623
+2862
+1913
+plot 2
+NIL
+NIL
+0.0
+10.0
+0.0
+3.0
+true
+true
+"" ""
+PENS
+"Total savings after adoption when 1 householder" 1.0 0 -16777216 true "" "plot total_savings_after_purchase_h1"
+"Total savings after adoption when 2 householders" 1.0 0 -7500403 true "" "plot total_savings_after_purchase_h2"
+"Total savings after adoption when 3 householders" 1.0 0 -2674135 true "" "plot total_savings_after_purchase_h3"
+"Total savings after adoption when 4 householders" 1.0 0 -955883 true "" "plot total_savings_after_purchase_h4"
+"Total savings after adoption when 5 householders" 1.0 0 -6459832 true "" "plot total_savings_after_purchase_h5"
+
+TEXTBOX
+2009
+1297
+2159
+1315
+Plotting for verification
+11
+0.0
+1
+
+PLOT
+2005
+1948
+2867
+2202
+plot 3
+NIL
+NIL
+0.0
+10.0
+0.0
+10.0
+true
+true
+"" ""
+PENS
+"Number of households with whom interaction - innovators" 1.0 0 -16777216 true "" "plot households_with_whom_interacted_c1"
+"Number of households with whom interaction - early adopters" 1.0 0 -7500403 true "" "plot households_with_whom_interacted_c2"
+"Number of households with whom interaction - early majority" 1.0 0 -2674135 true "" "plot households_with_whom_interacted_c3"
+"Number of households with whom interaction - late majority" 1.0 0 -955883 true "" "plot households_with_whom_interacted_c4"
+"Number of households with whom interaction - laggard" 1.0 0 -6459832 true "" "plot households_with_whom_interacted_c5"
+
+PLOT
+2002
+2261
+2867
+2543
+plot 4
+NIL
+NIL
+0.0
+10.0
+0.0
+10.0
+true
+true
+"" ""
+PENS
+"Number of information pieces about data leak received by household 1" 1.0 0 -16777216 true "" "plot number_of_information_pieces_data_leak_h1"
+"Number of information pieces about data leak received by household 2" 1.0 0 -7500403 true "" "plot number_of_information_pieces_data_leak_h2"
+"Number of information pieces about data leak received by household 3" 1.0 0 -2674135 true "" "plot number_of_information_pieces_data_leak_h3"
+"Number of information pieces about data leak received by household 4" 1.0 0 -955883 true "" "plot number_of_information_pieces_data_leak_h4"
+"Number of information pieces about data leak received by household 5" 1.0 0 -6459832 true "" "plot number_of_information_pieces_data_leak_h5"
+
+SLIDER
+66
+1830
+385
+1863
+Diffusion_information_number_links
+Diffusion_information_number_links
+1
+6
+3
+1
+1
+NIL
+HORIZONTAL
+
+SLIDER
+63
+1978
+321
+2011
+length_memory_savings_for_renewal
+length_memory_savings_for_renewal
+0
+48
+24
+1
+1
+NIL
+HORIZONTAL
+
+SWITCH
+67
+886
+367
+919
+Switch_never_adopt_again_after_deception
+Switch_never_adopt_again_after_deception
+1
+1
+-1000
+
+SWITCH
+63
+1069
+410
+1102
+Switch_household_already_have_appliance_at_start
+Switch_household_already_have_appliance_at_start
+1
+1
+-1000
+
+SLIDER
+65
+1126
+305
+1159
+Number_of_trials_decision_making
+Number_of_trials_decision_making
+0
+20
+2
+1
+1
+NIL
+HORIZONTAL
+
+SLIDER
+65
+981
+367
+1014
+Number_of_month_before_decision_rejection
+Number_of_month_before_decision_rejection
+0
+120
+35
+5
+1
+NIL
+HORIZONTAL
+
+SWITCH
+69
+944
+407
+977
+Switch_never_adopt_again_after_deception_short
+Switch_never_adopt_again_after_deception_short
+0
+1
+-1000
+
+SWITCH
+1165
+1101
+1435
+1134
+Switch_uniformity_number_of_month_before_evaluation
+Switch_uniformity_number_of_month_before_evaluation
+1
+1
+-1000
+
+SWITCH
+1168
+1188
+1426
+1221
+Switch_uniformity_lifetime_appliance
+Switch_uniformity_lifetime_appliance
+0
+1
+-1000
+
+SLIDER
+65
+1220
+345
+1253
+Increase_in_memory_for_late_categories
+Increase_in_memory_for_late_categories
+0
+100
+10
+1
+1
+NIL
+HORIZONTAL
+
+SLIDER
+63
+2020
+267
+2053
+max_memory_electricity_bill
+max_memory_electricity_bill
+12
+36
+12
+1
+1
+NIL
+HORIZONTAL
+
+SLIDER
+63
+2063
+385
+2096
+max_memory_electricity_bill_bounded_rationality
+max_memory_electricity_bill_bounded_rationality
+2
+6
+3
+1
+1
+NIL
+HORIZONTAL
+
+SLIDER
+63
+2104
+241
+2137
+Lifetime_ISG_appliance
+Lifetime_ISG_appliance
+8
+16
+12
+1
+1
+NIL
+HORIZONTAL
+
+CHOOSER
+351
+1170
+616
+1215
+Base_for_evaluation
+Base_for_evaluation
+"Based_on_costs" "Based_on_number_of_adopted"
+1
+
+SLIDER
+351
+1220
+616
+1253
+minimum_percentage_for_no_rejection
+minimum_percentage_for_no_rejection
+0
+1
+0.11
+0.01
+1
+NIL
+HORIZONTAL
+
+SLIDER
+62
+2159
+311
+2192
+Interaction_1_multiplicator
+Interaction_1_multiplicator
+0.5
+1.5
+0.5
+0.1
+1
+NIL
+HORIZONTAL
+
+SLIDER
+62
+2200
+336
+2233
+Interaction_2_multiplicator
+Interaction_2_multiplicator
+0.5
+1.5
+0.5
+0.1
+1
+NIL
+HORIZONTAL
+
+SLIDER
+61
+2243
+331
+2276
+Interaction_3_multiplicator
+Interaction_3_multiplicator
+0.5
+1.5
+0.5
+0.1
+1
+NIL
+HORIZONTAL
+
+SLIDER
+61
+2284
+324
+2317
+Interaction_4_multiplicator
+Interaction_4_multiplicator
+0.5
+1.5
+0.5
+0.1
+1
+NIL
+HORIZONTAL
+
+SLIDER
+60
+2325
+298
+2358
+Interaction_5_multiplicator
+Interaction_5_multiplicator
+0.5
+1.5
+0.5
+0.1
+1
+NIL
+HORIZONTAL
+
+SLIDER
+61
+2393
+351
+2426
+Degree_of_correlation_with_previous_data
+Degree_of_correlation_with_previous_data
+0.2
+0.8
+0.5
+0.1
+1
+NIL
+HORIZONTAL
+
+SLIDER
+62
+2445
+450
+2478
+variation_of_SD_normal_distribution_properties_of_adopters
+variation_of_SD_normal_distribution_properties_of_adopters
+0.5
+1.5
+1
+0.1
+1
+NIL
+HORIZONTAL
+
+SLIDER
+71
+2506
+381
+2539
+Multiplication_SD_minimum_amount_of_savings
+Multiplication_SD_minimum_amount_of_savings
+0.5
+4
+2.5
+0.1
+1
+NIL
+HORIZONTAL
+
+SLIDER
+1433
+1494
+1725
+1527
+change_threshold_to_reach_for_weights_1
+change_threshold_to_reach_for_weights_1
+0.5
+1.5
+1
+0.1
+1
+NIL
+HORIZONTAL
+
+SLIDER
+1433
+1534
+1725
+1567
+change_threshold_to_reach_for_weights_2
+change_threshold_to_reach_for_weights_2
+0.5
+1.5
+1
+0.1
+1
+NIL
+HORIZONTAL
+
+SLIDER
+1433
+1574
+1725
+1607
+change_threshold_to_reach_for_weights_3
+change_threshold_to_reach_for_weights_3
+0.5
+1.5
+1
+0.1
+1
+NIL
+HORIZONTAL
+
+SLIDER
+1433
+1614
+1725
+1647
+change_threshold_to_reach_for_weights_4
+change_threshold_to_reach_for_weights_4
+0.5
+1.5
+1
+0.1
+1
+NIL
+HORIZONTAL
+
+SLIDER
+1433
+1653
+1725
+1686
+change_threshold_to_reach_for_weights_5
+change_threshold_to_reach_for_weights_5
+0.5
+1.5
+1
+0.1
+1
+NIL
+HORIZONTAL
+
+SLIDER
+65
+1905
+383
+1938
+Height_of_purchase_subsidy
+Height_of_purchase_subsidy
+0
+400
+0
+10
+1
+NIL
+HORIZONTAL
+
+SWITCH
+4
+666
+327
+699
+Replacement_ISG_appliance_possible_for_innovators
+Replacement_ISG_appliance_possible_for_innovators
 0
 1
 -1000

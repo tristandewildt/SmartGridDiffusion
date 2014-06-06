@@ -16,7 +16,7 @@ from expWorkbench.model_ensemble import ModelEnsemble
 
 
 class DiffusionModelInterface(NetLogoModelStructureInterface):
-    model_file = r'/Model_adoption_of_ISG_appliances_-_6.0.0_for_EMA.nlogo'
+    model_file = r'/Model_adoption_of_ISG_appliances_-_6.0.3_for_EMA.nlogo'
     #model_file = r'C:/Users/Tristan/Documents/GitHub/SmartGridDiffusion/src/netlogo_models/Model_adoption_of_ISG_appliances_-_5.4.9_for_EMA_test.nlogo'
     run_length = 150
 #     replications = 5
@@ -26,8 +26,8 @@ class DiffusionModelInterface(NetLogoModelStructureInterface):
                                            "electricity_price_offpeak_fix"),
                       ParameterUncertainty((0.05, 0.25), 
                                            "difference_between_peak_and_offpeak_price"),
-                      ParameterUncertainty((6, 14), 
-                                           "division_effect_media",integer=True),
+#                        ParameterUncertainty((6, 14), 
+#                                             "division_effect_media"),
                       ParameterUncertainty((0.5,1.5),
                                            "Interaction_1_multiplicator"),
                       ParameterUncertainty((0.5,1.5),
@@ -121,8 +121,8 @@ class DiffusionModelInterface(NetLogoModelStructureInterface):
 #                      ParameterUncertainty((0.55,0.85),"A_S_L_valuation_of_savings_bounded_rational_3"),
 #                      ParameterUncertainty((0.65,0.95),"A_S_L_valuation_of_savings_bounded_rational_4"),
 #                      ParameterUncertainty((0.75,1),"A_S_L_valuation_of_savings_bounded_rational_5"),
-                      ParameterUncertainty((1,2),
-                                            "Change_minimum_amount_savings_bounded_rational"),
+                      ParameterUncertainty((1,4),
+                                            "Initial_minimum_amount_savings_bounded_rational"),
                       ParameterUncertainty((0.02,0.20),
                                             "minimum_percentage_for_no_rejection"),
 
@@ -167,7 +167,7 @@ class DiffusionModelInterface(NetLogoModelStructureInterface):
                       ParameterUncertainty((0,20),
                                            "Increase_in_memory_for_late_categories",integer=True),
                        ParameterUncertainty((100,120),
-                                            "Number_of_month_before_decision_rejection",integer=True),
+                                           "Number_of_month_before_decision_rejection",integer=True),
 #                      ParameterUncertainty((2,4),
 #                                           "Diffusion_information_number_links",integer=True),
                       ParameterUncertainty((0.2,0.8),
@@ -176,7 +176,7 @@ class DiffusionModelInterface(NetLogoModelStructureInterface):
                                            "variation_of_SD_normal_distribution_properties_of_households"),
                       ParameterUncertainty((0.5,1.5),
                                            "variation_of_SD_normal_distribution_properties_of_adopters"),
-                      ParameterUncertainty((0.94,0.99),
+                      ParameterUncertainty((0.94,0.98),
                                            "Learning_rate_appliances_1"),
 #                      ParameterUncertainty((0.95,1),"Learning_rate_appliances_2"),
 #                      ParameterUncertainty((0.95,1),"Learning_rate_appliances_3"),
@@ -331,7 +331,7 @@ if __name__ == '__main__':
 #     print time.time()-starttime
     
 
-    n = 1500
+    n = 48
     results = ensemble.perform_experiments(n)
 
     fn = r'./data/{} runs.bz2'.format(n)
