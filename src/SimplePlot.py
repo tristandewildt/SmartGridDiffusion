@@ -10,14 +10,18 @@ from analysis.plotting import lines, KDE, envelopes
 ema_logging.log_to_stderr(level=ema_logging.DEFAULT_LEVEL)
 
 #load the data
+<<<<<<< HEAD
 experiments, outcomes = load_results(r'Data/1000 runs experiment 1.bz2')
+=======
+experiments, outcomes = load_results(r'Data/2000 runs.bz2')
+>>>>>>> 24686e16c9e2de3b1f4e73e5427e423c5c409115
 
 results = (experiments, outcomes)
 
 '''==============================================================================
  print out the lines, envelope and KDE
 =============================================================================='''
-desired__nr_lines = 48
+desired__nr_lines = 150
 nr_cases = experiments.shape[0]
 indices = np.arange(0, nr_cases, nr_cases/desired__nr_lines)
 
@@ -39,8 +43,8 @@ for key, value in outcomes.items():
 #                       show_envelope=True, experiments_to_show=indices, 
 #                       titles="")
 
-#             n = key
-#             plt.savefig("./pictures/KDE {}.png".format(key), dpi=75)
+            n = key
+            plt.savefig("./pictures/KDE {}.png".format(key), dpi=75)
     
 '''==============================================================================
 to print for only selected outcomes and group by model:
@@ -56,7 +60,7 @@ to print for only selected outcomes and group by model:
     
 
 
-plt.show()
+# plt.show()
     
 
 # n = key
