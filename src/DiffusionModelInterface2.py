@@ -16,7 +16,7 @@ from expWorkbench.model_ensemble import ModelEnsemble
 
 
 class DiffusionModelInterface(NetLogoModelStructureInterface):
-    model_file = r'/Model_adoption_of_ISG_appliances_-_6.0.5_for_EMA.nlogo'
+    model_file = r'/Model_adoption_of_ISG_appliances_-_6.0.8_for_EMA.nlogo'
     #model_file = r'C:/Users/Tristan/Documents/GitHub/SmartGridDiffusion/src/netlogo_models/Model_adoption_of_ISG_appliances_-_5.4.9_for_EMA_test.nlogo'
     run_length = 150
 #     replications = 5
@@ -166,7 +166,7 @@ class DiffusionModelInterface(NetLogoModelStructureInterface):
                                            "memory",integer=True),
                       ParameterUncertainty((0,20),
                                            "Increase_in_memory_for_late_categories",integer=True),
-                       ParameterUncertainty((36,72),
+                       ParameterUncertainty((100,120),
                                            "Number_of_month_before_decision_rejection",integer=True),
 #                      ParameterUncertainty((2,4),
 #                                           "Diffusion_information_number_links",integer=True),
@@ -331,7 +331,7 @@ if __name__ == '__main__':
 #     print time.time()-starttime
     
 
-    n = 2000
+    n = 80
     results = ensemble.perform_experiments(n)
 
     fn = r'./data/{} runs.bz2'.format(n)

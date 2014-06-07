@@ -25,6 +25,7 @@ Globals [
   ;difference_between_peak_and_offpeak_price
   memory_for_late_categories
   minimum_amount_savings_bounded_rational
+  number_of_households_not_participating
 
 
   
@@ -939,6 +940,17 @@ to setup
       [;set color blue
         ]
   ]
+  
+  set number_of_households_not_participating 0
+  
+  ask households [
+    if Switch_only_large_households_can_adopt = TRUE and category_number > 1 and amount_of_householders < 4 [
+      let r random-float 1
+      if r <= .8 [
+        set number_of_households_not_participating number_of_households_not_participating + 1
+        die]]]
+    
+  
   
   
   ; set-up the decision making list
@@ -1955,13 +1967,14 @@ to setup_interactions_random
       let c 0
       while [c < d][
         let b one-of households with [SELF != myself and amount_of_random_interactions_I_still_need > 0]
+        if b != nobody [
         let a [household_number] of b
         create-randomlink-with household a [if Dont_show_links = TRUE [hide-link]]
         set my_list_of_random_interactions lput a my_list_of_random_interactions
         ask household a [
           set my_list_of_random_interactions lput ([Household_number] of myself) my_list_of_random_interactions
           set amount_of_random_interactions_I_still_need amount_of_random_interactions_I_still_need - 1]
-        set amount_of_random_interactions_I_still_need amount_of_random_interactions_I_still_need - 1
+        set amount_of_random_interactions_I_still_need amount_of_random_interactions_I_still_need - 1]
         set c c + 1]]]
 
 end
@@ -2069,10 +2082,7 @@ to check_for_awareness_of_interactions
         set new_households_aware new_households_aware + 1
         set awareness_step_done 1
         set color yellow
-        if Switch_only_large_households_can_adopt = TRUE and category_number > 1 and amount_of_householders < 3 [
-          let r random-float 1
-          if r <= 1
-          [set Decision_making_status_list [[1 [0 0 1 1]] [2 [0]] [3 [0 0 0 0 0]] [4 [0]]]]]
+
       ]
     ]]       
 end
@@ -2914,8 +2924,8 @@ to for_monitoring
   set new_households_with_ISG_appliance_stat sum list_new_households_with_ISG_appliances
   set new_households_with_ISG_appliance 0
   
-  set percentage_of_households_aware count households with [item 2 (item 1 (item 0 Decision_making_status_list)) = 1] / count households * 100
-  set percentage_of_households_owning_ISG_app count households with [item 0 (item 1 (item 0 Decision_making_status_list)) = 1] / count households * 100
+  set percentage_of_households_aware count households with [item 2 (item 1 (item 0 Decision_making_status_list)) = 1] / (count households + number_of_households_not_participating) * 100
+  set percentage_of_households_owning_ISG_app count households with [item 0 (item 1 (item 0 Decision_making_status_list)) = 1] / (count households + number_of_households_not_participating) * 100
   
   set total_savings_list []
   ask households [
@@ -3035,14 +3045,6 @@ ask households [if household_number = c5 [ let d1 0
     while [d1 < length knowledge_of_data_leak_event_list ] 
     [set number_of_information_pieces_data_leak_h5 number_of_information_pieces_data_leak_h5 + item 0 (item d1 knowledge_of_data_leak_event_list)
       set d1 d1 + 1]]]
-    
- 
- 
- 
- 
- 
- 
- 
 end
 
 
@@ -4267,7 +4269,7 @@ Initial_minimum_amount_savings_bounded_rational
 Initial_minimum_amount_savings_bounded_rational
 -5
 10
-2.6
+1.3
 0.1
 1
 NIL
@@ -4798,7 +4800,7 @@ Learning_rate_appliances_1
 Learning_rate_appliances_1
 0.8
 1
-0.96
+0.97
 0.01
 1
 NIL
@@ -5257,9 +5259,9 @@ SLIDER
 1783
 growth_phase
 growth_phase
-12
+3
 36
-19
+18
 1
 1
 NIL
@@ -5454,7 +5456,7 @@ Number_of_month_before_decision_rejection
 Number_of_month_before_decision_rejection
 0
 120
-35
+15
 5
 1
 NIL

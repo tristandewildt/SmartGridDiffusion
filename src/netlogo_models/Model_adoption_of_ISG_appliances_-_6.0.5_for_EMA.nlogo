@@ -5821,7 +5821,7 @@ SWITCH
 1060
 Switch_only_large_households_can_adopt
 Switch_only_large_households_can_adopt
-0
+1
 1
 -1000
 
