@@ -10,7 +10,15 @@ from analysis.plotting import lines, KDE, envelopes
 ema_logging.log_to_stderr(level=ema_logging.DEFAULT_LEVEL)
 
 #load the data
+<<<<<<< HEAD
 experiments, outcomes = load_results(r'Data/80 runs.bz2')
+=======
+<<<<<<< HEAD
+experiments, outcomes = load_results(r'Data/1000 runs experiment 1.bz2')
+=======
+experiments, outcomes = load_results(r'Data/2000 runs.bz2')
+>>>>>>> 24686e16c9e2de3b1f4e73e5427e423c5c409115
+>>>>>>> 057947c687d58002237f6c392680f96091b8e7e8
 
 results = (experiments, outcomes)
 
@@ -23,8 +31,8 @@ indices = np.arange(0, nr_cases, nr_cases/desired__nr_lines)
 
 
 for key, value in outcomes.items():
-#           if key == 'percentage_of_early_majority_with_ISG_appliances':
-            fig, axes = lines(results, outcomes_to_show=key, density=KDE,
+    if key == 'percentage_of_early_adopters_with_ISG_appliances':
+        fig, axes = lines(results, outcomes_to_show=key, density=KDE,
                       show_envelope=True, experiments_to_show=indices, 
                       titles="")
 
