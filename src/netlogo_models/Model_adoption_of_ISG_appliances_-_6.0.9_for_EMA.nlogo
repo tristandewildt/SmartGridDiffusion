@@ -1255,7 +1255,8 @@ to setup_links
     let c 0
     while [c < 5][
       if Category_number = (item 0 (item c A_S_L_Combined_interaction_long))
-      [set my_combined_interaction_long_links int((item 1 (item c A_S_L_Combined_interaction_long)) + 0.5)]
+      [let f runresult (word "Interaction_"(c + 1)"_multiplicator")
+        set my_combined_interaction_long_links int((item 1 (item c A_S_L_Combined_interaction_long)) * f + 0.5)]
       set c c + 1]
     
     
@@ -2188,8 +2189,7 @@ to receive_information_from_interactions
         let r 0
         while [h < length threshold_to_reach_for_weights_information_complexity][
           if item 0 (item h threshold_to_reach_for_weights_information_complexity) = Category_number [
-            set r (item 1 (item h threshold_to_reach_for_weights_information_complexity)) * change_threshold_to_reach_for_weights_information_complexity_only_per_process * my_change_threshold_to_reach_for_weights
-            ]
+            set r (item 1 (item h threshold_to_reach_for_weights_information_complexity)) * change_threshold_to_reach_for_weights_information_complexity_only_per_process * my_change_threshold_to_reach_for_weights]
           set h h + 1]
                
         if w >= r * my_valuation_households_ISG_appliance_encountered_for_social_recognition[
@@ -4317,7 +4317,7 @@ difference_between_peak_and_offpeak_price
 difference_between_peak_and_offpeak_price
 0
 0.4
-0.15
+0.2
 0.01
 1
 NIL
@@ -4332,7 +4332,7 @@ Electricity_price_offpeak_fix
 Electricity_price_offpeak_fix
 0.1
 0.25
-0.25
+0.19
 0.01
 1
 NIL
@@ -5283,7 +5283,7 @@ growth_phase
 growth_phase
 3
 36
-15
+18
 1
 1
 NIL
@@ -5611,7 +5611,7 @@ Interaction_1_multiplicator
 Interaction_1_multiplicator
 0.5
 1.5
-0.5
+1
 0.1
 1
 NIL
@@ -5626,7 +5626,7 @@ Interaction_2_multiplicator
 Interaction_2_multiplicator
 0.5
 1.5
-0.5
+1
 0.1
 1
 NIL
@@ -5641,7 +5641,7 @@ Interaction_3_multiplicator
 Interaction_3_multiplicator
 0.5
 1.5
-0.5
+1
 0.1
 1
 NIL
@@ -5656,7 +5656,7 @@ Interaction_4_multiplicator
 Interaction_4_multiplicator
 0.5
 1.5
-0.5
+1
 0.1
 1
 NIL
@@ -5671,7 +5671,7 @@ Interaction_5_multiplicator
 Interaction_5_multiplicator
 0.5
 1.5
-0.5
+1
 0.1
 1
 NIL
@@ -5730,8 +5730,8 @@ SLIDER
 change_threshold_to_reach_for_weights_1
 change_threshold_to_reach_for_weights_1
 0.5
-4
-4
+1.5
+1
 0.1
 1
 NIL
@@ -5745,8 +5745,8 @@ SLIDER
 change_threshold_to_reach_for_weights_2
 change_threshold_to_reach_for_weights_2
 0.5
-4
-4
+1.5
+1
 0.1
 1
 NIL
@@ -5760,8 +5760,8 @@ SLIDER
 change_threshold_to_reach_for_weights_3
 change_threshold_to_reach_for_weights_3
 0.5
-4
-4
+1.5
+1
 0.1
 1
 NIL
@@ -5775,8 +5775,8 @@ SLIDER
 change_threshold_to_reach_for_weights_4
 change_threshold_to_reach_for_weights_4
 0.5
-4
-4
+1.5
+1
 0.1
 1
 NIL
@@ -5790,8 +5790,8 @@ SLIDER
 change_threshold_to_reach_for_weights_5
 change_threshold_to_reach_for_weights_5
 0.5
-4
-4
+1.5
+1
 0.1
 1
 NIL
