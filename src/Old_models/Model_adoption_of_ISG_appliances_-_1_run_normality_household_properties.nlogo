@@ -26,7 +26,7 @@ Globals [
   memory_for_late_categories
   minimum_amount_savings_bounded_rational
   number_of_households_not_participating
-
+  policy
 
   
   
@@ -2603,7 +2603,6 @@ to evaluation_savings
           set temp_name8 0 ; min0
           set temp_name9 0 ; max1
           structure_normality_each_step_no_int]
-        
         if total_savings >= temp_name2
           [ set Decision_making_status_list (replace-item 2 Decision_making_status_list (replace-item 1 (item 2 Decision_making_status_list ) replace-item 0 (item 1 (item 2 Decision_making_status_list )) 1))]
       ]
@@ -3384,7 +3383,7 @@ CHOOSER
 Rationality
 Rationality
 "neoclassical_rationality" "bounded_rationality"
-1
+0
 
 SWITCH
 77
@@ -3704,7 +3703,7 @@ SWITCH
 976
 Normality_of_adopter_properties
 Normality_of_adopter_properties
-0
+1
 1
 -1000
 
@@ -3726,7 +3725,7 @@ CHOOSER
 Calculation_new_normality_properties_adopters
 Calculation_new_normality_properties_adopters
 "each run" "each step"
-1
+0
 
 SWITCH
 1444
@@ -3798,7 +3797,7 @@ SWITCH
 1098
 Switch_uniformity_valuation_of_savings
 Switch_uniformity_valuation_of_savings
-0
+1
 1
 -1000
 
@@ -4075,7 +4074,7 @@ SWITCH
 1139
 Switch_uniformity_threshold_investment_risk
 Switch_uniformity_threshold_investment_risk
-0
+1
 1
 -1000
 
@@ -4784,14 +4783,14 @@ NIL
 HORIZONTAL
 
 SLIDER
-66
-1469
-385
-1502
+1169
+750
+1488
+783
 Change_accepted_savings_neoclassical_rational
 Change_accepted_savings_neoclassical_rational
--2
-2
+-5
+10
 0
 1
 1
@@ -5297,8 +5296,8 @@ SLIDER
 variation_of_SD_normal_distribution_properties_of_households
 variation_of_SD_normal_distribution_properties_of_households
 0.5
-1.5
-1.4
+3
+2
 0.1
 1
 NIL
@@ -5478,7 +5477,7 @@ Number_of_month_before_decision_rejection
 Number_of_month_before_decision_rejection
 0
 120
-105
+35
 5
 1
 NIL
@@ -5491,7 +5490,7 @@ SWITCH
 976
 Switch_never_adopt_again_after_deception_short
 Switch_never_adopt_again_after_deception_short
-0
+1
 1
 -1000
 
@@ -5693,15 +5692,15 @@ NIL
 HORIZONTAL
 
 SLIDER
-62
-2445
-450
-2478
+1134
+802
+1522
+835
 variation_of_SD_normal_distribution_properties_of_adopters
 variation_of_SD_normal_distribution_properties_of_adopters
 0.5
-1.5
-1
+3
+2
 0.1
 1
 NIL
@@ -5819,7 +5818,7 @@ SWITCH
 899
 Replacement_ISG_appliance_possible_for_innovators
 Replacement_ISG_appliance_possible_for_innovators
-0
+1
 1
 -1000
 
@@ -5832,7 +5831,7 @@ percentage_flexible_subsidy
 percentage_flexible_subsidy
 0
 100
-50
+0
 1
 1
 NIL
@@ -5856,7 +5855,7 @@ SWITCH
 939
 Replacement_ISG_appliance_possible_for_early_adopters
 Replacement_ISG_appliance_possible_for_early_adopters
-0
+1
 1
 -1000
 

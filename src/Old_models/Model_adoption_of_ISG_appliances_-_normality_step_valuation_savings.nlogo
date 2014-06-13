@@ -26,7 +26,7 @@ Globals [
   memory_for_late_categories
   minimum_amount_savings_bounded_rational
   number_of_households_not_participating
-
+  policy
 
   
   
@@ -1788,7 +1788,7 @@ to update_savings_made_after_purchase
       set temp_name2 q
       if Normality_of_adopter_properties = True and Calculation_new_normality_properties_adopters = "each run" and Switch_uniformity_valuation_of_savings = true[
         set temp_name7 (word "threshold_enough_savings_list ")
-        set multiplication_SD 1
+        set multiplication_SD 2
         set temp_name8 0 ; min0
         set temp_name9 0 ; max1
         structure_normality_each_run_no_int]
@@ -2592,18 +2592,17 @@ to evaluation_savings
         set temp_name2 y
         if Normality_of_adopter_properties = True and Calculation_new_normality_properties_adopters = "each run" and Switch_uniformity_valuation_of_savings = true [
           set temp_name7 (word "threshold_enough_savings_list ")
-          set multiplication_SD 1
+          set multiplication_SD 2
           set temp_name8 0 ; min0
           set temp_name9 0 ; max1
           structure_normality_each_run_no_int]
         
         if Normality_of_adopter_properties = True and Calculation_new_normality_properties_adopters = "each step" and Switch_uniformity_valuation_of_savings = true [
           set temp_name7 (word "Previous_threshold_enough_savings_for_correlation")
-          set multiplication_SD 1
+          set multiplication_SD 2
           set temp_name8 0 ; min0
           set temp_name9 0 ; max1
           structure_normality_each_step_no_int]
-        
         if total_savings >= temp_name2
           [ set Decision_making_status_list (replace-item 2 Decision_making_status_list (replace-item 1 (item 2 Decision_making_status_list ) replace-item 0 (item 1 (item 2 Decision_making_status_list )) 1))]
       ]
@@ -3384,7 +3383,7 @@ CHOOSER
 Rationality
 Rationality
 "neoclassical_rationality" "bounded_rationality"
-1
+0
 
 SWITCH
 77
@@ -3716,7 +3715,7 @@ CHOOSER
 Calculation_new_normality_properties_households
 Calculation_new_normality_properties_households
 "each run" "each step"
-0
+1
 
 CHOOSER
 1407
@@ -4075,7 +4074,7 @@ SWITCH
 1139
 Switch_uniformity_threshold_investment_risk
 Switch_uniformity_threshold_investment_risk
-0
+1
 1
 -1000
 
@@ -4784,14 +4783,14 @@ NIL
 HORIZONTAL
 
 SLIDER
-66
-1469
-385
-1502
+1169
+750
+1488
+783
 Change_accepted_savings_neoclassical_rational
 Change_accepted_savings_neoclassical_rational
--2
-2
+-5
+10
 0
 1
 1
@@ -5491,7 +5490,7 @@ SWITCH
 976
 Switch_never_adopt_again_after_deception_short
 Switch_never_adopt_again_after_deception_short
-0
+1
 1
 -1000
 
@@ -5819,7 +5818,7 @@ SWITCH
 899
 Replacement_ISG_appliance_possible_for_innovators
 Replacement_ISG_appliance_possible_for_innovators
-0
+1
 1
 -1000
 
@@ -5832,7 +5831,7 @@ percentage_flexible_subsidy
 percentage_flexible_subsidy
 0
 100
-50
+0
 1
 1
 NIL
@@ -5856,7 +5855,7 @@ SWITCH
 939
 Replacement_ISG_appliance_possible_for_early_adopters
 Replacement_ISG_appliance_possible_for_early_adopters
-0
+1
 1
 -1000
 

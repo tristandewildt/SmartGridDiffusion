@@ -26,7 +26,7 @@ Globals [
   memory_for_late_categories
   minimum_amount_savings_bounded_rational
   number_of_households_not_participating
-
+  policy
 
   
   
@@ -3693,7 +3693,7 @@ SWITCH
 921
 Normality_of_household_properties
 Normality_of_household_properties
-0
+1
 1
 -1000
 
@@ -3704,7 +3704,7 @@ SWITCH
 976
 Normality_of_adopter_properties
 Normality_of_adopter_properties
-0
+1
 1
 -1000
 
