@@ -19,7 +19,7 @@ from analysis.plotting import envelopes
 
 
 class DiffusionModelInterfaceHeterogeneity(NetLogoModelStructureInterface):
-    model_file = r'/Model_adoption_of_ISG_appliances_tests_heterogeneity.nlogo'
+    model_file = r'/Model_adoption_of_ISG_appliances_tests_geographical_heterogeneity.nlogo'
     #model_file = r'C:/Users/Tristan/Documents/GitHub/SmartGridDiffusion/src/netlogo_models/Model_adoption_of_ISG_appliances_-_5.4.9_for_EMA_test.nlogo'
     run_length = 200
 #     replications = 2
@@ -96,8 +96,8 @@ if __name__ == '__main__':
     ensemble = ModelEnsemble()
     ensemble.set_model_structure(msi)
     
-    policies = [{'name': 'bounded_network_random_neighbor',
-                 'file': r'\Model_adoption_of_ISG_appliances_tests_heterogeneity.nlogo'},
+    policies = [{'name': 'bounded_innovators_spread',
+                 'file': r'\Model_adoption_of_ISG_appliances_tests_geographical_heterogeneity.nlogo'},
 #                 {'name': 'normality each run',
 #                  'file': r'\Model_adoption_of_ISG_appliances_-_1_run_normality_household_properties.nlogo'},
                 ]
@@ -120,7 +120,7 @@ if __name__ == '__main__':
 #     plt.show()
 #     plt.savefig("./pictures/KDE comparison savings.png", dpi=75)
 
-    fn = r'./data/bounded_network_random_neighbor.bz2'.format(n)
+    fn = r'./data/bounded_innovators_spread.bz2'.format(n)
     save_results(results, fn)
   
     print "finish"

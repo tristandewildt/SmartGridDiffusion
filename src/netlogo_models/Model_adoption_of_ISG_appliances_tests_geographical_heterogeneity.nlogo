@@ -911,20 +911,70 @@ to setup
   ;ask household 1[set Owner_of_ISG_appliance 1] 
   
   ; here we set the location
-  let a min-pxcor
-  let b min-pycor
+  
+;  ask household 1 [die]
+  
+  
+  let a 10
+  let b 9
   let c 0
-  ask households [
+  
+  ask households [ 
+    if category_number = 1 [
+      if household_number = 0 [set xcor 12 set ycor 9 ]
+      if household_number = 1 [set xcor 24 set ycor 0 ]
+      if household_number = 2 [set xcor 0 set ycor 19 ]
+      if household_number = 3 [set xcor 24 set ycor 19 ]
+      if household_number = 4 [set xcor 12 set ycor 0 ]
+      if household_number = 5 [set xcor 0 set ycor 9 ]
+      if household_number = 6 [set xcor 24 set ycor 9 ]
+      if household_number = 7 [set xcor 12 set ycor 19 ]
+      if household_number = 8 [set xcor 0 set ycor 0 ]
+      if household_number = 9 [set xcor 6 set ycor 4 ]
+      if household_number = 10 [set xcor 6 set ycor 14 ]
+      if household_number = 11 [set xcor 18 set ycor 4 ]
+      if household_number = 12 [set xcor 18 set ycor 14 ]
     set shape "house"
     set size 0.7
-    set xcor a
-    set ycor b
+;    set xcor a
+;    set ycor b
     setxy xcor ycor
     
-    if a = max-pxcor [
-      set a min-pxcor - 1
-      set b b + 1]
-    set a a + 1]
+;    if a = 14 [
+;      set a 10
+;      set b b + 1]
+;    set a a + 1]
+]]
+  
+  
+  
+  set a min-pxcor
+  set b min-pycor
+  set c 0
+  
+  
+  ask households [ if category_number > 1 [
+    set shape "house"
+    set size 0.7
+;    set xcor a
+;    set ycor b
+    while [any? households with [ xcor = a and ycor = b]][
+;    while [a < 3 and b < 3][
+      set a a + 1
+;      set xcor a
+;      set ycor b
+      if a = max-pxcor + 1[
+        set a min-pxcor ;- 1
+        set b b + 1]]
+      set xcor a
+      set ycor b
+    setxy xcor ycor
+    
+;    if a = max-pxcor [
+;      set a min-pxcor - 1
+;      set b b + 1]
+;    set a a + 1]
+  ]]
   
   ; here we set the colours depending on adopter category and availability of a ISG appliance
   ask households [
@@ -1848,7 +1898,7 @@ to update_replacement_of_ISG_appliance
           set Lifetime_of_my_appliance_innovator Lifetime_of_my_appliance_innovator - 1
           if Lifetime_of_my_appliance_innovator <= 0 
           [set Decision_making_status_list [[1 [1 0 1 0]] [2 [1]] [3 [1 1 1 1 1]] [4 [1]]]
-            set color yellow
+            set color red
             set satisfaction_savings 1
             set knowledge_of_complexity replace-item 0 knowledge_of_complexity complexity
 ;                        print knowledge_of_complexity
@@ -3384,7 +3434,7 @@ CHOOSER
 Rationality
 Rationality
 "neoclassical_rationality" "bounded_rationality"
-0
+1
 
 SWITCH
 77
