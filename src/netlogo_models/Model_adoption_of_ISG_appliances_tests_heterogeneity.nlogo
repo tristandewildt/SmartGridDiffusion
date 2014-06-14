@@ -26,7 +26,7 @@ Globals [
   memory_for_late_categories
   minimum_amount_savings_bounded_rational
   number_of_households_not_participating
-
+  policy
 
   
   
@@ -1795,7 +1795,8 @@ to update_savings_made_after_purchase
       
       if Normality_of_adopter_properties = True and Calculation_new_normality_properties_adopters = "each step" and Switch_uniformity_valuation_of_savings = true and category_number > 2[
         set temp_name7 (word "Previous_threshold_enough_savings_for_correlation")
-        ifelse category_number > 2 [set multiplication_SD Multiplication_SD_minimum_amount_of_savings * category_number][set multiplication_SD 1]
+;        ifelse category_number > 2 [set multiplication_SD Multiplication_SD_minimum_amount_of_savings * category_number][set multiplication_SD 1]
+        set multiplication_SD 1
         set temp_name8 0 ; min0
         set temp_name9 0 ; max1
         structure_normality_each_step_no_int]
@@ -2192,7 +2193,7 @@ to receive_information_from_interactions
             ]
           set h h + 1]
                
-        if w >= r * my_valuation_households_ISG_appliance_encountered_for_social_recognition[
+        if w / memory >= r * my_valuation_households_ISG_appliance_encountered_for_social_recognition[
           set My_experience_information_list replace-item 0 My_experience_information_list 1]
         set knowledge_of_failure 0]
     ]]
@@ -2282,7 +2283,7 @@ to receive_information_from_interactions
               set r (item 1 (item h threshold_to_reach_for_weights_information_data_leak)) * change_threshold_to_reach_for_weights_information_data_leak_only_per_process * my_change_threshold_to_reach_for_weights]
             set h h + 1]
           
-          ifelse w >= r * my_valuation_households_ISG_appliance_encountered_for_social_recognition [
+          ifelse w / memory >= r * my_valuation_households_ISG_appliance_encountered_for_social_recognition[
             set My_experience_information_list replace-item 1 My_experience_information_list 1]
           [set My_experience_information_list replace-item 1 My_experience_information_list 0]
           set knowledge_of_data_leak 0]]
@@ -2333,8 +2334,8 @@ to receive_information_from_interactions
           if item 0 (item h threshold_to_reach_for_weights_information_reliability) = Category_number [
             set r (item 1 (item h threshold_to_reach_for_weights_information_reliability)) * change_threshold_to_reach_for_weights_information_reliability_only_per_process * my_change_threshold_to_reach_for_weights]
           set h h + 1]
-        
-        ifelse w >= r * my_valuation_households_ISG_appliance_encountered_for_social_recognition [
+       
+        ifelse w / memory  >= r * my_valuation_households_ISG_appliance_encountered_for_social_recognition [
           set My_experience_information_list replace-item 2 My_experience_information_list 1]
         [set My_experience_information_list replace-item 2 My_experience_information_list 0]]
     ]]
@@ -2383,7 +2384,7 @@ to receive_information_from_interactions
             set r (item 1 (item h threshold_to_reach_for_weights_information_savings)) * change_threshold_to_reach_for_weights_information_savings_only_per_process * my_change_threshold_to_reach_for_weights]
           set h h + 1]
         
-        ifelse w >= r * my_valuation_households_ISG_appliance_encountered_for_social_recognition [
+        ifelse w / memory >= r * my_valuation_households_ISG_appliance_encountered_for_social_recognition[
           set My_experience_information_list replace-item 3 My_experience_information_list 1]
         [set My_experience_information_list replace-item 3 My_experience_information_list 0]]
 
@@ -2603,7 +2604,6 @@ to evaluation_savings
           set temp_name8 0 ; min0
           set temp_name9 0 ; max1
           structure_normality_each_step_no_int]
-        
         if total_savings >= temp_name2
           [ set Decision_making_status_list (replace-item 2 Decision_making_status_list (replace-item 1 (item 2 Decision_making_status_list ) replace-item 0 (item 1 (item 2 Decision_making_status_list )) 1))]
       ]
@@ -3341,7 +3341,7 @@ SWITCH
 244
 Friend_interactions
 Friend_interactions
-0
+1
 1
 -1000
 
@@ -3687,21 +3687,21 @@ NIL
 HORIZONTAL
 
 SWITCH
-1173
-888
-1397
-921
+1159
+968
+1383
+1001
 Normality_of_household_properties
 Normality_of_household_properties
-0
+1
 1
 -1000
 
 SWITCH
-1174
-943
-1396
-976
+1160
+1023
+1382
+1056
 Normality_of_adopter_properties
 Normality_of_adopter_properties
 0
@@ -3709,30 +3709,30 @@ Normality_of_adopter_properties
 -1000
 
 CHOOSER
-1407
-888
-1664
-933
+1393
+968
+1650
+1013
 Calculation_new_normality_properties_households
 Calculation_new_normality_properties_households
 "each run" "each step"
-0
+1
 
 CHOOSER
-1407
-942
-1664
-987
+1393
+1022
+1650
+1067
 Calculation_new_normality_properties_adopters
 Calculation_new_normality_properties_adopters
 "each run" "each step"
 1
 
 SWITCH
-1444
-1148
-1768
-1181
+1430
+1228
+1754
+1261
 Switch_uniformity_interactions
 Switch_uniformity_interactions
 1
@@ -3760,20 +3760,20 @@ a
 1
 
 TEXTBOX
-1169
-1005
-1388
-1033
+1155
+1085
+1374
+1113
 Switch on and off different uniformities
 11
 0.0
 1
 
 SWITCH
-1444
-1190
-1769
-1223
+1430
+1270
+1755
+1303
 Switch_uniformity_awareness
 Switch_uniformity_awareness
 1
@@ -3781,10 +3781,10 @@ Switch_uniformity_awareness
 -1000
 
 SWITCH
-1443
-1023
-1766
-1056
+1429
+1103
+1752
+1136
 Switch_uniformity_preferred_information_source
 Switch_uniformity_preferred_information_source
 1
@@ -3792,10 +3792,10 @@ Switch_uniformity_preferred_information_source
 -1000
 
 SWITCH
-1444
-1065
-1768
-1098
+1430
+1145
+1754
+1178
 Switch_uniformity_valuation_of_savings
 Switch_uniformity_valuation_of_savings
 0
@@ -3803,10 +3803,10 @@ Switch_uniformity_valuation_of_savings
 -1000
 
 SWITCH
-1774
-1064
-2097
-1097
+1760
+1144
+2083
+1177
 Switch_uniformity_month_needed_recover_trust
 Switch_uniformity_month_needed_recover_trust
 1
@@ -3814,10 +3814,10 @@ Switch_uniformity_month_needed_recover_trust
 -1000
 
 SWITCH
-1775
-1024
-2098
-1057
+1761
+1104
+2084
+1137
 Switch_uniformity_complexity_tolerated
 Switch_uniformity_complexity_tolerated
 1
@@ -3825,10 +3825,10 @@ Switch_uniformity_complexity_tolerated
 -1000
 
 SWITCH
-1166
-1024
-1435
-1057
+1152
+1104
+1421
+1137
 Switch_uniformity_household_properties
 Switch_uniformity_household_properties
 0
@@ -4069,13 +4069,13 @@ Apply prospect theory
 1
 
 SWITCH
-1775
-1106
-2098
-1139
+1761
+1186
+2084
+1219
 Switch_uniformity_threshold_investment_risk
 Switch_uniformity_threshold_investment_risk
-0
+1
 1
 -1000
 
@@ -4091,10 +4091,10 @@ Replacement_ISG_appliance_possible
 -1000
 
 SWITCH
-1778
-1149
-2098
-1182
+1764
+1229
+2084
+1262
 Switch_uniformity_lifetime_of_ISG_appliance_purchased
 Switch_uniformity_lifetime_of_ISG_appliance_purchased
 1
@@ -4261,10 +4261,10 @@ PENS
 "Social recognition for late majority" 1.0 1 -5207188 true "" "plot valuation_social_recognition_late_majority"
 
 SWITCH
-1445
-1107
-1769
-1140
+1431
+1187
+1755
+1220
 Switch_uniformity_percentage_postive_information_needed
 Switch_uniformity_percentage_postive_information_needed
 1
@@ -4784,14 +4784,14 @@ NIL
 HORIZONTAL
 
 SLIDER
-66
-1469
-385
-1502
+1169
+750
+1488
+783
 Change_accepted_savings_neoclassical_rational
 Change_accepted_savings_neoclassical_rational
--2
-2
+-5
+10
 0
 1
 1
@@ -4822,7 +4822,7 @@ Learning_rate_appliances_1
 Learning_rate_appliances_1
 0.8
 1
-0.96
+0.95
 0.01
 1
 NIL
@@ -5249,10 +5249,10 @@ NIL
 HORIZONTAL
 
 SWITCH
-1166
-1063
-1435
-1096
+1152
+1143
+1421
+1176
 Switch_uniformity_household_consumption_of_appliances
 Switch_uniformity_household_consumption_of_appliances
 0
@@ -5268,7 +5268,7 @@ introduction_phase
 introduction_phase
 12
 36
-28
+20
 1
 1
 NIL
@@ -5297,8 +5297,8 @@ SLIDER
 variation_of_SD_normal_distribution_properties_of_households
 variation_of_SD_normal_distribution_properties_of_households
 0.5
-1.5
-1.4
+3
+2
 0.1
 1
 NIL
@@ -5478,7 +5478,7 @@ Number_of_month_before_decision_rejection
 Number_of_month_before_decision_rejection
 0
 120
-105
+35
 5
 1
 NIL
@@ -5491,15 +5491,15 @@ SWITCH
 976
 Switch_never_adopt_again_after_deception_short
 Switch_never_adopt_again_after_deception_short
-0
+1
 1
 -1000
 
 SWITCH
-1165
-1101
-1435
-1134
+1151
+1181
+1421
+1214
 Switch_uniformity_number_of_month_before_evaluation
 Switch_uniformity_number_of_month_before_evaluation
 1
@@ -5507,10 +5507,10 @@ Switch_uniformity_number_of_month_before_evaluation
 -1000
 
 SWITCH
-1168
-1188
-1426
-1221
+1154
+1268
+1412
+1301
 Switch_uniformity_lifetime_appliance
 Switch_uniformity_lifetime_appliance
 0
@@ -5678,40 +5678,40 @@ NIL
 HORIZONTAL
 
 SLIDER
-61
-2393
-351
-2426
+1134
+841
+1424
+874
 Degree_of_correlation_with_previous_data
 Degree_of_correlation_with_previous_data
-0.2
-0.8
+0
+1
+0.97
+0.01
+1
+NIL
+HORIZONTAL
+
+SLIDER
+1134
+802
+1522
+835
+variation_of_SD_normal_distribution_properties_of_adopters
+variation_of_SD_normal_distribution_properties_of_adopters
 0.5
+3
+1
 0.1
 1
 NIL
 HORIZONTAL
 
 SLIDER
-62
-2445
-450
-2478
-variation_of_SD_normal_distribution_properties_of_adopters
-variation_of_SD_normal_distribution_properties_of_adopters
-0.5
-1.5
-1
-0.1
-1
-NIL
-HORIZONTAL
-
-SLIDER
-71
-2506
-381
-2539
+1133
+883
+1443
+916
 Multiplication_SD_minimum_amount_of_savings
 Multiplication_SD_minimum_amount_of_savings
 0.5
@@ -5731,7 +5731,7 @@ change_threshold_to_reach_for_weights_1
 change_threshold_to_reach_for_weights_1
 0.5
 4
-4
+0.9
 0.1
 1
 NIL
@@ -5746,7 +5746,7 @@ change_threshold_to_reach_for_weights_2
 change_threshold_to_reach_for_weights_2
 0.5
 4
-4
+0.6
 0.1
 1
 NIL
@@ -5761,7 +5761,7 @@ change_threshold_to_reach_for_weights_3
 change_threshold_to_reach_for_weights_3
 0.5
 4
-4
+0.6
 0.1
 1
 NIL
@@ -5776,7 +5776,7 @@ change_threshold_to_reach_for_weights_4
 change_threshold_to_reach_for_weights_4
 0.5
 4
-4
+0.6
 0.1
 1
 NIL
@@ -5791,7 +5791,7 @@ change_threshold_to_reach_for_weights_5
 change_threshold_to_reach_for_weights_5
 0.5
 4
-4
+0.7
 0.1
 1
 NIL
@@ -5832,7 +5832,7 @@ percentage_flexible_subsidy
 percentage_flexible_subsidy
 0
 100
-50
+0
 1
 1
 NIL
@@ -5856,7 +5856,7 @@ SWITCH
 939
 Replacement_ISG_appliance_possible_for_early_adopters
 Replacement_ISG_appliance_possible_for_early_adopters
-0
+1
 1
 -1000
 

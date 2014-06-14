@@ -26,7 +26,7 @@ Globals [
   memory_for_late_categories
   minimum_amount_savings_bounded_rational
   number_of_households_not_participating
-
+  policy
 
   
   
@@ -2192,7 +2192,7 @@ to receive_information_from_interactions
             ]
           set h h + 1]
                
-        if w >= r * my_valuation_households_ISG_appliance_encountered_for_social_recognition[
+        if w / memory >= r * my_valuation_households_ISG_appliance_encountered_for_social_recognition[
           set My_experience_information_list replace-item 0 My_experience_information_list 1]
         set knowledge_of_failure 0]
     ]]
@@ -2282,7 +2282,7 @@ to receive_information_from_interactions
               set r (item 1 (item h threshold_to_reach_for_weights_information_data_leak)) * change_threshold_to_reach_for_weights_information_data_leak_only_per_process * my_change_threshold_to_reach_for_weights]
             set h h + 1]
           
-          ifelse w >= r * my_valuation_households_ISG_appliance_encountered_for_social_recognition [
+          ifelse w / memory >= r * my_valuation_households_ISG_appliance_encountered_for_social_recognition[
             set My_experience_information_list replace-item 1 My_experience_information_list 1]
           [set My_experience_information_list replace-item 1 My_experience_information_list 0]
           set knowledge_of_data_leak 0]]
@@ -2333,8 +2333,8 @@ to receive_information_from_interactions
           if item 0 (item h threshold_to_reach_for_weights_information_reliability) = Category_number [
             set r (item 1 (item h threshold_to_reach_for_weights_information_reliability)) * change_threshold_to_reach_for_weights_information_reliability_only_per_process * my_change_threshold_to_reach_for_weights]
           set h h + 1]
-        
-        ifelse w >= r * my_valuation_households_ISG_appliance_encountered_for_social_recognition [
+       
+        ifelse w / memory  >= r * my_valuation_households_ISG_appliance_encountered_for_social_recognition [
           set My_experience_information_list replace-item 2 My_experience_information_list 1]
         [set My_experience_information_list replace-item 2 My_experience_information_list 0]]
     ]]
@@ -2383,7 +2383,7 @@ to receive_information_from_interactions
             set r (item 1 (item h threshold_to_reach_for_weights_information_savings)) * change_threshold_to_reach_for_weights_information_savings_only_per_process * my_change_threshold_to_reach_for_weights]
           set h h + 1]
         
-        ifelse w >= r * my_valuation_households_ISG_appliance_encountered_for_social_recognition [
+        ifelse w / memory >= r * my_valuation_households_ISG_appliance_encountered_for_social_recognition[
           set My_experience_information_list replace-item 3 My_experience_information_list 1]
         [set My_experience_information_list replace-item 3 My_experience_information_list 0]]
 
@@ -3384,7 +3384,7 @@ CHOOSER
 Rationality
 Rationality
 "neoclassical_rationality" "bounded_rationality"
-1
+0
 
 SWITCH
 77
@@ -3704,7 +3704,7 @@ SWITCH
 976
 Normality_of_adopter_properties
 Normality_of_adopter_properties
-0
+1
 1
 -1000
 
@@ -3716,7 +3716,7 @@ CHOOSER
 Calculation_new_normality_properties_households
 Calculation_new_normality_properties_households
 "each run" "each step"
-0
+1
 
 CHOOSER
 1407
@@ -3735,7 +3735,7 @@ SWITCH
 1181
 Switch_uniformity_interactions
 Switch_uniformity_interactions
-1
+0
 1
 -1000
 
@@ -3787,7 +3787,7 @@ SWITCH
 1056
 Switch_uniformity_preferred_information_source
 Switch_uniformity_preferred_information_source
-1
+0
 1
 -1000
 
@@ -3809,7 +3809,7 @@ SWITCH
 1097
 Switch_uniformity_month_needed_recover_trust
 Switch_uniformity_month_needed_recover_trust
-1
+0
 1
 -1000
 
@@ -3820,7 +3820,7 @@ SWITCH
 1057
 Switch_uniformity_complexity_tolerated
 Switch_uniformity_complexity_tolerated
-1
+0
 1
 -1000
 
@@ -4097,7 +4097,7 @@ SWITCH
 1182
 Switch_uniformity_lifetime_of_ISG_appliance_purchased
 Switch_uniformity_lifetime_of_ISG_appliance_purchased
-1
+0
 1
 -1000
 
@@ -4784,14 +4784,14 @@ NIL
 HORIZONTAL
 
 SLIDER
-66
-1469
-385
-1502
+1169
+750
+1488
+783
 Change_accepted_savings_neoclassical_rational
 Change_accepted_savings_neoclassical_rational
--2
-2
+-5
+10
 0
 1
 1
@@ -5491,7 +5491,7 @@ SWITCH
 976
 Switch_never_adopt_again_after_deception_short
 Switch_never_adopt_again_after_deception_short
-0
+1
 1
 -1000
 
@@ -5731,7 +5731,7 @@ change_threshold_to_reach_for_weights_1
 change_threshold_to_reach_for_weights_1
 0.5
 4
-4
+0.9
 0.1
 1
 NIL
@@ -5746,7 +5746,7 @@ change_threshold_to_reach_for_weights_2
 change_threshold_to_reach_for_weights_2
 0.5
 4
-4
+0.6
 0.1
 1
 NIL
@@ -5761,7 +5761,7 @@ change_threshold_to_reach_for_weights_3
 change_threshold_to_reach_for_weights_3
 0.5
 4
-4
+0.6
 0.1
 1
 NIL
@@ -5776,7 +5776,7 @@ change_threshold_to_reach_for_weights_4
 change_threshold_to_reach_for_weights_4
 0.5
 4
-4
+0.6
 0.1
 1
 NIL
@@ -5791,7 +5791,7 @@ change_threshold_to_reach_for_weights_5
 change_threshold_to_reach_for_weights_5
 0.5
 4
-4
+0.7
 0.1
 1
 NIL
@@ -5819,7 +5819,7 @@ SWITCH
 899
 Replacement_ISG_appliance_possible_for_innovators
 Replacement_ISG_appliance_possible_for_innovators
-0
+1
 1
 -1000
 
@@ -5832,7 +5832,7 @@ percentage_flexible_subsidy
 percentage_flexible_subsidy
 0
 100
-50
+0
 1
 1
 NIL
@@ -5856,7 +5856,7 @@ SWITCH
 939
 Replacement_ISG_appliance_possible_for_early_adopters
 Replacement_ISG_appliance_possible_for_early_adopters
-0
+1
 1
 -1000
 

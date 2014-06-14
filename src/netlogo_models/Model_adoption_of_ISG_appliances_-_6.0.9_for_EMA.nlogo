@@ -2192,7 +2192,7 @@ to receive_information_from_interactions
             ]
           set h h + 1]
                
-        if w >= r * my_valuation_households_ISG_appliance_encountered_for_social_recognition[
+        if w / memory >= r * my_valuation_households_ISG_appliance_encountered_for_social_recognition[
           set My_experience_information_list replace-item 0 My_experience_information_list 1]
         set knowledge_of_failure 0]
     ]]
@@ -2282,7 +2282,7 @@ to receive_information_from_interactions
               set r (item 1 (item h threshold_to_reach_for_weights_information_data_leak)) * change_threshold_to_reach_for_weights_information_data_leak_only_per_process * my_change_threshold_to_reach_for_weights]
             set h h + 1]
           
-          ifelse w >= r * my_valuation_households_ISG_appliance_encountered_for_social_recognition [
+          ifelse w / memory >= r * my_valuation_households_ISG_appliance_encountered_for_social_recognition[
             set My_experience_information_list replace-item 1 My_experience_information_list 1]
           [set My_experience_information_list replace-item 1 My_experience_information_list 0]
           set knowledge_of_data_leak 0]]
@@ -2333,8 +2333,8 @@ to receive_information_from_interactions
           if item 0 (item h threshold_to_reach_for_weights_information_reliability) = Category_number [
             set r (item 1 (item h threshold_to_reach_for_weights_information_reliability)) * change_threshold_to_reach_for_weights_information_reliability_only_per_process * my_change_threshold_to_reach_for_weights]
           set h h + 1]
-        
-        ifelse w >= r * my_valuation_households_ISG_appliance_encountered_for_social_recognition [
+       
+        ifelse w / memory  >= r * my_valuation_households_ISG_appliance_encountered_for_social_recognition [
           set My_experience_information_list replace-item 2 My_experience_information_list 1]
         [set My_experience_information_list replace-item 2 My_experience_information_list 0]]
     ]]
@@ -2383,7 +2383,7 @@ to receive_information_from_interactions
             set r (item 1 (item h threshold_to_reach_for_weights_information_savings)) * change_threshold_to_reach_for_weights_information_savings_only_per_process * my_change_threshold_to_reach_for_weights]
           set h h + 1]
         
-        ifelse w >= r * my_valuation_households_ISG_appliance_encountered_for_social_recognition [
+        ifelse w / memory >= r * my_valuation_households_ISG_appliance_encountered_for_social_recognition[
           set My_experience_information_list replace-item 3 My_experience_information_list 1]
         [set My_experience_information_list replace-item 3 My_experience_information_list 0]]
 
@@ -5731,7 +5731,7 @@ change_threshold_to_reach_for_weights_1
 change_threshold_to_reach_for_weights_1
 0.5
 4
-4
+0.9
 0.1
 1
 NIL
@@ -5746,7 +5746,7 @@ change_threshold_to_reach_for_weights_2
 change_threshold_to_reach_for_weights_2
 0.5
 4
-4
+0.6
 0.1
 1
 NIL
@@ -5761,7 +5761,7 @@ change_threshold_to_reach_for_weights_3
 change_threshold_to_reach_for_weights_3
 0.5
 4
-4
+0.6
 0.1
 1
 NIL
@@ -5776,7 +5776,7 @@ change_threshold_to_reach_for_weights_4
 change_threshold_to_reach_for_weights_4
 0.5
 4
-4
+0.6
 0.1
 1
 NIL
@@ -5791,7 +5791,7 @@ change_threshold_to_reach_for_weights_5
 change_threshold_to_reach_for_weights_5
 0.5
 4
-4
+0.7
 0.1
 1
 NIL
