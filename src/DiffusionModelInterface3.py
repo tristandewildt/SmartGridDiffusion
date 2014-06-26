@@ -14,7 +14,6 @@ from connectors.netlogo import NetLogoModelStructureInterface
 from expWorkbench.model_ensemble import ModelEnsemble
 
 
-
 class DiffusionModelInterface(NetLogoModelStructureInterface):
     model_file = r'/Model_adoption_of_ISG_appliances_-_6.0.9_for_EMA.nlogo'
     #model_file = r'C:/Users/Tristan/Documents/GitHub/SmartGridDiffusion/src/netlogo_models/Model_adoption_of_ISG_appliances_-_5.4.9_for_EMA_test.nlogo'
@@ -349,7 +348,7 @@ if __name__ == '__main__':
 #     print time.time()-starttime
     
 
-    n = 1500
+    n = 16
     results = ensemble.perform_experiments(n)
 
     fn = r'./data/{} runs.bz2'.format(n)

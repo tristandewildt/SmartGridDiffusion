@@ -102,8 +102,8 @@ if __name__ == '__main__':
 #                  'file': r'\Model_adoption_of_ISG_appliances_-_1_run_normality_household_properties.nlogo'},
                 ]
     ensemble.add_policies(policies)
-    ensemble.parallel = True
-    n = 50
+#     ensemble.parallel = True
+    n = 8
     results = ensemble.perform_experiments(n)
 #     fig, axesdict = envelopes(results, 
 #                 outcomes_to_show=['percentage_of_households_owning_ISG_app'], 
@@ -120,7 +120,7 @@ if __name__ == '__main__':
 #     plt.show()
 #     plt.savefig("./pictures/KDE comparison savings.png", dpi=75)
 
-    fn = r'./data/bounded_innovators_spread.bz2'.format(n)
+    fn = r'./data/blabla.bz2'.format(n)
     save_results(results, fn)
   
     print "finish"
