@@ -18,7 +18,7 @@ class DiffusionModelInterface(NetLogoModelStructureInterface):
     model_file = r'/Model_adoption_of_ISG_appliances_-_6.0.9_for_EMA.nlogo'
     #model_file = r'C:/Users/Tristan/Documents/GitHub/SmartGridDiffusion/src/netlogo_models/Model_adoption_of_ISG_appliances_-_5.4.9_for_EMA_test.nlogo'
     run_length = 150
-#     replications = 5
+    replications = 2
 
       
     uncertainties = [ ParameterUncertainty((0.15, 0.30), 
@@ -304,26 +304,26 @@ class DiffusionModelInterface(NetLogoModelStructureInterface):
 #        self.policy = policy
 #        NetLogoModelStructureInterface.model_init(self, policy, kwargs)
         
-#     def run_model(self, case):
-#          
-#          
-#         temp_output = {}
-#         for rep in range(self.replications):
-#             NetLogoModelStructureInterface.run_model(self, case)
-#             output = self.retrieve_output()
-#              
-#             for key, value in output.iteritems():
-#                 try:
-#                     temp_output[key].append(value)
-#                 except KeyError:
-#                     temp_output[key] = [value]
-#          
-#         self.output = {}
-#         for key, value in temp_output.iteritems():
-#             value = np.asarray(value)
-#             self.output[key] = value
-#             self.output["mean_{}".format(key)] = np.mean(value, axis=0)
-#             self.output["std_{}".format(key)] = np.std(value, axis=0)
+    def run_model(self, case):
+          
+          
+        temp_output = {}
+        for rep in range(self.replications):
+            NetLogoModelStructureInterface.run_model(self, case)
+            output = self.retrieve_output()
+              
+            for key, value in output.iteritems():
+                try:
+                    temp_output[key].append(value)
+                except KeyError:
+                    temp_output[key] = [value]
+          
+        self.output = {}
+        for key, value in temp_output.iteritems():
+            value = np.asarray(value)
+            self.output[key] = value
+            self.output["mean_{}".format(key)] = np.mean(value, axis=0)
+            self.output["std_{}".format(key)] = np.std(value, axis=0)
             
 if __name__ == '__main__':
     ema_logging.log_to_stderr(ema_logging.INFO)
@@ -348,7 +348,7 @@ if __name__ == '__main__':
 #     print time.time()-starttime
     
 
-    n = 16
+    n = 2
     results = ensemble.perform_experiments(n)
 
     fn = r'./data/{} runs.bz2'.format(n)
