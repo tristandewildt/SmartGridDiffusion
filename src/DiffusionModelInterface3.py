@@ -15,7 +15,7 @@ from expWorkbench.model_ensemble import ModelEnsemble
 
 
 class DiffusionModelInterface(NetLogoModelStructureInterface):
-    model_file = r'/Model_adoption_of_ISG_appliances.nlogo'
+    model_file = r'/Model_adoption_of_ISG_appliances_other_decrease_complexity.nlogo'
     #model_file = r'C:/Users/Tristan/Documents/GitHub/SmartGridDiffusion/src/netlogo_models/Model_adoption_of_ISG_appliances_-_5.4.9_for_EMA_test.nlogo'
     run_length = 150
 <<<<<<< HEAD
@@ -30,8 +30,8 @@ class DiffusionModelInterface(NetLogoModelStructureInterface):
                                           "electricity_price_offpeak_fix"),
                      ParameterUncertainty((0.05, 0.25), 
                                           "difference_between_peak_and_offpeak_price"),
-                     ParameterUncertainty((6, 14), 
-                                          "division_effect_media"),
+#                      ParameterUncertainty((6, 14), 
+#                                           "division_effect_media"),
                      ParameterUncertainty((0.5,1.5),
                                           "Interaction_1_multiplicator"),
                      ParameterUncertainty((0.5,1.5),
@@ -52,7 +52,7 @@ class DiffusionModelInterface(NetLogoModelStructureInterface):
 #                                            "A_S_L_Unique_interaction_4",integer=True),
 #                       ParameterUncertainty((1,5),
 #                                            "A_S_L_Unique_interaction_5",integer=True),
-# #                      ParameterUncertainty((0.5,1.5),"A_S_L_Unique_interaction_multiplicator"),
+#                      ParameterUncertainty((0.5,1.5),"A_S_L_Unique_interaction_multiplicator"),
 #                      ParameterUncertainty((2,6),
 #                                           "A_S_L_Combined_interaction_short_1",integer=True),
 #                      ParameterUncertainty((1,5),
@@ -63,7 +63,7 @@ class DiffusionModelInterface(NetLogoModelStructureInterface):
 #                                           "A_S_L_Combined_interaction_short_4",integer=True),
 #                      ParameterUncertainty((0,2),
 #                                           "A_S_L_Combined_interaction_short_5",integer=True),
-# #                      ParameterUncertainty((0.5,1.5),"A_S_L_Combined_interaction_short_multiplicator"),
+#                     ParameterUncertainty((0.5,1.5),"A_S_L_Combined_interaction_short_multiplicator"),
 #                      ParameterUncertainty((7,13),
 #                                           "A_S_L_Combined_interaction_long_1",integer=True),
 #                      ParameterUncertainty((5,11),
@@ -180,8 +180,8 @@ class DiffusionModelInterface(NetLogoModelStructureInterface):
                                           "growth_phase",integer=True),
                      ParameterUncertainty((0.5,4),
                                           "Multiplication_SD_minimum_amount_of_savings"),
-                     ParameterUncertainty((1,5),
-                                          "memory",integer=True),
+#                      ParameterUncertainty((1,5),
+#                                           "memory",integer=True),
                      ParameterUncertainty((0,20),
                                           "Increase_in_memory_for_late_categories",integer=True),
                      ParameterUncertainty((12,60),
@@ -194,8 +194,8 @@ class DiffusionModelInterface(NetLogoModelStructureInterface):
                                           "variation_of_SD_normal_distribution_properties_of_households"),
                      ParameterUncertainty((0.5,1.5),
                                           "variation_of_SD_normal_distribution_properties_of_adopters"),
-                    ParameterUncertainty((0.94,0.99),
-                                         "Learning_rate_appliances_1"),
+                     ParameterUncertainty((0.94,0.99),
+                                          "Learning_rate_appliances_1"),
 #                      ParameterUncertainty((0.95,1),"Learning_rate_appliances_2"),
 #                      ParameterUncertainty((0.95,1),"Learning_rate_appliances_3"),
 #                      ParameterUncertainty((0.95,1),"Learning_rate_appliances_4"),
@@ -218,6 +218,10 @@ class DiffusionModelInterface(NetLogoModelStructureInterface):
 #                                           "Duration_information_complexity_validity",integer=True),
                      ParameterUncertainty((8,16),
                                           "Lifetime_ISG_appliance",integer=True),
+#                      ParameterUncertainty((0.90,0.96),
+#                                           "learning_rate_adoption"),
+#                      ParameterUncertainty((0.01,0.03),
+#                                           "decrease_complexity_per_step"),
 
 #                        ParameterUncertainty((24,48),"memory_calculation_of_savings",integer=True), #if neoclassical rationality
 #                       ParameterUncertainty((2,6),
@@ -314,19 +318,19 @@ class DiffusionModelInterface(NetLogoModelStructureInterface):
          
 >>>>>>> origin/master
     def run_model(self, case):
-          
-          
+           
+           
         temp_output = {}
         for rep in range(self.replications):
             NetLogoModelStructureInterface.run_model(self, case)
             output = self.retrieve_output()
-              
+               
             for key, value in output.iteritems():
                 try:
                     temp_output[key].append(value)
                 except KeyError:
                     temp_output[key] = [value]
-          
+           
         self.output = {}
         for key, value in temp_output.iteritems():
             value = np.asarray(value)

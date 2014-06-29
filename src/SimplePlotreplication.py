@@ -14,26 +14,31 @@ from analysis.plotting import lines, KDE, envelopes
 ema_logging.log_to_stderr(level=ema_logging.DEFAULT_LEVEL)
 
 #load the data
-experiments, outcomes = load_results(r'Data/250 runs with neg log decreasing complexity.bz2')
+experiments, outcomes = load_results(r'Data/200 runs.bz2')
 
 results = (experiments, outcomes)
 
 '''==============================================================================
  print out the lines, envelope and KDE
 =============================================================================='''
-desired__nr_lines = 100
+desired__nr_lines = 200
 nr_cases = experiments.shape[0]
 indices = np.arange(0, nr_cases, nr_cases/desired__nr_lines)
 
 #for key in ['repayment months']:
 for key, value in outcomes.items():
-    fig, axes = lines(results, outcomes_to_show=key, density=KDE,
-              show_envelope=True, experiments_to_show=indices, 
-              titles="")
-plt.show()
+    ooi_name = key
+    ooi = outcomes[ooi_name]
+    ooi = np.reshape(ooi, (ooi.shape[0]*ooi.shape[1], ooi.shape[2]))
+    temp_outcomes = {ooi_name: ooi}
+    lines((ooi, temp_outcomes), density=KDE,
+                  show_envelope=True, experiments_to_show=indices, 
+                  titles="")
 
-#     n = key
-#     plt.savefig("./pictures/valuation_savings_neoclassical_normality_step.png".format(n), dpi=75)
+# plt.show()
+
+    n = key
+    plt.savefig("./pictures/KDE_{}.png".format(n), dpi=75)
 '''==============================================================================
 to print for only selected outomes and group by model:
 =============================================================================='''
