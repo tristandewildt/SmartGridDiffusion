@@ -5289,8 +5289,8 @@ percentage_flexible_subsidy
 percentage_flexible_subsidy
 0
 100
-0
-1
+50
+5
 1
 NIL
 HORIZONTAL

@@ -15,14 +15,10 @@ from expWorkbench.model_ensemble import ModelEnsemble
 
 
 class DiffusionModelInterface(NetLogoModelStructureInterface):
-    model_file = r'/Model_adoption_of_ISG_appliances_other_decrease_complexity.nlogo'
+    model_file = r'/Model_adoption_of_ISG_appliances2.nlogo'
     #model_file = r'C:/Users/Tristan/Documents/GitHub/SmartGridDiffusion/src/netlogo_models/Model_adoption_of_ISG_appliances_-_5.4.9_for_EMA_test.nlogo'
     run_length = 150
-<<<<<<< HEAD
-    replications = 2
-=======
     replications = 8
->>>>>>> origin/master
 
       
     uncertainties = [ 
@@ -230,11 +226,13 @@ class DiffusionModelInterface(NetLogoModelStructureInterface):
                                           "valuation_per_household_encountered_early_adopters"),
                      ParameterUncertainty((0.05,0.1),
                                           "valuation_per_household_encountered_late_majority"),
-                     ParameterUncertainty((0.4,1),
+#                      ParameterUncertainty((0.4,1),
+                     ParameterUncertainty((0.8,1),
                                           "social_value_difference_to_mean"),
                      ParameterUncertainty((0.5,1.5),
                                           "change_threshold_to_reach_for_weights_1"),
-                     ParameterUncertainty((0.5,1.5),
+#                      ParameterUncertainty((0.5,1.5),
+                     ParameterUncertainty((0.5,0.8),
                                           "change_threshold_to_reach_for_weights_2"),
                      ParameterUncertainty((0.5,1.5),
                                           "change_threshold_to_reach_for_weights_3"),
@@ -296,27 +294,23 @@ class DiffusionModelInterface(NetLogoModelStructureInterface):
                 Outcome("new_households_with_ISG_appliance_stat", time=True),
                 Outcome("block_at_complexity", time=True),
                 Outcome("block_at_expected_savings", time=True),
-                Outcome("block_at_finding_information_reliability", time=True),
-                Outcome("block_at_finding_information_data_leak", time=True),
-                Outcome("block_at_finding_information_complexity", time=True),
-                Outcome("block_at_finding_information_savings", time=True),
+#                 Outcome("block_at_finding_information_reliability", time=True),
+#                 Outcome("block_at_finding_information_data_leak", time=True),
+#                 Outcome("block_at_finding_information_complexity", time=True),
+#                 Outcome("block_at_finding_information_savings", time=True),
                 Outcome("block_at_finding_information", time=True),
                 Outcome("percentage_of_households_aware", time=True),
                 Outcome("block_at_complexity_early_adopters", time=True)                ]
 
          
 
-<<<<<<< HEAD
-#    def model_init(self, policy, kwargs):
-#        self.policy = policy
-#        NetLogoModelStructureInterface.model_init(self, policy, kwargs)
-        
-=======
+   
+
 #     def model_init(self, policy, kwargs):
 #         self.policy = policy
 #         NetLogoModelStructureInterface.model_init(self, policy, kwargs)
          
->>>>>>> origin/master
+
     def run_model(self, case):
            
            
@@ -361,11 +355,9 @@ if __name__ == '__main__':
 #     print time.time()-starttime
     
 
-<<<<<<< HEAD
-    n = 2
-=======
+
     n = 200
->>>>>>> origin/master
+
     results = ensemble.perform_experiments(n)
 
     fn = r'./data/{} runs.bz2'.format(n)

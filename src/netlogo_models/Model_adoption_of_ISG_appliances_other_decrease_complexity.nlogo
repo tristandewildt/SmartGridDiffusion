@@ -5235,7 +5235,7 @@ change_threshold_to_reach_for_weights_2
 change_threshold_to_reach_for_weights_2
 0.5
 4
-1
+0.6
 0.1
 1
 NIL
