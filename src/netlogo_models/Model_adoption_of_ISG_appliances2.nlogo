@@ -5263,7 +5263,7 @@ Height_of_purchase_subsidy
 Height_of_purchase_subsidy
 0
 400
-0
+200
 10
 1
 NIL
@@ -5289,7 +5289,7 @@ percentage_flexible_subsidy
 percentage_flexible_subsidy
 0
 100
-50
+0
 5
 1
 NIL

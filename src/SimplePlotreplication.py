@@ -14,7 +14,7 @@ from analysis.plotting import lines, KDE, envelopes
 ema_logging.log_to_stderr(level=ema_logging.DEFAULT_LEVEL)
 
 #load the data
-experiments, outcomes = load_results(r'Data/200_runs_experiment_4_with_replication_new.bz2')
+experiments, outcomes = load_results(r'Data/200 runs.bz2')
 
 results = (experiments, outcomes)
 
@@ -38,7 +38,7 @@ for key, value in outcomes.items():
 # plt.show()
 
     n = key
-    plt.savefig("./pictures/KDE_{}.png".format(n), dpi=75)
+    plt.savefig("./pictures/KDE_200_{}.png".format(n), dpi=75)
 '''==============================================================================
 to print for only selected outomes and group by model:
 =============================================================================='''
