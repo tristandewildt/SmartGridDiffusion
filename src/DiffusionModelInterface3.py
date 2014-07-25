@@ -15,10 +15,10 @@ from expWorkbench.model_ensemble import ModelEnsemble
 
 
 class DiffusionModelInterface(NetLogoModelStructureInterface):
-    model_file = r'/Model_adoption_of_ISG_appliances2.nlogo'
+    model_file = r'/Model_adoption_of_ISG_appliances_other_decrease_complexity.nlogo'
     #model_file = r'C:/Users/Tristan/Documents/GitHub/SmartGridDiffusion/src/netlogo_models/Model_adoption_of_ISG_appliances_-_5.4.9_for_EMA_test.nlogo'
     run_length = 150
-    replications = 8
+#     replications = 8
 
       
     uncertainties = [ 
@@ -86,7 +86,8 @@ class DiffusionModelInterface(NetLogoModelStructureInterface):
 # #                     ParameterUncertainty((0,0),"A_S_L_preferred_information_source_early_adopter_5"),
                      ParameterUncertainty((0,0.2),
                                           "A_S_L_preferred_information_source_early_majority_1"),
-                     ParameterUncertainty((0.15,0.45),
+                    ParameterUncertainty((0.15,0.45),
+#                     ParameterUncertainty((0.35,0.45),
                                           "A_S_L_preferred_information_source_early_majority_2"),
                      ParameterUncertainty((0.25,0.55),
                                           "A_S_L_preferred_information_source_early_majority_3"),
@@ -94,7 +95,8 @@ class DiffusionModelInterface(NetLogoModelStructureInterface):
 # #                     ParameterUncertainty((0,0),"A_S_L_preferred_information_source_early_majority_5"),
                      ParameterUncertainty((0,0.1),
                                           "A_S_L_preferred_information_source_late_majority_1"),
-                     ParameterUncertainty((0,0.1),
+                    ParameterUncertainty((0,0.1),
+#                     ParameterUncertainty((0.25,0.35),
                                           "A_S_L_preferred_information_source_late_majority_2"),
                      ParameterUncertainty((0.15,0.45),
                                           "A_S_L_preferred_information_source_late_majority_3"),
@@ -214,8 +216,8 @@ class DiffusionModelInterface(NetLogoModelStructureInterface):
 #                                           "Duration_information_complexity_validity",integer=True),
                      ParameterUncertainty((8,16),
                                           "Lifetime_ISG_appliance",integer=True),
-#                      ParameterUncertainty((0.90,0.96),
-#                                           "learning_rate_adoption"),
+                    ParameterUncertainty((0.90,0.94),
+                                         "learning_rate_adoption"),
 #                      ParameterUncertainty((0.01,0.03),
 #                                           "decrease_complexity_per_step"),
 
@@ -226,15 +228,16 @@ class DiffusionModelInterface(NetLogoModelStructureInterface):
                                           "valuation_per_household_encountered_early_adopters"),
                      ParameterUncertainty((0.05,0.1),
                                           "valuation_per_household_encountered_late_majority"),
-#                      ParameterUncertainty((0.4,1),
-                     ParameterUncertainty((0.8,1),
+                    ParameterUncertainty((0.4,1),
+#                     ParameterUncertainty((0.8,1),
                                           "social_value_difference_to_mean"),
                      ParameterUncertainty((0.5,1.5),
                                           "change_threshold_to_reach_for_weights_1"),
-#                      ParameterUncertainty((0.5,1.5),
-                     ParameterUncertainty((0.5,0.8),
+                    ParameterUncertainty((0.5,1.5),
+#                     ParameterUncertainty((0.5,0.8),
                                           "change_threshold_to_reach_for_weights_2"),
-                     ParameterUncertainty((0.5,1.5),
+                    ParameterUncertainty((0.5,1.5),
+#                     ParameterUncertainty((0.5,0.8),
                                           "change_threshold_to_reach_for_weights_3"),
                      ParameterUncertainty((0.5,1.5),
                                           "change_threshold_to_reach_for_weights_4"),
@@ -311,27 +314,27 @@ class DiffusionModelInterface(NetLogoModelStructureInterface):
 #         NetLogoModelStructureInterface.model_init(self, policy, kwargs)
          
 
-    def run_model(self, case):
-           
-           
-        temp_output = {}
-        for rep in range(self.replications):
-            NetLogoModelStructureInterface.run_model(self, case)
-            output = self.retrieve_output()
-               
-            for key, value in output.iteritems():
-                try:
-                    temp_output[key].append(value)
-                except KeyError:
-                    temp_output[key] = [value]
-           
-        self.output = {}
-        for key, value in temp_output.iteritems():
-            value = np.asarray(value)
-            self.output[key] = value
-            self.output["mean_{}".format(key)] = np.mean(value, axis=0)
-            self.output["std_{}".format(key)] = np.std(value, axis=0)
-            
+#     def run_model(self, case):
+#              
+#              
+#         temp_output = {}
+#         for rep in range(self.replications):
+#             NetLogoModelStructureInterface.run_model(self, case)
+#             output = self.retrieve_output()
+#                  
+#             for key, value in output.iteritems():
+#                 try:
+#                     temp_output[key].append(value)
+#                 except KeyError:
+#                     temp_output[key] = [value]
+#              
+#         self.output = {}
+#         for key, value in temp_output.iteritems():
+#             value = np.asarray(value)
+#             self.output[key] = value
+#             self.output["mean_{}".format(key)] = np.mean(value, axis=0)
+#             self.output["std_{}".format(key)] = np.std(value, axis=0)
+#             
 if __name__ == '__main__':
     ema_logging.log_to_stderr(ema_logging.INFO)
     

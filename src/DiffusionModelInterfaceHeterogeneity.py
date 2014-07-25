@@ -19,15 +19,17 @@ from analysis.plotting import envelopes
 
 
 class DiffusionModelInterfaceHeterogeneity(NetLogoModelStructureInterface):
-    model_file = r'/Model_adoption_of_ISG_appliances_tests_geographical_heterogeneity.nlogo'
+    model_file = r'/Model_adoption_of_ISG_appliances.nlogo'
     #model_file = r'C:/Users/Tristan/Documents/GitHub/SmartGridDiffusion/src/netlogo_models/Model_adoption_of_ISG_appliances_-_5.4.9_for_EMA_test.nlogo'
     run_length = 200
 #     replications = 2
 
       
     uncertainties = [ 
-                        ParameterUncertainty((9.5,10.5), 
-                                             "division_effect_media",integer=True),
+#                         ParameterUncertainty((9.5,10.5), 
+#                                              "division_effect_media",integer=True),
+                        ParameterUncertainty((0.9,1.1),
+                                             "Interaction_1_multiplicator"),
                        ]
     outcomes = [Outcome("percentage_of_households_owning_ISG_app", time=True),
                 Outcome("percentage_of_innovators_with_ISG_appliances", time=True),
@@ -96,14 +98,14 @@ if __name__ == '__main__':
     ensemble = ModelEnsemble()
     ensemble.set_model_structure(msi)
     
-    policies = [{'name': 'bounded_innovators_spread',
-                 'file': r'\Model_adoption_of_ISG_appliances_tests_geographical_heterogeneity.nlogo'},
+    policies = [{'name': 'neoclassical_all_same',
+                 'file': r'\Model_adoption_of_ISG_appliances.nlogo'},
 #                 {'name': 'normality each run',
 #                  'file': r'\Model_adoption_of_ISG_appliances_-_1_run_normality_household_properties.nlogo'},
                 ]
     ensemble.add_policies(policies)
-#     ensemble.parallel = True
-    n = 8
+    ensemble.parallel = True
+    n = 50
     results = ensemble.perform_experiments(n)
 #     fig, axesdict = envelopes(results, 
 #                 outcomes_to_show=['percentage_of_households_owning_ISG_app'], 
@@ -120,7 +122,7 @@ if __name__ == '__main__':
 #     plt.show()
 #     plt.savefig("./pictures/KDE comparison savings.png", dpi=75)
 
-    fn = r'./data/blabla.bz2'.format(n)
+    fn = r'./data/neoclassical_all_same.bz2'.format(n)
     save_results(results, fn)
   
     print "finish"

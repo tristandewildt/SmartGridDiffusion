@@ -2979,7 +2979,7 @@ CHOOSER
 Rationality
 Rationality
 "neoclassical_rationality" "bounded_rationality"
-1
+0
 
 SWITCH
 78
@@ -5493,7 +5493,7 @@ SWITCH
 1465
 Switch_all_same_category
 Switch_all_same_category
-1
+0
 1
 -1000
 

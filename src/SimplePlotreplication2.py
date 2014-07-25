@@ -14,31 +14,34 @@ from analysis.plotting import lines, KDE, envelopes
 ema_logging.log_to_stderr(level=ema_logging.DEFAULT_LEVEL)
 
 #load the data
-experiments, outcomes = load_results(r'Data/200 runs.bz2')
+experiments, outcomes = load_results(r'Data/100_runs_experiment_6_with_replication_new.bz2')
 
 results = (experiments, outcomes)
 
 '''==============================================================================
  print out the lines, envelope and KDE
 =============================================================================='''
-desired__nr_lines = 200
-nr_cases = experiments.shape[0]
-indices = np.arange(0, nr_cases, nr_cases/desired__nr_lines)
+
 
 #for key in ['repayment months']:
 for key, value in outcomes.items():
-    ooi_name = key
+    ooi_name = 'percentage_of_early_majority_with_ISG_appliances'
     ooi = outcomes[ooi_name]
     ooi = np.reshape(ooi, (ooi.shape[0]*ooi.shape[1], ooi.shape[2]))
     temp_outcomes = {ooi_name: ooi}
-    lines((ooi, temp_outcomes), density=KDE,
-                  show_envelope=True, experiments_to_show=indices, 
-                  titles="")
+
+desired__nr_lines = 200
+nr_cases = experiments.shape[0]
+indices = np.arange(0, nr_cases, nr_cases/desired__nr_lines)   
+    
+lines((ooi, temp_outcomes), density=KDE,
+            show_envelope=True, experiments_to_show=indices, 
+            titles="")
 
 plt.show()
 
 #     n = key
-#     plt.savefig("./pictures/KDE_30_{}.png".format(n), dpi=75)
+#     plt.savefig("./pictures/KDE_200_{}.png".format(n), dpi=75)
 '''==============================================================================
 to print for only selected outomes and group by model:
 =============================================================================='''
@@ -48,3 +51,13 @@ to print for only selected outomes and group by model:
 
 
 
+
+
+'''initial code by Jan was:'''
+#experiments,outcomes = results
+#for key, value in outcomes.items():
+#    outcomes[key] = np.asarray(value)
+#    plt.title(key)
+#    for i in range(499):
+#        plt.plot(np.asarray(value)[i,:].T)
+#    plt.show()

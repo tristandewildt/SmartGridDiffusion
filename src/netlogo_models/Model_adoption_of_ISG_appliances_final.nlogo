@@ -5308,7 +5308,7 @@ SWITCH
 1550
 Replacement_ISG_appliance_possible_for_innovators
 Replacement_ISG_appliance_possible_for_innovators
-0
+1
 1
 -1000
 
@@ -5724,73 +5724,36 @@ Uniformity of adopter variables
 0.0
 1
 
-PLOT
-434
-839
-973
-1137
-plot 1
-NIL
-NIL
-0.0
-10.0
-0.0
-10.0
-true
-false
-"" ""
-PENS
-"default" 1.0 0 -16777216 true "" "plot block_at_complexity_early_adopters"
-"pen-1" 1.0 0 -7500403 true "" "plot block_at_complexity_early_adopters_percentage"
-
 CHOOSER
-1029
-671
-1277
-716
+602
+854
+850
+899
 Type_of_complexity_decrease
 Type_of_complexity_decrease
 "Complexity_decrease_in_steps" "Complexity_decrease_with_neg_log" "Complexity_decrease_linearly"
-0
-
-PLOT
-1039
-761
-1476
-926
-Adoption complexity level
-NIL
-NIL
-0.0
-10.0
-0.0
-3.0
-true
-false
-"" ""
-PENS
-"default" 1.0 0 -16777216 true "" "plot complexity"
+1
 
 SLIDER
-1030
-721
-1209
-754
+602
+910
+781
+943
 learning_rate_adoption
 learning_rate_adoption
 0.90
 0.96
-0.92
+0.9
 0.01
 1
 NIL
 HORIZONTAL
 
 SLIDER
-1218
-721
-1441
-754
+790
+910
+1013
+943
 decrease_complexity_per_step
 decrease_complexity_per_step
 0
@@ -5800,6 +5763,16 @@ decrease_complexity_per_step
 1
 NIL
 HORIZONTAL
+
+TEXTBOX
+602
+832
+752
+850
+Types of complexity decrease
+11
+0.0
+1
 
 @#$#@#$#@
 ## WHAT IS IT?

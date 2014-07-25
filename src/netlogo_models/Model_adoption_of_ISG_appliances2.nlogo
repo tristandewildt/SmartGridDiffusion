@@ -5302,7 +5302,7 @@ SWITCH
 1588
 Replacement_ISG_appliance_possible_for_early_adopters
 Replacement_ISG_appliance_possible_for_early_adopters
-1
+0
 1
 -1000
 
@@ -5691,25 +5691,6 @@ Uniformity of adopter variables
 11
 0.0
 1
-
-PLOT
-434
-839
-973
-1137
-plot 1
-NIL
-NIL
-0.0
-10.0
-0.0
-10.0
-true
-false
-"" ""
-PENS
-"default" 1.0 0 -16777216 true "" "plot block_at_complexity_early_adopters"
-"pen-1" 1.0 0 -7500403 true "" "plot block_at_complexity_early_adopters_percentage"
 
 @#$#@#$#@
 ## WHAT IS IT?
